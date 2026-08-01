@@ -14,11 +14,17 @@
         .card img { width: 100%; border-radius: 8px; display: block; height: auto; }
         .card p { font-size: 16px; color: #fff; margin-top: 12px; line-height: 1.4; font-weight: bold; }
         
-        /* Блоки профиля в самом низу */
         .profile-container { max-width: 650px; margin: 30px auto; padding: 25px; background: #1e1e1e; border-radius: 12px; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .profile-container h3 { color: #ff69b4; font-size: 24px; text-align: center; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #ff69b4; padding-bottom: 8px; }
         .profile-container p { font-size: 15px; line-height: 1.6; margin: 0 0 10px 0; color: #ddd; }
         .profile-container strong { color: #ff69b4; }
+        
+        /* Интерактивный японский Морзе */
+        .secret-morse { display: inline-block; position: relative; }
+        .secret-morse::before { content: ".-.. --- / .--. .- / .-.-. / -.- .- / ..-. .- / ...- / -.--.- / ...-.- / -.--.- / .--. .- / .-.-. / -...- / .--. -."; color: #ff69b4; font-family: monospace; letter-spacing: 1px; font-weight: bold; }
+        .secret-morse span { position: absolute; overflow: hidden; width: 1px; height: 1px; opacity: 0; }
+        :lang(ja) .secret-morse::before, [class*="translated"] .secret-morse::before { content: none !important; }
+        :lang(ja) .secret-morse span, [class*="translated"] .secret-morse span { position: static !important; width: auto !important; height: auto !important; opacity: 1 !important; color: #fff; font-weight: normal; }
     </style>
 </head>
 <body>
@@ -44,7 +50,7 @@
         </div>
     </div>
 
-    
+    <!-- АНГЛИЙСКИЙ БЛОК -->
     <div class="profile-container">
         <h3>🍮 CHARACTER INFO: PUDYA</h3>
         <p><strong>Species:</strong> Caramel Pudding / Flan</p>
@@ -52,10 +58,10 @@
         <p><strong>Personality:</strong> Pudding couldn't care less about anyone around her. She doesn't have some tragic, heavy backstory—she is just naturally bratty and mischievous ╮(￣▽￣"")╭</p>
         <p><strong>Skills:</strong> She is a remarkably skilled fighter and highly intelligent.</p>
         <p><strong>Traits:</strong> Extremely demanding, completely ignorable of everything around her, and capable of manifesting more unique personalities than have ever existed in the universe.</p>
-        <p><strong>Origin:</strong> She was never born. She is -.̵͚̪͆̕ .̴͚̠̎̈́ / ...̴̦͉͗̽-̵͙̝̽̆.̶̹̻͌̕-̵̣̲̒̑ .̷͙̫̑͗-̴̝̝͋̈́--̴̱̼͐̅ ---̵̣̻͛̚ .̷̯̻̅̿ / ...̴̦̞̈́̾..̶̨͚͋͊-̷̧̖̌͛-.̶̆͘ͅͅ--̵̯̯̀̆-̴̬͙̈́̏ .-̶̯̙̌͗..̶̡̅͌ͅ..̶̭̖̈́̕--̴̖͉͗̏.̴̗͇̈́͋-̷̼͙̔̒--̸͉͚͊͐ .-̷͉̭́͘.-̶̯͙̇͋.-̷̣̓̐ͅ.̵̣̯̇͑-̸̞̣͒͠ / ---̵͕͌͘͜ -.̷͍̙́̕ .-̵̜̬̃͝ / ..̵̭̬̌̒-̵̙͓̓̓..̵̮̗̿̚-̴͎̟̆͌..̵̯͗̕͜--̷̱̻̇̽ .̶̭̠͒͐-.̸̧̻͌̆..̶̲͈͛̅...̸͚̞̐͑--̶͚͓͆̀..̷̙͉́̍-̶̣̠̾̕-̶̝̳̃̆.-̸͖̲͐͝.̶̯̻̎̓..̶̞̳̅́-̴̡̼͐̒--̸̰̱̽̆.̶̖̪͋̚..̷̠͕͗̎--̸̜̲̏̋.̴̟̭̋͐-̷̺̯̚̕-̸̱̙́̈́.-̶̳͚̐̓.-̵͔̹̅̕ / .̵̺͖̔̕-̷̪̿̈ͅ.-̸͎͓̇͑.̴͉͐̔ͅ-̸͇̙͒̚.-̴͖͈͒͌.̸̼͙̈́́-̸̖̾́ͅ</p>
+        <p><strong>Origin:</strong> <span class="secret-morse"><span>彼女は生まれなかった。生物学的な親は存在しない。ロック液のおかげだ。</span></span></p>
     </div>
 
-   
+    <!-- ЯПОНСКИЙ БЛОК -->
     <div class="profile-container">
         <h3>🍮 キャラクター情報：プディヤ</h3>
         <p><strong>種族：</strong> カラメルプリン / フラン</p>
@@ -63,7 +69,7 @@
         <p><strong>性格：</strong> 周りの人を全く気にしない。悲しい過去のストーリーはなく、生まれつき意地悪で生意気。 ╮(￣▽￣"")╭</p>
         <p><strong>能力：</strong> 格闘が得意で非常に頭が良い。</p>
         <p><strong>特徴：</strong> とてもワガママで、周りのすべてを完全に無視し、この世に存在しないほどの多くの固有の人格を作り出すことができる。</p>
-        <p><strong>起源：</strong> 彼女は生まれなかった。彼女は... -.̵͚̪͆̕ .̴͚̠̎̈́ / ...̴̦͉͗̽-̵͙̝̽̆.̶̹̻͌̕-̵̣̲̒̑ .̷͙̫̑͗-̴̝̝͋̈́--̴̱̼͐̅ ---̵̣̻͛̚ .̷̯̻̅̿ / ...̴̦̞̈́̾..̶̨͚͋͊-̷̧̖̌͛-.̶̆͘ͅͅ--̵̯̯̀̆-̴̬͙̈́̏ .-̶̯̙̌͗..̶̡̅͌ͅ..̶̭̖̈́̕--̴̖͉͗̏.̴̗͇̈́͋-̷̼͙̔̒--̸͉͚͊͐ .-̷͉̭́͘.-̶̯͙̇͋.-̷̣̓̐ͅ.̵̣̯̇͑-̸̞̣͒͠ / ---̵͕͌͘͜ -.̷͍̙́̕ .-̵̜̬̃͝ / ..̵̭̬̌̒-̵̙͓̓̓..̵̮̗̿̚-̴͎̟̆͌..̵̯͗̕͜--̷̱̻̇̽ .̶̭̠͒͐-.̸̧̻͌̆..̶̲͈͛̅...̸͚̞̐͑--̶͚͓͆̀..̷̙͉́̍-̶̣̠̾̕-̶̝̳̃̆.-̸͖̲͐͝.̶̯̻̎̓..̶̞̳̅́-̴̡̼͐̒--̸̰̱̽̆.̶̖̪͋̚..̷̠͕͗̎--̸̜̲̏̋.̴̟̭̋͐-̷̺̯̚̕-̸̱̙́̈́.-̶̳͚̐̓.-̵͔̹̅̕ / .̵̺͖̔̕-̷̪̿̈ͅ.-̸͎͓̇͑.̴͉͐̔ͅ-̸͇̙͒̚.-̴͖͈͒͌.̸̼͙̈́́-̸̖̾́ͅ</p>
+        <p><strong>起源：</strong> <span class="secret-morse"><span>彼女は生まれなかった。生物学的な親は存在しない。ロック液のおかげだ。</span></span></p>
     </div>
 
 </body>
