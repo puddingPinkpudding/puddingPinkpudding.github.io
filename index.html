@@ -5,31 +5,41 @@
     <title>Pink Pudding Studio</title>
     <style>
         body { background: #121212; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
-        h1 { color: #ff69b4; font-size: 42px; margin-bottom: 10px; }
         .logo-gif { width: 100%; max-width: 450px; height: auto; margin: 20px auto; display: block; border-radius: 10px; }
         .description { font-size: 18px; color: #ccc; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6; }
         .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-        .card { background: #1e1e1e; padding: 15px; border-radius: 8px; width: 300px; }
-        img { width: 100%; border-radius: 5px; display: block; height: auto; }
-        p { font-size: 14px; color: #aaa; margin-top: 10px; }
+        
+        /* Карточка, где текст сверху, а картинка снизу */
+        .card { background: #1e1e1e; padding: 30px; border-radius: 12px; max-width: 650px; width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .card-info { text-align: center; margin-bottom: 20px; }
+        .card-info h3 { color: #ff69b4; margin: 0 0 15px 0; font-size: 28px; }
+        .card-info p { font-size: 16px; line-height: 1.6; color: #fff; margin: 0 auto 12px auto; max-width: 600px; }
+        .card-image-box { display: flex; justify-content: center; margin-top: 20px; }
+        .card-image-box img { max-width: 250px; width: 100%; border-radius: 8px; display: block; height: auto; }
     </style>
 </head>
 <body>
 
-    <!-- Текстовый заголовок, который вы просили -->
-    <h1>Pink Pudding Studio</h1>
-
-    <!-- Ваша гифка -->
+   
     <img src="logo.gif" alt="Pink Pudding Studio Logo" class="logo-gif">
     
-    <!-- Ваше описание -->
+    
     <p class="description">Hi! This is my solo studio; I simply share my drawings, animations, and memes here. I hope someone finds inspiration on my site!🍮</p>
 
     <div class="gallery">
-        <!-- Карточка с Пудей -->
+       
         <div class="card">
-            <img src="pudya.png" alt="Pudya">
-            <p>Meet Pudya, the studio mascot! My very first drawing here.</p>
+            <div class="card-info">
+                <h3>🍮 CHARACTER INFO: PUDYA</h3>
+                <p><strong>Species:</strong> Caramel Pudding / Flan &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Age:</strong> ???</p>
+                <p><strong>Personality:</strong> Pudding couldn't care less about anyone around her. She doesn't have some tragic, heavy backstory—she is just naturally bratty and mischievous ╮(￣▽￣"")╭</p>
+                <p><strong>Skills:</strong> She is a remarkably skilled fighter and highly intelligent.</p>
+                <p><strong>Traits:</strong> Extremely demanding, completely ignorable of everything around her, and capable of manifesting more unique personalities than have ever existed in the universe.</p>
+                <p><strong>Origin:</strong> She was never born. She is -.̵͚̪͆̕ .̴͚̠̎̈́ / ...̴̦͉͗̽-̵͙̝̽̆.̶̹̻͌̕-̵̣̲̑̒ .̷͙̫̑͗-̴̝̝͋̈́--̴̱̼͐̅ ---̵̣̻͛̚ .̷̯̻̅̿ / ...̴̦̞̈́̾..̶̨͚͋͊-̷̧̖̌͛-.̶̆͘ͅͅ--̵̯̯̀̆-̴̬͙̈́̏ .-̶̯̙̌͗..̶̡̅͌ͅ..̶̭̖̈́̕--̴̖͉͗̏.̴̗͇̈́͋-̷̼͙̔̒--̸͉͚͊͐ .-̷͉̭́͘.-̶̯͙̇͋.-̷̣̓̐ͅ.̵̣̯̇͑-̸̞̣͒͠ / ---̵͕͌͘͜ -.̷͍̙́̕ .-̵̜̬̃͝ / ..̵̭̬̌̒-̵̙͓̓̓..̵̮̗̿̚-̴͎̟̆͌..̵̯͗̕͜--̷̱̻̇̽ .̶̭̠͒͐-.̸̧̻͌̆..̶̲͈͛̅...̸͚̞̐͑--̶͚͓͆̀..̷̙͉́̍-̶̣̠̾̕-̶̝̳̃̆.-̸͖̲͐͝.̶̯̻̎̓..̶̞̳̅́-̴̡̼͐̒--̸̰̱̽̆.̶̖̪͋̚..̷̠͕͗̎--̸̜̲̏̋.̴̟̭̋͐-̷̺̯̚̕-̸̱̙́̈́.-̶̳͚̐̓.-̵͔̹̅̕ / .̵̺͖̔̕-̷̪̿̈ͅ.-̸͎͓̇͑.̴͉͐̔ͅ-̸͇̙͒̚.-̴͖͈͒͌.̸̼͙̈́́-̸̖̾́ͅ</p>
+            </div>
+            <div class="card-image-box">
+                <img src="pudya.png" alt="Pudya">
+            </div>
         </div>
     </div>
 
