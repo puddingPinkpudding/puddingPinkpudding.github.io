@@ -1,50 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>Pink Pudding Studio</title>
     <style>
         body { background: #121212; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
-        h1 { color: #ff69b4; font-size: 42px; margin-bottom: 10px; }
-        .logo-gif { width: 100%; max-width: 450px; height: auto; margin: 20px auto; display: block; border-radius: 10px; }
-        .description { font-size: 18px; color: #ccc; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6; }
-        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        h1 { color: #ff69b4; font-size: 42px; margin-bottom: 5px; }
+        .logo-gif { width: 100%; max-width: 450px; height: auto; margin: 15px auto; display: block; border-radius: 10px; }
+        .description { font-size: 18px; color: #ccc; max-width: 600px; margin: 0 auto 40px auto; line-height: 1.6; }
         
-        /* Карточка Пуди */
-        .card { background: #1e1e1e; padding: 30px; border-radius: 12px; max-width: 650px; width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .card-info { text-align: center; margin-bottom: 20px; }
-        .card-info h3 { color: #ff69b4; margin: 0 0 15px 0; font-size: 28px; }
-        .card-info p { font-size: 16px; line-height: 1.6; color: #fff; margin: 0 auto 12px auto; max-width: 600px; }
-        .card-image-box { display: flex; justify-content: center; margin-top: 20px; }
-        .card-image-box img { max-width: 250px; width: 100%; border-radius: 8px; display: block; height: auto; }
+        /* イラストアーカイブのタイトルスタイル */
+        .archive-title { color: #ff69b4; font-size: 28px; margin: 40px 0 20px 0; text-transform: uppercase; letter-spacing: 2px; }
+        
+        /* アーカイブのグリッド設定（画像が綺麗に並びます） */
+        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; max-width: 1200px; margin: 0 auto; }
+        .card { background: #1e1e1e; padding: 15px; border-radius: 12px; width: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: center; }
+        .card img { width: 100%; border-radius: 8px; display: block; height: auto; }
+        .card p { font-size: 14px; color: #aaa; margin-top: 12px; line-height: 1.4; }
     </style>
 </head>
 <body>
 
-    <!-- Текстовое название студии вернулось на место! -->
-    <h1>Pink Pudding Studio</h1>
+    <!-- 1. トップのスタジオ名 -->
+    <h1>ピンクプリンスタジオ (Pink Pudding Studio)</h1>
 
-    <!-- Ваша живая гифка -->
+    <!-- 2. ロゴGIFアニメーション -->
     <img src="logo.gif" alt="Pink Pudding Studio Logo" class="logo-gif">
     
-    <!-- Ваше описание студии -->
-    <p class="description">Hi! This is my solo studio; I simply share my drawings, animations, and memes here. I hope someone finds inspiration on my site!🍮</p>
+    <!-- スタジオの紹介文 -->
+    <p class="description">こんにちは！これは私の個人スタジオです。ここでは、私のイラスト、アニメーション、精度ミームを投稿しています。誰かが私のサイトでインスピレーションを見つけてくれたら嬉しいです！🍮</p>
 
+    <!-- アーカイブセクションのタイトル -->
+    <h2 class="archive-title">🎨 イラスト＆ミームアーカイブ</h2>
+
+    <!-- 3. イラスト＆ミームのギャラリー -->
     <div class="gallery">
-        <!-- Карточка Пуди -->
+        
+        <!-- プディヤの設定資料 (pudya11.png) -->
         <div class="card">
-            <div class="card-info">
-                <h3>🍮 CHARACTER INFO: PUDYA</h3>
-                <p><strong>Species:</strong> Caramel Pudding / Flan &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Age:</strong> ???</p>
-                <p><strong>Personality:</strong> Pudding couldn't care less about anyone around her. She doesn't have some tragic, heavy backstory—she is just naturally bratty and mischievous ╮(￣▽￣"")╭</p>
-                <p><strong>Skills:</strong> She is a remarkably skilled fighter and highly intelligent.</p>
-                <p><strong>Traits:</strong> Extremely demanding, completely ignorable of everything around her, and capable of manifesting more unique personalities than have ever existed in the universe.</p>
-                <p><strong>Origin:</strong> She was never born. She is -.̵͚̪͆̕ .̴͚̠̎̈́ / ...̴̦͉͗̽-̵͙̝̽̆.̶̹̻͌̕-̵̣̲̑̒ .̷͙̫̑͗-̴̝̝͋̈́--̴̱̼͐̅ ---̵̣̻͛̚ .̷̯̻̅̿ / ...̴̦̞̈́̾..̶̨͚͋͊-̷̧̖̌͛-.̶̆͘ͅͅ--̵̯̯̀̆-̴̬͙̈́̏ .-̶̯̙̌͗..̶̡̅͌ͅ..̶̭̖̈́̕--̴̖͉͗̏.̴̗͇̈́͋-̷̼͙̔̒--̸͉͚͊͐ .-̷͉̭́͘.-̶̯͙̇͋.-̷̣̓̐ͅ.̵̣̯̇͑-̸̞̣͒͠ / ---̵͕͌͘͜ -.̷͍̙́̕ .-̵̜̬̃͝ / ..̵̭̬̌̒-̵̙͓̓̓..̵̮̗̿̚-̴͎̟̆͌..̵̯͗̕͜--̷̱̻̇̽ .̶̭̠͒͐-.̸̧̻͌̆..̶̲͈͛̅...̸͚̞̐͑--̶͚͓͆̀..̷̙͉́̍-̶̣̠̾̕-̶̝̳̃̆.-̸͖̲͐͝.̶̯̻̎̓..̶̞̳̅́-̴̡̼͐̒--̸̰̱̽̆.̶̖̪͋̚..̷̠͕͗̎--̸̜̲̏̋.̴̟̭̋͐-̷̺̯̚̕-̸̱̙́̈́.-̶̳͚̐̓.-̵͔̹̅̕ / .̵̺͖̔̕-̷̪̿̈ͅ.-̸͎͓̇͑.̴͉͐̔ͅ-̸͇̙͒̚.-̴͖͈͒͌.̸̼͙̈́́-̸̖̾́ͅ</p>
-            </div>
-            <div class="card-image-box">
-                <img src="pudya11.png" alt="Pudya">
-            </div>
+            <img src="pudya11.png" alt="Pudya Info Sheet">
+            <p>プディヤ — キャラクター設定資料と世界観 🍮</p>
         </div>
+
+        <!-- スタジオのマスコット、プディヤ (pudya.png) -->
+        <div class="card">
+            <img src="pudya.png" alt="Pudya Mascot">
+            <p>スタジオのマスコット、プディヤに会いましょう！🐾</p>
+        </div>
+
     </div>
 
 </body>
