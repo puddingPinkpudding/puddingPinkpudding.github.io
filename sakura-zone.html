@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sakura Zone - Pink Pudding Studio</title>
     <style>
+        /* Добавляем плавную прокрутку для всей страницы */
+        html { scroll-behavior: smooth; }
+        
         body { background: #121212; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
         h1 { color: #ffb7c5; font-size: 42px; margin-bottom: 5px; text-shadow: 0 0 10px rgba(255, 183, 197, 0.4); }
         .zone-subtitle { font-size: 18px; color: #ffb7c5; font-style: italic; margin-bottom: 30px; }
@@ -15,25 +18,26 @@
         .nav-button:hover { background: #ff69b4; color: #121212; box-shadow: 0 0 15px rgba(255, 105, 180, 0.6); cursor: pointer; }
         .nav-button.sakura-active { background: #ffb7c5; color: #121212; border-color: #ffb7c5; box-shadow: 0 0 15px rgba(255, 183, 197, 0.6); }
         
-        /* Блоки раскрытия персонажей */
-        .char-section { max-width: 900px; margin: 50px auto; padding: 30px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.7); text-align: left; }
-        .char-header { border-bottom: 2px solid #ffb7c5; padding-bottom: 10px; margin-bottom: 20px; }
+        /* Блоки персонажей (Секции лора) */
+        .char-section { max-width: 900px; margin: 50px auto; padding: 30px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.7); display: flex; flex-wrap: wrap; gap: 30px; text-align: left; align-items: flex-start; }
+        .char-header { width: 100%; border-bottom: 2px solid #ffb7c5; padding-bottom: 10px; margin-bottom: 10px; }
         .char-title { color: #ffb7c5; font-size: 28px; margin: 0; }
-        .char-info { font-size: 16px; line-height: 1.6; color: #ddd; margin-bottom: 20px; }
-        .char-info strong { color: #ffb7c5; }
         
-        /* Стили мини-галерей внутри лора */
-        .char-gallery { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 25px; margin: 20px 0; align-items: center; }
-        .sub-card { background: #242424; padding: 15px; border-radius: 12px; width: 220px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: center; }
+        /* Стили мини-карточек слева */
+        .char-gallery { display: flex; flex-direction: column; gap: 15px; }
+        .sub-card { background: #242424; padding: 15px; border-radius: 12px; width: 200px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #333; }
         .sub-card img { width: 100%; border-radius: 8px; display: block; height: auto; }
-        .sub-card p { font-size: 14px; color: #fff; margin-top: 12px; font-weight: bold; }
-        .cherry-mini-img { max-width: 200px; width: 100%; height: auto; border-radius: 12px; }
+        .sub-card p { font-size: 14px; color: #fff; margin-top: 12px; margin-bottom: 0; font-weight: bold; }
+        
+        /* Текст справа от карточки */
+        .char-info { flex: 1; min-width: 300px; font-size: 16px; line-height: 1.6; color: #ddd; }
+        .char-info strong { color: #ffb7c5; }
     </style>
 </head>
 <body>
 
     <h1>🌸 サクラゾーン (Sakura Zone) 🌸</h1>
-    <p class="zone-subtitle"> Pink Pudding Studio</p>
+    <p class="zone-subtitle"> Lore, Hidden Details & Character Archives / キャラクターの深い設定とアーカイブ</p>
 
     <!-- Меню навигации -->
     <div class="nav-menu">
@@ -41,82 +45,67 @@
         <a href="sakura-zone.html" class="nav-button sakura-active">🌸 サクラゾーン (Sakura Zone)</a>
     </div>
 
-       
-        <!-- ================= РАСКРЫТИЕ: ПУДЯ ================= -->
+    <!-- ================= РАСКРЫТИЕ: ПУДЯ 1 ================= -->
     <div class="char-section">
         <div class="char-header"><h2 class="char-title">🍮 【プジャ】 PUDYA (LORE)</h2></div>
-        
         <div class="char-gallery">
-            <div class="sub-card"><img src="pudya.png" alt="Pudya"><p>Pudya 🍮</p></div>
+            <div class="sub-card"><img src="pudya.png" alt="Pudya"><p>Pudya  🍮</p></div>
         </div>
-        
         <div class="char-info">
-            <!-- ENGLISH VERSION -->
+            <p><strong>Universe:</strong> Pudding Cooked to New Year's Music</p>
             <p><strong>The Flawless Doll:</strong> Pudya appears completely lifeless, ignores almost everyone, and acts far too "perfect" in front of adults. She has no virtues; she has no flaws. She is a total blank slate on the outside.</p>
             <p><strong>Inside Her Mind:</strong> However, if you could peer into her head, you would find that Pudya simply doesn't know how to communicate. No one ever taught her. While Locke's solution granted her massive intellectual brainpower, mental and emotional intelligence require someone to guide her—and she has no one. </p>
             <p><strong>Her Hidden Dream:</strong> She does have dreams. She secretly wishes to be an ordinary, living pudding, freed from her stupid, boring, expressionless face.</p>
             <p><strong>Secret Attachments & Dark Past:</strong> Pudya loves soft, pastel shades and has a deep fondness for miniature, highly detailed toys. She secretly hides children's toy rings inside her nightstand. She used to live in the human world once, and it seems her past there was a little bit... criminal?</p>
             <p><strong>Fun Fact:</strong> Pudya barely needs to eat. She is constantly sustained by the glucose within the Locke's solution inside her body. She only forces herself to eat food just to look normal and blend in with everyone else.</p>
-            
             <hr style="border: 0; border-top: 1px dashed #333; margin: 20px 0;">
-            
-            <!-- JAPANESE VERSION -->
-            <p><strong>完璧な人形：</strong> プジャは完全に生気がないように見え、ほとんど誰のことも無視し、大人の前ではあまりにも「完璧すぎる良い子」として振る舞います。彼女には長所がありません。もちろん、短所もありません。外見は完全に空白 of 存在です。</p>
-            <p><strong>彼女の精神世界：</strong> しかし、もし彼女の頭の中を覗くことができたなら、プジャがただ「コミュニケーションの取り方を知らない」だけだと気づくでしょう。誰も彼女に教えなかったからです。ロック液は彼女に圧倒的な知能（頭の良さ）を与えましたが、精神的な知性や感情の成長には誰かの導きが必要であり、彼女にはそれがありませんでした。</p>
+            <p><strong>所属世界：</strong> 新年の音楽に合わせて作られたプリンの世界</p>
+            <p><strong>完璧な人形：</strong> プジャは完全に生気がないように見え、ほとんど誰のことも無視し、大人の前ではあまりにも「完璧すぎる良い子」として振る舞います。彼女には長所がありません。もちろん、短所もありません。外見は完全に空白の存在です。</p>
+            <p><strong>彼女の精神世界：</strong> しかし、もし彼女の頭の中を覗くことができたなら、プジャがただ「コミュニケーションの取り方を知らない」だけだと気づくでしょう。誰も彼女に教えなかったからです。ロック液は彼女に圧倒的な知能を与えましたが、精神的な知性や感情の成長には誰かの導きが必要であり、彼女にはそれがありませんでした。</p>
             <p><strong>隠された夢：</strong> そんな彼女にも夢があります。あのバカバカしくて退屈な、無表情な顔から解放され、普通の、本当に生きているプリンになりたいと密かに願っているのです。</p>
-            <p><strong>秘密の愛着と黒い過去：</strong> プジャは柔らかいパステルカラーを好み、細部まで作り込まれたミニチュアの玩具が大好きです。彼女は夜のスタンドの引き出し（ナイトテーブル）の中に、子供用の小さなおもちゃの指輪をこっそり隠しています。彼女はかつて人間の世界にいたことがあり、どうやらそこでの過去は少し…犯罪的（クリミナル）だったようです。</p>
-            <p><strong>豆知識：</strong> プジャはほとんど食事を必要としません。体内のロック液に含まれるグルコース（ブドウ糖）が常に彼女のエネルギーとなっているからです。彼女が食事をするのは、ただみんなと同じように見せかけ、周囲に溶け込むためだけです。</p>
+            <p><strong>秘密の愛着と黒い過去：</strong> プジャは柔らかいパステルカラーを好み、細部まで作り込まれたミニチュアの玩具が大好きです。彼女は夜のスタンドの引き出しの中に、子供用の小さなおもちゃの指輪をこっそり隠しています。彼女はかつて人間の世界にいたことがあり、どうやらそこでの過去は少し…犯罪的だったようです。</p>
+            <p><strong>豆知識：</strong> プジャはほとんど食事を必要としません。体内のロック液に含まれるグルコースが常に彼女のエネルギーとなっているからです。彼女が食事をするのは、ただみんなと同じように見せかけ、周囲に溶け込むためだけです。</p>
         </div>
     </div>
 
     <!-- ================= РАСКРЫТИЕ: ЧЕРРИ ================= -->
     <div class="char-section">
         <div class="char-header"><h2 class="char-title">🍒 【チェリー】 CHERRY (LORE)</h2></div>
-        
         <div class="char-gallery">
             <div class="sub-card"><img src="Cheri.png" alt="Cherry"><p>Cherry 🍒</p></div>
         </div>
-        
         <div class="char-info">
-            <!-- ENGLISH VERSION -->
+            <p><strong>Universe:</strong> Pudding Cooked to New Year's Music</p>
             <p><strong>Overwhelming Devotion:</strong> Cherry has many nicknames and is willing to cross into complete absurdity just for Pudya's sake. He is constantly checking up on her, practically asking about her every single breath. This often results in him getting hit or scolded by Pudya, as she deeply dislikes forced proximity and persistent, suffocating care. Perhaps Pudya secretly appreciates him somewhere deep down... but who really knows?</p>
             <p><strong>Family & Sacrifices:</strong> Cherry is the youngest child in his family, with an older sister and an older brother. Because of this, he grew up constantly wearing hand-me-down clothes. His family regularly sends him money, foolishly believing he is just eating well and growing healthy. In reality, he barely eats anything at all, starving himself just to spend every single penny on lavish gifts for Pudya.</p>
             <p><strong>The Master of Overthinking:</strong> In his own mind, he is constantly trying to "diagnose" her behavior with different anime archetypes. One day he thinks she just has a "difficult personality," the next day he claims she is a Tsundere, then a Kuudere, or that she is suffering from chronic apathy. In truth, Pudya has never had any of those conditions—he completely misses the mark.</p>
-            
             <hr style="border: 0; border-top: 1px dashed #333; margin: 20px 0;">
-            
-            <!-- JAPANESE VERSION -->
-            <p><strong>行き過ぎた献身：</strong> チェリーにはたくさんのニックネームがあり、プジャのためなら完全に不条理な行動に走ることも厭いません。彼は常に彼女の状態を気にしており、まるで一呼吸ごとに「大丈夫？」と尋ねるほどです。プジャは強引な距離感やしつこい過保護を非常に嫌уため、彼はよく彼女からお叱り（あるいは一撃）を食らっています。プジャも心の奥底では彼を大切に思っているのかもしれませんが…真相は誰にも分かりません。</p>
-            <p><strong>家族と犠牲：</strong> チェリーは家族の中で最年少（末っ子）で、姉と兄がいます。そのせいで、彼はいつも上の子の「お下がり」の服を着て育ちました。彼の家族は、彼が元気にたくさんご飯を食べていると勘違いして定期的にお送金してくれます。しかし実際には、彼はほとんど何も食べておらず、そのお金をすべてプジャへのプレゼントに貢いで自分は飢えています。</p>
-            <p><strong>妄想の診断：</strong> 彼は自分の頭の中で、彼女の冷たさを様々なアニメの属性で勝手に「診断」し続けています。ある日は「ワガママな性格」だと思い込み、ある日は「ツンデレ」、次は「クーデレ」、あるいは「慢性的な無気力症（アパシー）」などなど。しかし本当のところ、プジャにはそんな性質は一つもありませんし、過去にも一度もありませんでした。完全に彼の勘違いです。</p>
+            <p><strong>所属世界：</strong> 新年の音楽に合わせて作られたプリンの世界</p>
+            <p><strong>行き過ぎた献身：</strong> チェリーにはたくさんのニックネームがあり、プジャのためなら完全に不条理な行動に走ることも厭いません。彼は常に彼女の状態を気にしており、まるで一呼吸ごとに尋ねるほどです。プジャは強引な距離感やしつこい過保護を非常に嫌うため、彼はよく彼女からお叱りを食らっています。プジャも心の奥底では彼を大切に思っているのかもしれませんが…真相は誰にも分かりません。</p>
+            <p><strong>家族と犠牲：</strong> チェリーは家族の中で最年少で、姉と兄がいます。そのせいで、彼はいつも上の子の「お下がり」の服を着て育ちました。彼の家族は、彼が元気にたくさんご飯を食べていると勘違いして定期的に送金してくれます。しかし実際には、彼はほとんど何も食べておらず, そのお金をすべてプジャへのプレゼントに貢いで自分は飢えています。</p>
+            <p><strong>妄想の診断：</strong> 彼は自分の頭の中で、彼女の冷たさを様々なアニメの属性で勝手に「診断」し続けています。ある日は「ワガママな性格」だと思い込み、ある日は「ツンデレ」、次は「クーデレ」、あるいは「慢性的な無気力症」などなど。しかし本当のところ、プジャにはそんな性質は一つもありません。完全に彼の勘違いです。</p>
         </div>
     </div>
 
-
-        <!-- ================= РАСКРЫТИЕ: ЮЦУКО ================= -->
+    <!-- ================= РАСКРЫТИЕ: ЮЦУКО ================= -->
     <div class="char-section">
         <div class="char-header"><h2 class="char-title">🥟 【ユツコ】 YUTSUKO (LORE)</h2></div>
-        
         <div class="char-gallery">
             <div class="sub-card"><img src="Yutsuko.png" alt="Yutsuko"><p>Yutsuko 🥟</p></div>
         </div>
-        
         <div class="char-info">
-            <!-- ENGLISH VERSION -->
-            <p><strong>Universe:</strong> Store / Shop Setting (NOT from the "Pudding Cooked to New Year's Music" universe).</p>
-            <p><strong>A Different World:</strong> Yutsuko is a regular 20-year-old guy working part-time as a janitor at a local store.</p>
+            <p><strong>Universe:</strong> Store / Shop Setting</p>
+            <p><strong>A Different World:</strong> Yutsuko does NOT belong to Pudya's world. He is from a completely separate setting—just a regular 20-year-old guy working part-time as a janitor at a local store.</p>
             <p><strong>Workplace Vibes:</strong> He jokes around a lot and constantly tries to strike up a conversation with his co-workers. However, he is the only male employee at the store, aside from the store manager (Kim). Yutsuko rarely talks to him though, because Kim feels way too "stiff and official" to hang out with.</p>
             <p><strong>Species & Tastes:</strong> Yutsuko is a Gyoza (Japanese dumpling) character. When it comes to food, he absolutely loves sour and spicy flavors, but he completely despises anything sweet.</p>
-            
             <hr style="border: 0; border-top: 1px dashed #333; margin: 20px 0;">
-            
-            <!-- JAPANESE VERSION -->
-            <p><strong>所属世界：</strong> お店・ショップの世界（「新年の音楽に合わせて作られたプリン」の世界ではありません）。</p>
-            <p><strong>別世界の住人：</strong> ユツコは地元の店でパートタイムの清掃員として働く普通の20歳の青年です。</p>
-            <p><strong>職場の雰囲気：</strong> 彼はよくジョークを言い、他の従業員と仲良くなろうといつも話しかけています。しかし、店長（キム）を除けば、その店で働く唯一 of 男性従業員です。店長はあまりにも「堅苦しくて公式的」に見えるため、ユツコは少し気まずさを感じています。</p>
+            <p><strong>所属世界：</strong> お店・ショップの世界</p>
+            <p><strong>別世界の住人：</strong> ユツコは、プジャの世界のキャラクターではありません！彼は全く別の世界の住人で、地元の店でパートタイムの清掃員として働く普通の20歳の青年です。</p>
+            <p><strong>職場の雰囲気：</strong> 彼はよくジョークを言い、他の従業員と仲良くなろうといつも話しかけています。しかし、店長（キム）を除けば、その店で働く唯一の男性従業員です。店長はあまりにも「堅苦しくて公式的」に見えるため、ユツコは少し気まずさを感じています。</p>
             <p><strong>種族と好み：</strong> ユツコはギョーザ（餃子）のキャラクターです。味覚に関しては、酸っぱいものや辛いものが大好きですが、甘いものは大嫌いで絶対に受け付けません。</p>
         </div>
     </div>
+
 
     <!-- ================= РАСКРЫТИЕ: МИСАКУРА ================= -->
     <div class="char-section">
