@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>サクラゾーン (Sakura Zone) - Pink Pudding Studio</title>
     <style>
-        /* Плавная прокрутка для всей страницы */
         html { 
             scroll-behavior: smooth; 
         }
@@ -37,7 +36,6 @@
             margin-bottom: 30px; 
         }
 
-        /* Навигация главного меню */
         .nav-menu { 
             display: flex; 
             flex-wrap: wrap; 
@@ -75,7 +73,6 @@
             box-shadow: 0 0 15px rgba(255, 183, 197, 0.6); 
         }
 
-        /* Блоки персонажей (Секции лора) */
         .char-section { 
             max-width: 900px; 
             margin: 50px auto; 
@@ -116,20 +113,25 @@
 
         .char-image-box {
             flex: 0 0 250px;
+            max-width: 250px;
             background: #121212;
             padding: 15px;
             border-radius: 10px;
             border: 1px solid #333;
             text-align: center;
-            max-width: 250px;
+            box-sizing: border-box;
         }
 
-        /* ИСПРАВЛЕННЫЕ КАРТИНКИ (теперь они аккуратные и не ломают верстку) */
+        /* Усмиряем новые картинки, чтобы они не взрывали верстку */
         .char-image-box img {
-            width: 100% !important;
-            height: 200px !important;
+            max-width: 100% !important;
+            max-height: 200px !important;
+            width: auto !important;
+            height: auto !important;
             object-fit: contain !important;
             border-radius: 5px !important;
+            display: block;
+            margin: 0 auto;
         }
 
         .char-image-caption {
@@ -163,26 +165,20 @@
         <div class="zone-subtitle">Lore, Hidden Details & Character Archives / キャラクターの深い設定とアーカイブ</div>
     </div>
 
-    <!-- Главное Меню Сайта -->
     <div class="nav-menu">
         <a href="index.html" class="nav-button">🍮 Main & Gallery</a>
         <a href="sakura-zone.html" class="nav-button sakura-active">🌸 サクラゾーン (Sakura Zone)</a>
     </div>
 
-    <!-- ЛИПКОГО МЕНЮ НАВИГАЦИИ ПО ГЛАВАМ -->
+    <!-- Твоя липкая навигация по главам -->
     <div style="position: sticky; top: 0; z-index: 9999; background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(5px); border-bottom: 1px solid #ff69b4; box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2); padding: 12px 10px; text-align: center; font-family: sans-serif; width: 100%; box-sizing: border-box;">
       <div style="max-width: 900px; margin: 0 auto;">
-        <!-- Первая вселенная -->
         <div style="display: inline-block; margin-right: 15px;">
           <span style="color: #ffb7c5; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-right: 5px;">✨ Christmas Music:</span>
-          <a href="#char-pudya" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px; text-shadow: 0 0 5px rgba(255,105,180,0.3);">Pudya 🍮</a>
-          <a href="#char-cherry" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px; text-shadow: 0 0 5px rgba(255,105,180,0.3);">Cherry 🍒</a>
+          <a href="#char-pudya" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Pudya 🍮</a>
+          <a href="#char-cherry" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Cherry 🍒</a>
         </div>
-
-        <!-- Разделитель миров -->
         <span style="color: #333; margin: 0 5px;">|</span>
-
-        <!-- Вторая вселенная -->
         <div style="display: inline-block; margin-left: 15px;">
           <span style="color: #ffb7c5; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-right: 5px;">🛒 Grocery Store:</span>
           <a href="#char-yutsuko" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Yutsuko 🥟</a>
@@ -194,9 +190,6 @@
         </div>
       </div>
     </div>
-
-
-    <!-- ================= ALL LORE SECTIONS ================= -->
 
     <!-- PUDYA -->
     <div class="char-section" id="char-pudya">
@@ -233,9 +226,10 @@
                 <p><strong>The Misunderstanding:</strong> He constantly tries to analyze Pudya's cold attitude using anime archetypes like "tsundere" or "kuudere", completely missing the fact that she just lacks communication skills. He takes her bluntness as a challenge.</p>
             </div>
         </div>
-    </div>
+    </div> 
 
-    <!-- YUTSUKO -->
+    
+              <!-- YUTSUKO -->
     <div class="char-section" id="char-yutsuko">
         <div class="char-header">
             <h2 class="char-title">🥟 【ユツコ】 YUTSUKO (LORE)</h2>
@@ -247,195 +241,96 @@
             </div>
             <div class="char-info">
                 <p><strong>Universe:</strong> Grocery Store Workers</p>
-             <p><strong>The Only Guy:</strong> A 20-year-old janitor who is a Gyoza dumpling. He is the only male worker among the store staff (besides Director Kim). He loves cracking jokes, likes spicy and sour foods, but absolutely despises sweets.</p>
+                <p><strong>The Only Guy:</strong> A 20-year-old janitor who is a Gyoza dumpling. He is the only male worker among the store staff (besides Director Kim). He loves cracking jokes, likes spicy and sour foods, but absolutely despises sweets.</p>
             </div>
         </div>
     </div>
 
     <!-- MISAKURA -->
     <div class="char-section" id="char-misakura">
-
-    <div class="char-section">
-        <div class="char-header"><h2 class="char-title">🍙 【ミサクラ】 MISAKURA (LORE)</h2></div>
-        
-        <div class="char-gallery">
-            <div class="sub-card"><img src="misakura.png" alt="Misakura"><p>Misakura 🍙</p></div>
+        <div class="char-header">
+            <h2 class="char-title">🍙 【ミサクラ】 MISAKURA (LORE)</h2>
         </div>
-        
-        <div class="char-info">
-            <!-- ENGLISH VERSION -->
-            <p><strong>Universe:</strong> Store / Shop Setting (Same universe as Yutsuko).</p>
-            <p><strong>The Rebel Onigiri:</strong> Misakura is a 19-year-old teenager working as a junior security guard at the store. She is an Onigiri (rice ball) whose filling is shrimp with spicy sauce. Ironically, she completely detests seafood—especially shrimp!</p>
-            <p><strong>"Hair" Dye & Styles:</strong> She loves experimenting with her appearance by pouring different sauces over herself, which is the equivalent of dyeing your hair in her world. Her favorites are cheese sauce and sweet & spicy sauce. Her fashion style is highly unpredictable: one day she might show up in a strict minimalist outfit, and the next day in a completely vibrant, heavily detailed look.</p>
-            <p><strong>Style Preferences:</strong> She absolutely hates wearing skirts. She always prefers her comfortable, trusty old pants instead.</p>
-            
-            <hr style="border: 0; border-top: 1px dashed #333; margin: 20px 0;">
-            
-            <!-- JAPANESE VERSION -->
-            <p><strong>所属世界：</strong> お店・ショップの世界（ユツコと同じ世界）。</p>
-            <p><strong>反抗期のおにぎり：</strong> ミサクラは店のジュニア警備員として働く19歳のティーンエイジャーです。彼女の正体はおにぎりで、具材は「エビのチリソース（ピリ辛ソース）」です。しかし皮肉なことに、彼女自身はシーフード、特にエビが大嫌いです！</p>
-            <p><strong>ソースで髪染め＆スタイル：</strong> 彼女は自分の見た目を実験するのが大好きで、自分に様々なソースをぶっかけます（彼らの世界ではこれが「髪を染める」ことに相当します）。特にお気に入りはチーズソースとスイートチリソースです。ファッションスタイルは気まぐれで、ある日はミニマリストな服で現れたかと思えば、次の日には全身ド派手でディテールにこだわったスタイルに変身したりします。</p>
-            <p><strong>好みのスタイル：</strong> スカートを履くのが大嫌いです。彼女はいつも、履き慣れた古いズボン（パンツ）を好んで履いています。</p>
+        <div class="char-content">
+            <div class="char-image-box">
+                <img src="misakura.png" alt="Misakura">
+                <div class="char-image-caption">Misakura 🍙</div>
+            </div>
+            <div class="char-info">
+                <p><strong>Universe:</strong> Grocery Store Workers</p>
+                <p><strong>The Rebel Onigiri:</strong> A 19-year-old junior security guard who happens to be a rice ball. Ironically, she hates seafood and shrimp, even though she is stuffed with them. Instead of dyeing her hair, she pours sweet chili or cheese sauces over herself. She refuses to wear skirts.</p>
+            </div>
         </div>
     </div>
 
-        <!-- ================= РАСКРЫТИЕ: КИМ ================= -->
-    <div class="char-section">
-        <div class="char-header"><h2 class="char-title">🥓 【キム】 KIM (LORE)</h2></div>
-        
-        <div class="char-gallery">
-            <div class="sub-card"><img src="kim.png" alt="Kim"><p>Kim 😶🥓</p></div>
+    <!-- KIM -->
+    <div class="char-section" id="char-kim">
+        <div class="char-header">
+            <h2 class="char-title">🥓 【キム】 KIM (LORE)</h2>
         </div>
-        
-        <div class="char-info">
-            <!-- ENGLISH VERSION -->
-            <p><strong>Universe:</strong> Store / Shop Setting (The Store Manager of Yutsuko and Misakura).</p>
-            <p><strong>The Strict Manager:</strong> Kim is the strict and serious director of the store. He is actually made of soy meat, but people constantly mistake him for bacon, regular meat, or something similar.</p>
-            <p><strong>Mysterious Connections:</strong> He has hidden ties to a laboratory that studies abnormal, deformed residents... but more on that later. He is still quite young at 32 years old, but he carries himself and acts as if he has been running the place since he was 2.</p>
-            <p><strong>Reputation & Secrets:</strong> He always tries to look highly "important" and professional. His colleagues deeply respect him, as this is definitely not his first business or job. Perhaps... he is also one of the deformed entities due to the toxicity of r̷a̷d̷i̷a̷t̷i̷o̷n̷.</p>
-            
-            <hr style="border: 0; border-top: 1px dashed #333; margin: 20px 0;">
-            
-            <!-- JAPANESE VERSION -->
-            <p><strong>所属世界：</strong> お店・ショップの世界（ユツコとミサクラの店長）。</p>
-            <p><strong>厳格な店長：</strong> キムは店の厳格で真面目なディレクター（店長）です。彼の正体は「大豆ミート（ソイミート）」ですが、周囲からはよくベーコンや普通のお肉、あるいはそれに類するものと勘違いされています。</p>
-            <p><strong>謎のつながり：</strong> 彼は、異常で変形した住民を研究している研究所と隠されたつながりを持っています…しかし、その話はまた後ほど。彼は32歳とまだ若いですが、まるで2歳の頃からこの店を仕切ってきたかのように振る舞います。</p>
-            <p><strong>評判と秘密：</strong> 彼は常に自分が非常に「重要」でプロフェッショナルであるように見せようとしています。これが彼の最初のビジネスや仕事ではないため、同僚からは深く尊敬されています。もしかしたら…彼もまた、r̷a̷d̷i̷a̷t̷i̷o̷n̷（放射能）の毒性のせいで変形した存在の一人なのかもしれません。</p>
+        <div class="char-content">
+            <div class="char-image-box">
+                <img src="kim.png" alt="Kim">
+                <div class="char-image-caption">Kim 🥓</div>
+            </div>
+            <div class="char-info">
+                <p><strong>Universe:</strong> Grocery Store Workers</p>
+                <p><strong>The Mysterious Boss:</strong> The 32-year-old strict manager of the shop. He is made of soy meat, though everyone constantly mistakes him for bacon. He holds hidden connections with a secret lab that studies abnormal citizens, and rumor has it he mutated due to radiation.</p>
+            </div>
         </div>
     </div>
 
-
-  
-            <!-- ================= РАСКРЫТИЕ: АЙКО ================= -->
-    <div class="char-section">
-        <div class="char-header"><h2 class="char-title">🐟 【アイコ】 AIKO (LORE)</h2></div>
-        
-        <!-- ВОТ ЭТОТ БЛОК ИСПРАВЛЕН: ДОБАВЛЕНА КАРТОЧКА С КАРТИНКОЙ -->
-        <div class="char-gallery">
-            <div class="sub-card"><img src="aiko.png" alt="Aiko"><p>Aiko 😦 🐟=🍪</p></div>
+    <!-- AIKO -->
+    <div class="char-section" id="char-aiko">
+        <div class="char-header">
+            <h2 class="char-title">🐟 【アイコ】 AIKO (LORE)</h2>
         </div>
-        
-        <div class="char-info">
-            <!-- ENGLISH VERSION -->
-            <p><strong>Universe:</strong> Store / Shop Setting (The Head Cashier of Kim's Store).</p>
-            <p><strong>The Burned-Out Veteran:</strong> Aiko is the head cashier. She is 27 years old and has been working at this store for a very long time (6 years!). She is completely burned out, but she keeps working anyway because she gets paid a lot. However, she still doesn't make as much as the *other Pudya* who belongs to this same universe, which makes her incredibly envious.</p>
-            <p><strong>Insecurities & Fashion:</strong> It infuriates her when people tease her about her height (she is actually extremely short). Unlike Misakura, she loves wearing various skirts and dresses. She is a Taiyaki (fish-shaped cake) character.</p>
-            <p><strong>Style Experiments:</strong> She also loves experimenting with her hairstyles, but she never changes her sauce or cream filling. Instead, she alters the actual shape and look of her "hair"—sometimes she shows up with bangs covering her entire face, other times with long, loose hanging locks.</p>
-            
-            <hr style="border: 0; border-top: 1px dashed #333; margin: 20px 0;">
-            
-            <!-- JAPANESE VERSION -->
-            <p><strong>所属世界：</strong> お店・ショップの世界（キムの店の主任レジ係）。</p>
-            <p><strong>燃え尽きたベテラン：</strong> アイコは主任レジ係です。現在27歳で、この店でもう長いこと働いています。精神的には完全に燃え尽きていますが、給料が非常に高いため働き続けています。それでも、同じ世界にいる「もう一人のプジャ」の稼ぎには及ばないため、彼女に対して強い嫉妬心を抱いています。</p>
-            <p><strong>コンプレックスとファッション：</strong> 身長が非常に低いため、その低さをからかわれると激怒します。ミサクラとは対照的に、様々なスカートやワンピースを着るのが大好きです。彼女の正体はたい焼きのキャラクターです。</p>
-            <p><strong>ヘアスタイルの実験：</strong> 彼女も髪型を実験するのが大好きですが、ソースや中のクリームは一切変えません。代わりに「髪」そのものの形状やスタイルを変えます。ある日は顔全体を覆うような前髪で現れたり、またある日は長く垂れ下がったダウンスタイルにしたりします。</p>
+        <div class="char-content">
+            <div class="char-image-box">
+                <img src="aiko.png" alt="Aiko">
+                <div class="char-image-caption">Aiko 🐟</div>
+            </div>
+            <div class="char-info">
+                <p><strong>Universe:</strong> Grocery Store Workers</p>
+                <p><strong>Burned Out:</strong> A 27-year-old senior cashier who is a Taiyaki fish pastry. She is completely burned out after 6 years of working here, staying only because of the decent salary. She is highly insecure about her short height, loves skirts, and aggressively envies Pudya 2's income.</p>
+            </div>
         </div>
     </div>
 
-
-         <!-- ================= РАСКРЫТИЕ: ЮМЕНИ ================= -->
-    <div class="char-section">
-        <div class="char-header"><h2 class="char-title"> 【ユメニ】 YUMENI (LORE)</h2></div>
-        
-        <div class="char-gallery">
-            <div class="sub-card"><img src="yumeni.png" alt="Yumeni"><p>Yumeni 🍡</p></div>
+    <!-- YUMENI -->
+    <div class="char-section" id="char-yumeni">
+        <div class="char-header">
+            <h2 class="char-title">🍡 【ユメニ】 YUMENI (LORE)</h2>
         </div>
-        
-        <div class="char-info">
-            <!-- ENGLISH VERSION -->
-            <p><strong>Universe:</strong> Store / Shop Setting (The Intern / Junior Cashier).</p>
-            <p><strong>The Unbothered Intern:</strong> Yumeni is a trainee or junior cashier. She is quite short and always dresses in a very minimalist style. She earns very little money, but she is totally fine with it. She is rather eccentric and her personality changes frequently, yet she refuses to quit even when her salary gets cut and more responsibilities are piled on. She simply says she likes the "vibe" of this store.</p>
-            <p><strong>Nuclear Tastes & Workplace Vibes:</strong> She absolutely loves spicy food. She eats things so unbelievably hot that you can feel a burning sensation in your mouth from a mile away, but she is completely fine. Yutsuko loves to play pranks and tease her all the time, but again—she is totally fine with it.</p>
-            p><strong>The Store's Fragrance:</strong> She is genuinely obsessed with the smell of the grocery store. Because of her bizarre behavior, many customers mistake her for being on substances, even though she has never touched anything like that in her life (except for handling a pack of cigarettes when a customer buys one).</p>
-            
-            <hr style="border: 0; border-top: 1px dashed #333; margin: 20px 0;">
-            
-            <!-- JAPANESE VERSION -->
-            <p><strong>所属世界：</strong> お店・ショップの世界（インターン / 見習いレジ係）。</p>
-            <p><strong>気にしない見習い：</strong> ユメニは研修生、あるいはジュニアレジ係です。かなり小柄で、いつも非常にミニマリストな服を着ています。給料はとても低いですが、本人は「平気」です。かなり風変わりで性格がコロコロ変わりますが、給料が減らされ仕事が増えても絶対に辞めようとしません。彼女はただ、この店の「バイブス（雰囲気）」が好きだと言っています。</p>
-            <p><strong>激辛マニアと職場の日常：</strong> 彼女は辛いものがとにかく大好きです。1キロ先からでも口の中がヒリヒリするのを感じるほど凄まじく辛いものを食べますが、彼女は全く平気です。ユツコはいつも彼女をからかってイタズラを仕掛けますが、それでも彼女は平気で、むしろ楽しんでいます。</p>
-            <p><strong>お店の匂い：</strong> 彼女は店の独特な匂いに完全にハマっています。その奇妙な行動のせいで、多くのお客さんから「何かアブナイ薬でもやっているのでは」と勘違いされがちですが、彼女は人生でそんなものに触れたことは一度もありません（誰かがタバコを買おうとして、そのパックに触れる時くらいです）。</p>
+        <div class="char-content">
+            <div class="char-image-box">
+                <img src="yumeni.png" alt="Yumeni">
+                <div class="char-image-caption">Yumeni 🍡</div>
+            </div>
+            <div class="char-info">
+                <p><strong>Universe:</strong> Grocery Store Workers</p>
+                <p><strong>Here for the Vibe:</strong> A trainee cashier who is a Dango stick. She is very weird: despite getting her salary cut and extra shifts piled on her, she refuses to quit because she "likes the supermarket vibe". She loves dangerously spicy food and sniffing the grocery store air.</p>
+            </div>
         </div>
     </div>
 
-    <!-- ================= РАСКРЫТИЕ: ПУДЯ 2 (МЕНЕДЖЕР СКЛАДА) ================= -->
-    <div class="char-section" style="border-color: #ffb7c5; background: #1e191a;">
-        <div class="char-header"><h2 class="char-title" style="color: #ffb7c5;">🍮 【プジャ 2】 PUDYA (STORE MANAGER PUDYA / LORE)</h2></div>
-        
-        <div class="char-gallery">
-            <div class="sub-card" style="border: 1px solid #ffb7c5;"><img src="pudya2.png" alt="Pudya 2 Warehouse"><p>Pudya 2 🙃🍮</p></div>
+    <!-- PUDYA 2 -->
+    <div class="char-section" id="char-pudya2">
+        <div class="char-header">
+            <h2 class="char-title">🍮 【プジャ】 PUDYA 2 (LORE)</h2>
         </div>
-        
-        <div class="char-info">
-            <!-- ENGLISH VERSION -->
-            <p><strong>Universe:</strong> Store / Shop Setting (The highest-paid employee of Kim's Store).</p>
-            <p><strong>The Warehouse Queen:</strong> Pudya is a calm 25-year-old employee working as the warehouse manager. She earns the absolute highest salary in the entire store, causing Aiko intense jealousy. She loves cute kawaii styles, strawberries, and handbags.</p>
-            <p><strong>The Secret Fort & Hard Work:</strong> Deep inside the warehouse, she has her own secret zone with a little chair covered in a cozy blanket. She is incredibly strong and can easily lift heavy boxes. She is a bit chubby... but hey, a tiny matchstick wouldn't be able to carry 5-kilogram boxes, right?</p>
-            <p><strong>Dietary Quirks:</strong> She loves her job, especially one particular perk: she frequently eats products that are just a few hours or days away from expiration, or sometimes items that have already expired!</p>
-            
-            <hr style="border: 0; border-top: 1px dashed #333; margin: 20px 0;">
-            
-            <!-- JAPANESE VERSION -->
-            <p><strong>所属世界：</strong> お店・ショップの世界（キムの店で最も給料が高い従業員）。</p>
-            <p><strong>倉庫の女王：</strong> プジャ（2人目）は、倉庫マネージャーとして働く25歳の穏やかな従業員です。店全体で圧倒的に高い給料を稼いでおり、それがアイコの激しい嫉妬の原因になっています。カワイイスタイル、イチゴ、そしてハンドバッグが大好きです。</p>
-            <p><strong>秘密の基地と怪力：</strong> 倉庫の奥深くには、心地よいブランケット（毛布）で覆われた小さな椅子がある彼女だけの「秘密のゾーン」があります。彼女は非常に力持ちで、重い段ボール箱を軽々と持ち上げることができます。少しぽっちゃりした体型ですが…まあ、マッチ棒みたいな細い体じゃ5キロの箱なんて持ち上げられっこないですからね！</p>
-            <p><strong>独特な食生活：</strong> 彼女は自分の仕事が大好きで、ある特権を楽しんでいます。それは、賞味期限切れ間近（あと数時間や数日）の商品や、時にはすでに賞味期限が切れてしまったスナックなどを頻繁に食べていることです！</p>
+        <div class="char-content">
+            <div class="char-image-box">
+                <img src="pudya2.png" alt="Pudya 2">
+                <div class="char-image-caption">Pudya 2 🍮</div>
+            </div>
+            <div class="char-info">
+                <p><strong>Universe:</strong> Grocery Store Workers</p>
+                <p><strong>The Warehouse Queen:</strong> The 25-year-old warehouse supervisor. She earns the highest salary in the shop. She is incredibly strong, easily lifting 5kg crates, giving her a chubby and powerful build. She loves utilizing her job perk: eating food items that are just about to expire.</p>
+            </div>
         </div>
     </div>
-      <!-- УМНЫЙ МУЗЫКАЛЬНЫЙ ПЛЕЕР ДЛЯ САКУРА ЗОНЫ -->
-<div style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; align-items: center; gap: 10px;">
-  <audio id="bg-audio" src="bg-music.mp3" loop></audio>
-  <img id="dancing-pudding" src="pinkie.gif" alt="Dancing" style="width: 70px; height: 70px; opacity: 0; transform: scale(0); transition: 0.4s ease; filter: drop-shadow(0 0 8px #ff69b4);">
-  <button id="music-btn" onclick="toggleMusic()" style="background-color: #ff69b4; color: #fff; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 22px; cursor: pointer; box-shadow: 0 0 15px #ff69b4; display: flex; align-items: center; justify-content: center; transition: 0.3s;">🎵</button>
-</div>
-
-<script>
-var audio = document.getElementById("bg-audio");
-var btn = document.getElementById("music-btn");
-var gif = document.getElementById("dancing-pudding");
-
-// Умная проверка при загрузке страницы Сакура Зоны
-window.addEventListener("DOMContentLoaded", function() {
-  // Проверяем, на какой секунде играла музыка на прошлой странице
-  if (localStorage.getItem("musicTime")) {
-    audio.currentTime = parseFloat(localStorage.getItem("musicTime"));
-  }
-  
-  // Если на прошлой странице музыка играла — запускаем её и здесь!
-  if (localStorage.getItem("musicPlaying") === "true") {
-    audio.play().catch(function() {
-      console.log("Браузер заблокировал автозвук, нужен клик!");
-    });
-    btn.innerHTML = "⏸️";
-    btn.style.boxShadow = "0 0 25px #ffb7c5";
-    gif.style.opacity = "1";
-    gif.style.transform = "scale(1)";
-  }
-});
-
-// Каждую секунду запоминаем время, чтобы не потерять его при переходе
-audio.addEventListener("timeupdate", function() {
-  localStorage.setItem("musicTime", audio.currentTime);
-});
-
-function toggleMusic() {
-  if (audio.paused) {
-    audio.play();
-    btn.innerHTML = "⏸️";
-    btn.style.boxShadow = "0 0 25px #ffb7c5";
-    gif.style.opacity = "1";
-    gif.style.transform = "scale(1)";
-    localStorage.setItem("musicPlaying", "true");
-  } else {
-    audio.pause();
-    btn.innerHTML = "🎵";
-    btn.style.boxShadow = "0 0 15px #ff69b4";
-    gif.style.opacity = "0";
-    gif.style.transform = "scale(0)";
-    localStorage.setItem("musicPlaying", "false");
-  }
-}
-</script>
-
 
 </body>
+</html>
+   
