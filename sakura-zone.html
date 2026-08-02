@@ -382,18 +382,35 @@
             <p><strong>独特な食生活：</strong> 彼女は自分の仕事が大好きで、ある特権を楽しんでいます。それは、賞味期限切れ間近（あと数時間や数日）の商品や、時にはすでに賞味期限が切れてしまったスナックなどを頻繁に食べていることです！</p>
         </div>
     </div>
-        <!-- ИСПРАВЛЕНИЕ КАРТИНОК + УМНЫЙ ПЛЕЕР (ВСТАВЛЯТЬ В САМЫЙ КОНЕЦ ФАЙЛА) -->
+      <!-- ИСПРАВЛЕНИЕ ДЛЯ САКУРА ЗОНЫ + БЕСШОВНЫЙ ПЛЕЕР -->
 
 <style>
-  /* Этот код принудительно усмиряет картинки, чтобы они не были огромными */
+  /* Фиксируем размеры контейнера картинок в Сакура Зоне */
+  .char-image-box {
+    width: 250px !important;
+    max-width: 250px !important;
+    height: 250px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Намертво уменьшаем сами рисунки персонажей */
   .char-image-box img {
-    width: 100% !important;
-    height: 180px !important;
+    max-width: 100% !important;
+    max-height: 180px !important;
+    width: auto !important;
+    height: auto !important;
     object-fit: contain !important;
     border-radius: 5px !important;
+    display: block !important;
+    margin: 0 auto !important;
   }
 </style>
 
+<!-- Исправленная кнопка плеера в одну строчку (без багов с переносом) -->
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; align-items: center; gap: 10px;">
   <audio id="bg-audio" src="bg-music.mp3" loop></audio>
   <img id="dancing-pudding" src="pinkie.gif" alt="Dancing" style="width: 70px; height: 70px; opacity: 0; transform: scale(0); transition: 0.4s ease; filter: drop-shadow(0 0 8px #ff69b4);">
