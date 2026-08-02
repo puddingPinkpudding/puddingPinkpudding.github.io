@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura Zone - Pink Pudding Studio</title>
+    <style>
+        body { background: #121212; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
+        h1 { color: #ffb7c5; font-size: 42px; margin-bottom: 5px; text-shadow: 0 0 10px rgba(255, 183, 197, 0.4); }
+        .zone-subtitle { font-size: 18px; color: #ffb7c5; font-style: italic; margin-bottom: 30px; }
+        
+        /* Навигация */
+        .nav-menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 800px; margin: 20px auto 40px auto; padding: 10px; }
+        .nav-button { background: #1e1e1e; color: #ff69b4; border: 2px solid #ff69b4; padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 25px; text-decoration: none; transition: all 0.3s ease; }
+        .nav-button:hover { background: #ff69b4; color: #121212; box-shadow: 0 0 15px rgba(255, 105, 180, 0.6); cursor: pointer; }
+        .nav-button.sakura-active { background: #ffb7c5; color: #121212; border-color: #ffb7c5; box-shadow: 0 0 15px rgba(255, 183, 197, 0.6); }
+        
+        /* Блоки раскрытия персонажей */
+        .char-section { max-width: 900px; margin: 50px auto; padding: 30px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.7); text-align: left; }
+        .char-header { border-bottom: 2px solid #ffb7c5; padding-bottom: 10px; margin-bottom: 20px; }
+        .char-title { color: #ffb7c5; font-size: 28px; margin: 0; }
+        .char-info { font-size: 16px; line-height: 1.6; color: #ddd; margin-bottom: 20px; }
+        .char-info strong { color: #ffb7c5; }
+        
+        /* Стили мини-галерей внутри лора */
+        .char-gallery { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 25px; margin: 20px 0; align-items: center; }
+        .sub-card { background: #242424; padding: 15px; border-radius: 12px; width: 220px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: center; }
+        .sub-card img { width: 100%; border-radius: 8px; display: block; height: auto; }
+        .sub-card p { font-size: 14px; color: #fff; margin-top: 12px; font-weight: bold; }
+        .cherry-mini-img { max-width: 200px; width: 100%; height: auto; border-radius: 12px; }
+    </style>
+</head>
+<body>
+
+    <h1>🌸 サクラゾーン (Sakura Zone) 🌸</h1>
+    <p class="zone-subtitle">Глубокий лор, скрытые детали и истории персонажей Pink Pudding Studio</p>
+
+    <!-- Меню навигации -->
+    <div class="nav-menu">
+        <a href="index.html" class="nav-button">🍮 Main & Gallery</a>
+        <a href="sakura-zone.html" class="nav-button sakura-active">🌸 サクラゾーン (Sakura Zone)</a>
+    </div>
+
+    <!-- ================= РАСКРЫТИЕ: ПУДЯ ================= -->
+    <div class="char-section">
+        <div class="char-header"><h2 class="char-title">🍮 【プジャ】 PUDYA (DEEP LORE)</h2></div>
+        <div class="char-info">
+            <p><strong>Секретные архивы / Эксперимент:</strong> Пудя была создана искусственным путем с помощью раствора Рингера-Локка. Она не является живым организмом в привычном понимании, но её боевой интеллект безупречен.</p>
+            <p><strong>Identity / Внутренний мир:</strong> Несмотря на отсутствие биологического пола, в своих снах она видит себя обычной девушкой и искренне верит в эту идентичность.</p>
+        </div>
+    </div>
+
+    <!-- ================= РАСКРЫТИЕ: ЧЕРРИ ================= -->
+    <div class="char-section">
+        <div class="char-header"><h2 class="char-title">🍒 【チェリー】 CHERRY (DEEP LORE)</h2></div>
+        <div class="char-info">
+            <p><strong>Отношения с Пудей:</strong> Черри безнадёжно влюблен и использует любую секунду для флирта. Он свято верит, что холодность Пуди — это просто проявление её характера «цундере», хотя на самом деле она может просчитывать траекторию удара в его голову.</p>
+            <p><strong>Факты:</strong> Его постоянно подкалывают из-за мягкого характера и имени, но он слишком занят своим телефоном и мыслями о Пуде, чтобы обращать на это внимание.</p>
+        </div>
+    </div>
+
+    <!-- ================= РАСКРЫТИЕ: ЮЦУКО ================= -->
+    <div class="char-section">
+        <div class="char-header"><h2 class="char-title">🥟 【ユツコ】 YUTSUKO</h2></div>
+        <div class="char-gallery">
+            <div class="sub-card"><img src="Yutsuko.png" alt="Yutsuko"><p>Yutsuko 🥟</p></div>
+        </div>
+        <div class="char-info">
+            <p><strong>About / 概要:</strong> [Сюда мы впишем глубокий лор Юцуко]. Расскажи, кто она, откуда взялся пельмешек в её эмодзи и какая у неё история!</p>
+        </div>
+    </div>
+
+    <!-- ================= РАСКРЫТИЕ: МИСАКУРА ================= -->
+    <div class="char-section">
+        <div class="char-header"><h2 class="char-title">🍙 【ミサクラ】 MISAKURA</h2></div>
+        <div class="char-gallery">
+            <div class="sub-card"><img src="misakura.png" alt="Misakura"><p>Misakura 🍙</p></div>
+        </div>
+        <div class="char-info">
+            <p><strong>About / 概要:</strong> [Сюда мы впишем глубокий лор Мисакуры]. Каковы её мотивы во вселенной Pink Pudding Studio?</p>
+        </div>
+    </div>
+
+    <!-- ================= РАСКРЫТИЕ: КИМ ================= -->
+    <div class="char-section">
+        <div class="char-header"><h2 class="char-title">🥓 【キム】 KIM</h2></div>
+        <div class="char-gallery">
+            <div class="sub-card"><img src="kim.png" alt="Kim"><p>Kim 😶🥓</p></div>
+        </div>
+        <div class="char-info">
+            <p><strong>About / 概要:</strong> [Сюда мы впишем глубокий лор Кима]. Почему он всегда молчит, и какую тайну скрывает его любимый бекон?</p>
+        </div>
+    </div>
+
+    <!-- ================= РАСКРЫТИЕ: АЙКО ================= -->
+    <div class="char-section">
+        <div class="char-header"><h2 class="char-title">🐟 【アイコ】 AIKO</h2></div>
+        <div class="char-gallery">
+            <div class="sub-card"><img src="aiko.png" alt="Aiko"><p>Aiko 😦 🐟=🍪</p></div>
+        </div>
+        <div class="char-info">
+            <p><strong>About / 概要:</strong> [Сюда мы впишем глубокий лор Айко]. Как расшифровывается её знаменитое уравнение с рыбой и печеньем?</p>
+        </div>
+    </div>
+
+    <!-- ================= РАСКРЫТИЕ: ЮМЕНИ ================= -->
+    <div class="char-section">
+        <div class="char-header"><h2 class="char-title">☠️ 【ユメニ】 YUMENI</h2></div>
+        <div class="char-gallery">
+            <div class="sub-card"><img src="yumeni.png" alt="Yumeni"><p>Yumeni ☠️🍡</p></div>
+            <div class="sub-card"><img src="pudya2.png" alt="Pudya Art"><p>Pudya 🙃🍮</p></div>
+        </div>
+        <div class="char-info">
+            <p><strong>About / 概要:</strong> [Сюда мы впишем глубокий лор Юмени]. Какая мрачная или весёлая история стоит за этим персонажем со скелетами?</p>
+        </div>
+    </div>
+
+</body>
+</html>
