@@ -385,28 +385,28 @@
 </body>
 </html>
 
-<!-- 画面の左下の角に固定された超インタラクティブNPCチェリー -->
-<div style="position: fixed; bottom: 20px; left: 20px; width: 250px; text-align: center; font-family: sans-serif; z-index: 10000;">
+<!-- ИНТЕРАКТИВНЫЙ NPC ЧЕРРИ В НИЖНЕМ УГЛУ СТРАНИЦЫ -->
+<div style="margin: 60px auto 40px 20px; max-width: 400px; text-align: left; font-family: sans-serif; position: relative;">
   
-  <!-- セリフのピンクの光るフキダシ（左下用に位置を微調整） -->
-  <div id="cherry-bubble" style="position: absolute; bottom: 105%; left: 0; transform: scale(0); transform-origin: bottom left; background: #1a1a1a; border: 2px solid #ff69b4; border-radius: 15px; padding: 12px 20px; color: #fff; font-weight: bold; font-size: 14px; box-shadow: 0 0 15px #ff69b4; text-shadow: 0 0 5px rgba(255,105,180,0.5); min-width: 250px; max-width: 320px; transition: 0.3s ease; opacity: 0; z-index: 10001; text-align: left;">
-    <!-- スクリプトがセリフを入れます -->
+  <!-- Светящаяся рамочка для твоих фраз -->
+  <div id="cherry-bubble" style="position: absolute; bottom: 105%; left: 0; transform: translateX(0) scale(0); transform-origin: bottom left; background: #1a1a1a; border: 2px solid #ff69b4; border-radius: 15px; padding: 12px 20px; color: #fff; font-weight: bold; font-size: 14px; box-shadow: 0 0 15px #ff69b4; text-shadow: 0 0 5px rgba(255,105,180,0.5); min-width: 250px; max-width: 320px; transition: 0.3s ease; opacity: 0; z-index: 10; text-align: left;">
+    <!-- Сюда вставляется текст -->
   </div>
 
-  <!-- クリックで画像が切り替わるチェリーの本体 -->
-  <img id="cherry-sprite" src="cherry-normal.png" alt="Interactive Cherry" onclick="cherryGoCrazy()" style="max-width: 180px; height: auto; cursor: pointer; transition: 0.2s; filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.4));" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+  <!-- Картинка Черри, которая меняется при клике (без русских надписей снизу!) -->
+  <img id="cherry-sprite" src="cherry-normal.png" alt="Interactive Cherry" onclick="cherryGoCrazy()" style="max-width: 250px; height: auto; cursor: pointer; transition: 0.2s; filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.4));" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
   
 </div>
 
 <script>
-// 君が厳選したチェリーのセリフリスト
+// ТВОЙ ЛИЧНЫЙ СПИСОК ФРАЗ ЧЕРРИ
 var cherryPhrases = [
   "I LOVE PUDYA!!!! 😭💖",
   "プジャが大好きだ!!!! 😭💖",
   "SHE LOOKED AT ME!!!!!! 👀✨",
   "彼女が僕を見たんだ!!!!!! 👀✨",
-  "I bought Pudya 10 cans of soda yesterday! ",
-  "昨日プジャに炭酸飲料を10缶も買ったんだ! ",
+  "I bought Pudya 10 cans of soda yesterday! 🥤💸",
+  "昨日プジャに炭酸飲料を10缶も買ったんだ! 🥤💸",
   "I was teased again, but Pudya sat at the same desk with me!!!! ",
   "またからかわれたけど、プジャが同じ机に座ってくれたんだ!!!! ",
   "I spent all my savings on a pudding hair clip for her... now I only eat air... ",
@@ -425,22 +425,21 @@ function cherryGoCrazy() {
   var bubble = document.getElementById("cherry-bubble");
   var sprite = document.getElementById("cherry-sprite");
   
-  // 1. クリックされたらハートが飛び散る差分画像（cherry-clicked.png）に切り替え
+  // Меняем на экспрессивную картинку с сердечками
   sprite.src = "cherry-clicked.png";
   sprite.style.filter = "drop-shadow(0 0 20px #ff69b4)"; 
   
-  // 2. リストからランダムでセリフをチョイス
+  // Выбираем случайную фразу из твоего списка
   var randomIndex = Math.floor(Math.random() * cherryPhrases.length);
   bubble.innerText = cherryPhrases[randomIndex];
   
-  // 3. フキダシをふわっと表示
+  // Показываем рамочку текста
   bubble.style.opacity = "1";
   bubble.style.transform = "scale(1)";
   
-  // 連打された時のタイマーバグ防止
   clearTimeout(cherryTimer);
   
-  // 4. 2.5秒後に自動的に元の通常画像（cherry-normal.png）に戻す
+  // Через 2.5 секунды Черри успокаивается и возвращается в норму
   cherryTimer = setTimeout(function() {
     bubble.style.opacity = "0";
     bubble.style.transform = "scale(0)";
@@ -450,10 +449,6 @@ function cherryGoCrazy() {
   }, 2500);
 }
 </script>
-
-</body>
-</html>
-
 
 </body>
 </html>
