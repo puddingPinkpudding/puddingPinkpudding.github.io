@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pink Pudding Studio</title>
     <style>
-        /* Плавная прокрутка при нажатии на ссылки */
         html { scroll-behavior: smooth; }
-        
         body { background: #121212; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
         h1 { color: #ff69b4; font-size: 42px; margin-bottom: 5px; }
         .logo-gif { width: 100%; max-width: 450px; height: auto; margin: 15px auto; display: block; border-radius: 10px; }
         .description { font-size: 18px; color: #fff; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6; }
         
-        /* Стили для нового меню навигации */
+        /* Навигация */
         .nav-menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 800px; margin: 0 auto 40px auto; padding: 10px; }
         .nav-button { background: #1e1e1e; color: #ff69b4; border: 2px solid #ff69b4; padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 25px; text-decoration: none; transition: all 0.3s ease; }
         .nav-button:hover { background: #ff69b4; color: #121212; box-shadow: 0 0 15px rgba(255, 105, 180, 0.6); cursor: pointer; }
+        .nav-button.active { background: #ff69b4; color: #121212; }
         
-        .archive-title { color: #ff69b4; font-size: 28px; margin: 40px 0 20px 0; text-transform: uppercase; letter-spacing: 2px; scroll-margin-top: 20px; }
-        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; max-width: 1200px; margin: 0 auto 40px auto; }
+        .archive-title { color: #ff69b4; font-size: 28px; margin: 40px 0 20px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; max-width: 1200px; margin: 0 auto 40px auto; align-items: center; }
         .card { background: #1e1e1e; padding: 15px; border-radius: 12px; width: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: center; }
         .card img { width: 100%; border-radius: 8px; display: block; height: auto; }
         .card p { font-size: 16px; color: #fff; margin-top: 12px; line-height: 1.4; font-weight: bold; }
@@ -39,22 +38,20 @@
         Hi! This is my solo studio; I simply share my drawings, animations, and memes here. I hope someone finds inspiration on my site! 🍮
     </p>
 
-    <!-- МЕНЮ НАВИГАЦИИ -->
+    <!-- Меню навигации -->
     <div class="nav-menu">
-        <a href="#pudya-gallery" class="nav-button">🍮 プジャ・ギャラリー</a>
-        <a href="#cherry-gallery" class="nav-button">🍒 チェリー・ギャラリー</a>
-        <a href="#other-characters" class="nav-button">🎨 他のキャラクター</a>
+        <a href="index.html" class="nav-button active">🍮 Main & Gallery</a>
+        <a href="sakura-zone.html" class="nav-button">🌸 サクラゾーン (Sakura Zone)</a>
     </div>
 
-    <!-- 1. Галерея Пуди (Добавлен id="pudya-gallery") -->
-    <h2 class="archive-title" id="pudya-gallery">外伝 Pudya Gallery:3 / プジャ・ギャラリー</h2>
+    <!-- ================= 1. ГАЛЕРЕЯ ПУДИ ================= -->
+    <h2 class="archive-title">外伝 Pudya Gallery / プジャ・ギャラリー</h2>
     <div class="gallery">
         <div class="card"><img src="1212.png" alt="Pudya Info Sheet"><p>【プジャ】Profile & Lore 🍮</p></div>
         <div class="card"><img src="pudya.png" alt="Pudya Mascot"><p>  Pudya🍮 </p></div>
         <div class="card"><img src="Unknown.png" alt="Visual Novel Style Art"><p>ビジュアルノベル風イラスト </p></div>
     </div>
 
-    <!-- 2. Описание Пуди -->
     <div class="profile-container">
         <h3>🍮 CHARACTER INFO: PUDYA</h3>
         <p><strong>Species:</strong> Caramel Pudding / Flan</p>
@@ -70,18 +67,17 @@
         <p><strong>代名詞：</strong> 彼女 / これ / それ / 彼ら</p>
         <p><strong>性格：</strong> 冷静、マイペース、戦闘能力が高い。 ╮(￣▽￣"")╭</p>
         <p><strong>起源：</strong> 生きておらず、ロック液によって作られたハイブリッド。</p>
-        <p><strong>アイデンティティ：</strong> プジャ自身の思いと夢の中では、彼女は女の子です。普通の生物のように繁殖することはできませんが、本本人（のぞみ）は心から自分を女性の存在だと信じています。でも、彼女を女の子と呼んでも、性別のないキャラクターと呼んでも、それはあなたの自由です :)!</p>
+        <p><strong>アイデンティティ：</strong> プジャ自身の思いと夢の中では、彼女は女の子です。普通の生物のように繁殖することはできませんが、本人は心から自分を女性の存在だと信じています。でも、彼女を女の子と呼んでも、性別のないキャラクターと呼んでも、それはあなたの自由です :)!</p>
     </div>
    
-    <!-- Новая галерея для Черри (Добавлен id="cherry-gallery") -->
-    <h2 class="archive-title" id="cherry-gallery">🍒 Cherry Gallery / チェリー・ギャラリー</h2>
+    <!-- ================= 2. ГАЛЕРЕЯ ЧЕРРИ ================= -->
+    <h2 class="archive-title">🍒 Cherry Gallery / チェリー・ギャラリー</h2>
     <div class="gallery">
         <div class="card"><img src="Unknown.png" alt="Cherry Visual Novel Field"><p>ビジュアルノベル風イラスト 1 🌾</p></div>
         <img src="Cheri.png" alt="Cherry Profile Picture" class="cherry-big-img">
         <div class="card"><img src="Un22.png" alt="Cherry Visual Novel Room"><p>ビジュアルノベル風イラスト 2 🛌</p></div>
     </div>
 
-    <!-- 3. Описание Черри на АНГЛИЙСКОМ -->
     <div class="profile-container">
         <h3>🍒 CHARACTER INFO: CHERRY</h3>
         <p><strong>Species:</strong> Cherry</p>
@@ -91,24 +87,23 @@
         <p><strong>Fact:</strong> He is often teased for having a "girl's name" or for being a total henpecked guy.</p>
     </div>
 
-    <!-- 4. Описание Черри на ЯПОНСКОМ -->
     <div class="profile-container">
         <h3>🍒 キャラクター情報：チェリー</h3>
         <p><strong>種族：</strong> チェリー（さくらんぼ）</p>
         <p><strong>代名詞：</strong> 彼 / 彼の（チェリー / シェリ / テリー）</p>
         <p><strong>性格：</strong> 元気で、行動する前に考えないタイプ。一言で言えば、恋に落ちたティーンエイジャー。</p>
-        <p><strong>特徴：</strong> いつもスマホをいじっている。プジャのことが大好きで、どんな瞬間でも口説こうとする。彼女のワガママをただの「ツンデレな性格」だと勘違いしている、完全な尻に敷かれるタイプ（ドM/カブク）💀💀</p>
-        <p><strong>豆知識：</strong> 名員のせいで「女の子っぽい」とからかわれたり、完全に彼女の言いなり（尻に敷かれている）だとイジられたりしている。</p>
+        <p><strong>特徴：</strong> いつもスマホをいじっている。プжаのことが大好きで、どんな瞬間でも口説こうとする。彼女のワгаママをただの「ツンデレな性格」だと勘違いしている、完全な尻に敷かれるタイプ（ドM/カбク）💀💀</p>
+        <p><strong>豆知識：</strong> 名前のせいで「女の子っぽい」とからかわれたり、完全に彼女의言いなり（尻に敷かれている）だとイジられたりしている。</p>
     </div>
 
-    <!-- 5. Галерея других персонажей (Добавлен id="other-characters") -->
-    <h2 class="archive-title" id="other-characters">🎨 Other Characters / 他のキャラクター</h2>
+    <!-- ================= 3. ГАЛЕРЕЯ ДРУГИХ ПЕРСОНАЖЕЙ ================= -->
+    <h2 class="archive-title">🎨 Other Characters / 他のキャラクター</h2>
     <div class="gallery">
         <div class="card"><img src="Yutsuko.png" alt="Yutsuko"><p>【ユツコ】Yutsuko🥟 </p></div>
         <div class="card"><img src="misakura.png" alt="Misakura"><p>【ミサクラ】Misakura 🍙</p></div>
         <div class="card"><img src="kim.png" alt="Kim"><p>【キム】Kim😶🥓 </p></div>
         <div class="card"><img src="aiko.png" alt="Aiko"><p>【アイコ】Aiko 😦 🐟=🍪</p></div>
-        <div class="card"><img src="yumeni.png" alt="Yumeni"><p>【ユメニ】Yumeni☠️🍡 (うわ、これひどい絵だな) </p></div>
+        <div class="card"><img src="yumeni.png" alt="Yumeni"><p>【ユメニ】Yumeni☠️🍡 (うわ、これひ絵だな) </p></div>
         <div class="card"><img src="pudya2.png" alt="Pudya Art"><p>【プジャ】Pudya 🙃🍮</p></div>
     </div>
 
