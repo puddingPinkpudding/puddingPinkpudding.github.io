@@ -31,7 +31,17 @@
         
         /* Текст справа от карточки */
         .char-info { flex: 1; min-width: 300px; font-size: 16px; line-height: 1.6; color: #ddd; }
-        .char-info strong { color: #ffb7c5; }
+        .char-info strong { color: #ffb7c5; } 
+        /* Эффект плавного взлёта карточек в Сакура Зоне */
+.char-section, .sub-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+
+.char-section:hover, .sub-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 10px 25px rgba(255, 105, 183, 0.5) !important;
+    cursor: pointer;
+}
+
     </style>
 </head>
 <body>
