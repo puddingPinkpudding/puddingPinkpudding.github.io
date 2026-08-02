@@ -211,4 +211,33 @@
 </div>
 
 </body>
-</html>
+<!-- КРАСИВЫЙ НЕОНОВЫЙ МУЗЫКАЛЬНЫЙ ПЛЕЕР -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 10000;">
+  <!-- Аудио-тег, который ищет твой сжатый трек -->
+  <audio id="bg-audio" src="bg-music.mp3" loop></audio>
+  
+  <!-- Светящаяся розовая кнопка -->
+  <button id="music-btn" onclick="toggleMusic()" style="background-color: #ff69b4; color: #fff; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 22px; cursor: pointer; box-shadow: 0 0 15px #ff69b4; display: flex; align-items: center; justify-content: center; transition: 0.3s;">
+    🎵
+  </button>
+</div>
+
+<!-- Скрипт, который управляет музыкой Play/Pause -->
+<script>
+function toggleMusic() {
+  var audio = document.getElementById("bg-audio");
+  var btn = document.getElementById("music-btn");
+  
+  if (audio.paused) {
+    audio.play();
+    btn.innerHTML = "⏸️";
+    btn.style.boxShadow = "0 0 25px #ffb7c5"; // При проигрывании светится ещё ярче!
+  } else {
+    audio.pause();
+    btn.innerHTML = "🎵";
+    btn.style.boxShadow = "0 0 15px #ff69b4";
+  }
+}
+</script>
+<!-- КОНЕЦ МУЗЫКАЛЬНОГО ПЛЕЕРА -->
+
