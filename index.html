@@ -196,40 +196,23 @@
 }
 </style>
 
-<!-- Контейнер, где будут появляться сами отзывы -->
-<div id="HCB_comment_box">
-  <a href="https://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...
+<!-- Настоящие живые комментарии через GitHub Discussions -->
+<div style="margin: 50px auto; max-width: 600px; padding: 20px; background: #1a1a1a; border: 1px solid #ff69b4; border-radius: 15px; box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);">
+  <script src="https://giscus.app"
+          data-repo="puddingPinkpudding/puddingPinkpudding.github.io"
+          data-repo-id="R_kgDOMf7C5w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOMf7C584Chf6f"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
 </div>
-
-<!-- Скрипт, который отвечает за отправку и вывод текстов -->
-<script type="text/javascript" id="hcb">
-if(!window.hcb_user){
-  hcb_user={};
-}
-
-/* Переводим все надписи формы на английский под язык вашего сайта */
-hcb_user.labels = {
-    comments_header: 'Comments 🍮',
-    name_label: 'Name',
-    content_label: 'Enter your comment here...',
-    submit: 'Post Comment',
-    logout: 'Sign out',
-    rss: 'RSS',
-    reply: 'Reply',
-    anonymous: 'Anonymous',
-    mod_queue: 'Mod Queue'
-};
-
-(function(){
-  var s=document.createElement("script"),
-      l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"),
-      h="https://www.htmlcommentbox.com";
-  s.setAttribute("type","text/javascript");
-  s.setAttribute("src", h+"/jiversion?page="+encodeURIComponent(l).replace(/%/g,"%25")+"&opts=16798&num=10&ts=1722615000000");
-  if (typeof s!="undefined") document.getElementsByTagName("head").appendChild(s);
-})();
-</script>
-
-<!-- Конец блока комментариев -->
 </body>
 </html>
