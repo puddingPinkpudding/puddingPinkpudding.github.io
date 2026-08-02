@@ -122,7 +122,6 @@
             box-sizing: border-box;
         }
 
-        /* Картинки больше не ломают сайт */
         .char-image-box img {
             max-width: 100% !important;
             max-height: 200px !important;
@@ -133,10 +132,47 @@
             display: block;
             margin: 0 auto;
         }
-   
+
+        .char-image-caption {
+            color: #ffb7c5;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .char-info {
+            flex: 1;
+            min-width: 300px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .char-info p {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .char-info strong { 
+            color: #ffb7c5; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-section">
+        <h1>🌸 サクラゾーン (Sakura Zone) 🌸</h1>
+        <div class="zone-subtitle">Lore, Hidden Details & Character Archives / キャラクターの深い設定とアーカイブ</div>
+    </div>
+
+    <div class="nav-menu">
+        <a href="index.html" class="nav-button">🍮 Main & Gallery</a>
+        <a href="sakura-zone.html" class="nav-button sakura-active">🌸 サクラゾーン (Sakura Zone)</a>
+    </div>
+
+    <!-- Твоя липкая навигация с плером в углу экрана -->
     <div style="position: sticky; top: 0; z-index: 9999; background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(5px); border-bottom: 1px solid #ff69b4; box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2); padding: 12px 10px; font-family: sans-serif; width: 100%; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center;">
       
-   
+      <!-- Ссылки по мирам по центру -->
       <div style="flex: 1; text-align: center; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; margin-left: 60px;">
         <div style="display: inline-block;">
           <span style="color: #ffb7c5; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">✨ Christmas Music:</span>
@@ -157,55 +193,11 @@
         </div>
       </div>
 
-     
+      <!-- Компактный плеер с Пинки Пай в самом углу -->
       <div style="display: flex; align-items: center; gap: 10px; padding-right: 10px;">
         <audio id="bg-audio" src="bg-music.mp3" loop></audio>
         <img id="dancing-pudding" src="pinkie.gif" alt="Dancing" style="width: 40px; height: 40px; opacity: 0; transform: scale(0); transition: 0.4s ease; filter: drop-shadow(0 0 5px #ff69b4);">
         <button id="music-btn" onclick="toggleMusic()" style="background-color: #ff69b4; color: #fff; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 14px; cursor: pointer; box-shadow: 0 0 10px #ff69b4; display: flex; align-items: center; justify-content: center; transition: 0.3s;">🎵</button>
-      </div>
-
-    </div>
-<body>
-
-    <div class="header-section">
-        <h1>🌸 サクラゾーン (Sakura Zone) 🌸</h1>
-        <div class="zone-subtitle">Lore, Hidden Details & Character Archives / キャラクターの深い設定とアーカイブ</div>
-    </div>
-
-    <div class="nav-menu">
-        <a href="index.html" class="nav-button">🍮 Main & Gallery</a>
-        <a href="sakura-zone.html" class="nav-button sakura-active">🌸 サクラゾーン (Sakura Zone)</a>
-    </div>
-
-    <!-- ВЕРХНЯЯ ЛИПКАЯ ПЛАШКА С ВСТРОЕННЫМ ПЛЕЕРОМ И ТАНЦУЮЩЕЙ ПИНКИ ПАЙ -->
-    <div style="position: sticky; top: 0; z-index: 9999; background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(5px); border-bottom: 1px solid #ff69b4; box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2); padding: 12px 10px; text-align: center; font-family: sans-serif; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 8px;">
-      
-      <!-- Ссылки по мирам -->
-      <div style="max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px;">
-        <div style="display: inline-block;">
-          <span style="color: #ffb7c5; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">✨ Christmas Music:</span>
-          <a href="#char-pudya" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Pudya 🍮</a>
-          <a href="#char-cherry" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Cherry 🍒</a>
-        </div>
-
-        <span style="color: #333;">|</span>
-
-        <div style="display: inline-block;">
-          <span style="color: #ffb7c5; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">🛒 Grocery Store:</span>
-          <a href="#char-yutsuko" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Yutsuko 🥟</a>
-          <a href="#char-misakura" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Misakura 🍙</a>
-          <a href="#char-kim" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Kim 🥓</a>
-          <a href="#char-aiko" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Aiko 🐟</a>
-          <a href="#char-yumeni" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Yumeni 🍡</a>
-          <a href="#char-pudya2" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Pudya 2 🍮</a>
-        </div>
-      </div>
-
-      <!-- Компактный плеер с Пинки Пай, встроенный прямо в меню -->
-      <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
-        <audio id="bg-audio" src="bg-music.mp3" loop></audio>
-        <button id="music-btn" onclick="toggleMusic()" style="background-color: #ff69b4; color: #fff; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; box-shadow: 0 0 10px #ff69b4; display: flex; align-items: center; justify-content: center; transition: 0.3s;">🎵</button>
-        <img id="dancing-pudding" src="pinkie.gif" alt="Dancing" style="width: 45px; height: 45px; opacity: 0; transform: scale(0); transition: 0.4s ease; filter: drop-shadow(0 0 5px #ff69b4);">
       </div>
 
     </div>
@@ -241,8 +233,8 @@
             </div>
             <div class="char-info">
                 <p><strong>Universe:</strong> Pudding Cooked to New Year's Music</p>
-                <p><strong>The Golden Child / ゴールデンチャイルド:</strong> Cherry is the youngest child in his family, meaning he usually gets the leftovers. His parents send him allowance for food, but he chooses to starve himself just to buy absurdly expensive gifts for Pudya. / チェリーは家族の中で末っ子なので、普段は残り物をもらっています。両親は彼に食費としてお小遣いを送っていますが、彼はプジャに不条理に高価な贈り物を買うためだけに、自ら進んで飢えを選びます。</p>
-<p><strong>The Misunderstanding / 誤解:</strong> He constantly tries to analyze Pudya's cold attitude using anime archetypes like "tsundere" or "kuudere", completely missing the fact that she just lacks communication skills. He takes her bluntness as a challenge. / 彼は、アニメの「ツンデレ」や「クーデレ」の原型を使ってプジャの冷たい態度を常に分析しようとしていますが、彼女にコミュニケーションスキルが欠けているという事実を完全に見落としています。彼は彼女のぶっきらぼうさを挑戦と受け止めています。</p>
+                <p><strong>The Golden Child / ゴールデンチャイルド:</strong> Cherry is the youngest child in his family, meaning he usually gets the leftovers. His parents send him allowance for food, but he chooses to starve himself just to buy absurdly expensive gifts for Pudya. / チェリーは家族の中で末っ子なので、普段は残り物をもらっています。両親は彼に食費としてお小遣いを送っていますга、彼はプジャに不条理に高価な贈り物を買うためだけに、自ら進んで飢えを選びます。</p>
+                <p><strong>The Misunderstanding / 誤解:</strong> He constantly tries to analyze Pudya's cold attitude using anime archetypes like "tsundere" or "kuudere", completely missing the fact that she just lacks communication skills. He takes her bluntness as a challenge. / 彼は、アニメの「ツンデレ」や「クーデレ」の原型を使ってプジャの冷たい態度を常に分析しようとしていますが、彼女にコミュニケーションスキルが欠けているという事実を完全に見落としています。彼は彼女のぶっきらぼうさを挑戦と受け止めています。</p>
             </div>
         </div>
     </div>
