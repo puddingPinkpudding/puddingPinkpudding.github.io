@@ -396,20 +396,29 @@
   <!-- Картинка Черри, которая меняется при клике -->
   <img id="cherry-sprite" src="cherry-normal.png" alt="Interactive Cherry" onclick="cherryGoCrazy()" style="max-width: 250px; height: auto; cursor: pointer; transition: 0.2s; filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.4));" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
   
-  <p style="color: #ffb7c5; font-size: 13px; margin-top: 15px; font-style: italic; letter-spacing: 1px;">✨ Жамкни на Черри, чтобы он сошёл с ума! ✨</p>
 </div>
 
 <script>
-// ТВОЙ ЛИЧНЫЙ СПИСОК ФРАЗ ЧЕРРИ
 var cherryPhrases = [
+ var cherryPhrases = [
   "I LOVE PUDYA!!!! 😭💖",
   "プジャが大好きだ!!!! 😭💖",
   "SHE LOOKED AT ME!!!!!! 👀✨",
   "彼女が僕を見たんだ!!!!!! 👀✨",
-  "I bought Pudya 10 cans of soda yesterday! 🥤💸",
-  "昨日プジャに炭酸飲料を10缶も買ったんだ! 🥤💸",
-  "I was teased again, but Pudya sat at the same desk with me!!!! 🥺🏫",
-  "またからかわれたけど、プジャが同じ机に座ってくれたんだ!!!! 🥺🏫"
+  "I bought Pudya 10 cans of soda yesterday! ",
+  "昨日プジャに炭酸飲料を10缶も買ったんだ! ",
+  "I was teased again, but Pudya sat at the same desk with me!!!!",
+  "またからかわれたけど、プジャが同じ机に座ってくれたんだ!!!! ",
+  "I spent all my savings on a pudding hair clip for her... now I only eat air... ",
+  "貯金を全部使って彼女にプリンのヘアピンを買ったんだ... 今は空気しか食べてないよ... ",
+  "Pudya yawned today! IT WAS SO CUTE, I ALMOST DIED!!! 💖",
+  "今日プジャがあくびをしたんだ! 可愛すぎて死にそうだった!!! 💖",
+  "People call me a simp, but I'm just loyal! 😤",
+  "みんなは僕を尻に敷かれてると言うけど、僕はただ一途なだけだ! 😤",
+  "SHE TEXTED ME 1 WORD!!! 📱💥",
+  "彼女がメッセージを1言送ってくれたんだ!!! 📱💥"
+];
+
 ];
 
 var cherryTimer;
@@ -432,7 +441,7 @@ function cherryGoCrazy() {
   
   clearTimeout(cherryTimer);
   
-  // Через 2.5 секунды Черри успокаивается и возвращается в норму
+
   cherryTimer = setTimeout(function() {
     bubble.style.opacity = "0";
     bubble.style.transform = "translateX(-50%) scale(0)";
