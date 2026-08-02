@@ -137,3 +137,85 @@
 
 </body>
 </html>
+<!-- Начало блока комментариев: вставьте этот код прямо перед </body> -->
+
+<style>
+/* 1. Делаем блок комментариев темным и добавляем ваше фирменное розовое свечение */
+#HCB_comment_box {
+    background: #1a1a1a !important;
+    border: 1px solid #ff69b4 !important;
+    border-radius: 15px !important;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.4) !important;
+    color: #fff !important;
+    font-family: sans-serif !important;
+    margin: 40px auto; 
+    max-width: 600px; 
+    text-align: left; 
+    padding: 20px;
+}
+
+/* 2. Перекрашиваем кнопку отправки в неоновый розовый */
+#HCB_comment_box .submit {
+    background-color: #ff69b4 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 20px !important;
+    font-weight: bold !important;
+    box-shadow: 0 0 10px #ff69b4 !important;
+    padding: 8px 20px !important;
+    cursor: pointer !important;
+}
+
+/* 3. Меняем цвет полей ввода */
+#HCB_comment_box input[type="text"], #HCB_comment_box textarea {
+    background: #121212 !important;
+    color: #fff !important;
+    border: 1px solid #ff69b4 !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+}
+
+/* 4. Подсветка ссылок внутри блока комментариев */
+#HCB_comment_box a {
+    color: #ff69b4 !important;
+    text-decoration: none !important;
+}
+</style>
+
+<!-- Контейнер, где будут появляться сами отзывы -->
+<div id="HCB_comment_box">
+  <a href="https://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...
+</div>
+
+<!-- Скрипт, который отвечает за отправку и вывод текстов -->
+<script type="text/javascript" id="hcb">
+if(!window.hcb_user){
+  hcb_user={};
+}
+
+/* Переводим все надписи формы на английский под язык вашего сайта */
+hcb_user.labels = {
+    comments_header: 'Comments 🍮',
+    name_label: 'Name',
+    content_label: 'Enter your comment here...',
+    submit: 'Post Comment',
+    logout: 'Sign out',
+    rss: 'RSS',
+    reply: 'Reply',
+    anonymous: 'Anonymous',
+    mod_queue: 'Mod Queue'
+};
+
+(function(){
+  var s=document.createElement("script"),
+      l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"),
+      h="https://www.htmlcommentbox.com";
+  s.setAttribute("type","text/javascript");
+  s.setAttribute("src", h+"/jiversion?page="+encodeURIComponent(l).replace(/%/g,"%25")+"&opts=16798&num=10&ts=1722615000000");
+  if (typeof s!="undefined") document.getElementsByTagName("head").appendChild(s);
+})();
+</script>
+
+<!-- Конец блока комментариев -->
+</body>
+</html>
