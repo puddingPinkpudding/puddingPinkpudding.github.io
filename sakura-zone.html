@@ -133,31 +133,38 @@
             display: block;
             margin: 0 auto;
         }
+   
+    <div style="position: sticky; top: 0; z-index: 9999; background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(5px); border-bottom: 1px solid #ff69b4; box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2); padding: 12px 10px; font-family: sans-serif; width: 100%; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center;">
+      
+   
+      <div style="flex: 1; text-align: center; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; margin-left: 60px;">
+        <div style="display: inline-block;">
+          <span style="color: #ffb7c5; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">✨ Christmas Music:</span>
+          <a href="#char-pudya" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Pudya 🍮</a>
+          <a href="#char-cherry" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Cherry 🍒</a>
+        </div>
 
-        .char-image-caption {
-            color: #ffb7c5;
-            margin-top: 10px;
-            font-size: 14px;
-            font-weight: bold;
-        }
+        <span style="color: #333;">|</span>
 
-        .char-info {
-            flex: 1;
-            min-width: 300px;
-            font-size: 16px;
-            line-height: 1.6;
-        }
+        <div style="display: inline-block;">
+          <span style="color: #ffb7c5; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">🛒 Grocery Store:</span>
+          <a href="#char-yutsuko" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Yutsuko 🥟</a>
+          <a href="#char-misakura" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Misakura 🍙</a>
+          <a href="#char-kim" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Kim 🥓</a>
+          <a href="#char-aiko" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Aiko 🐟</a>
+          <a href="#char-yumeni" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Yumeni 🍡</a>
+          <a href="#char-pudya2" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Pudya 2 🍮</a>
+        </div>
+      </div>
 
-        .char-info p {
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
+     
+      <div style="display: flex; align-items: center; gap: 10px; padding-right: 10px;">
+        <audio id="bg-audio" src="bg-music.mp3" loop></audio>
+        <img id="dancing-pudding" src="pinkie.gif" alt="Dancing" style="width: 40px; height: 40px; opacity: 0; transform: scale(0); transition: 0.4s ease; filter: drop-shadow(0 0 5px #ff69b4);">
+        <button id="music-btn" onclick="toggleMusic()" style="background-color: #ff69b4; color: #fff; border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 14px; cursor: pointer; box-shadow: 0 0 10px #ff69b4; display: flex; align-items: center; justify-content: center; transition: 0.3s;">🎵</button>
+      </div>
 
-        .char-info strong { 
-            color: #ffb7c5; 
-        }
-    </style>
-</head>
+    </div>
 <body>
 
     <div class="header-section">
