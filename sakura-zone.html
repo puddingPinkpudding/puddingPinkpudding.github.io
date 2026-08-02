@@ -85,13 +85,7 @@
             border-radius: 15px;
             text-align: left;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            .char-image-box img {
-    width: 100% !important;
-    height: 180px !important; /* Фиксированная высота, чтобы карточки были ровными */
-    object-fit: contain !important; /* Картинка красиво сожмется без искажений */
-    border-radius: 5px !important;
-}
-transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
         }
 
         .char-section:hover {
@@ -127,11 +121,15 @@ transition: transform 0.3s ease, box-shadow 0.3s ease !important;
             border-radius: 10px;
             border: 1px solid #333;
             text-align: center;
+            max-width: 250px;
         }
 
+        /* ИСПРАВЛЕННЫЕ КАРТИНКИ (теперь они аккуратные и не ломают верстку) */
         .char-image-box img {
-            max-width: 100%;
-            border-radius: 5px;
+            width: 100% !important;
+            height: 200px !important;
+            object-fit: contain !important;
+            border-radius: 5px !important;
         }
 
         .char-image-caption {
@@ -171,7 +169,7 @@ transition: transform 0.3s ease, box-shadow 0.3s ease !important;
         <a href="sakura-zone.html" class="nav-button sakura-active">🌸 サクラゾーン (Sakura Zone)</a>
     </div>
 
-    <!-- НАЧАЛО ЛИПКОГО МЕНЮ НАВИГАЦИИ ПО ГЛАВАМ -->
+    <!-- ЛИПКОГО МЕНЮ НАВИГАЦИИ ПО ГЛАВАМ -->
     <div style="position: sticky; top: 0; z-index: 9999; background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(5px); border-bottom: 1px solid #ff69b4; box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2); padding: 12px 10px; text-align: center; font-family: sans-serif; width: 100%; box-sizing: border-box;">
       <div style="max-width: 900px; margin: 0 auto;">
         <!-- Первая вселенная -->
@@ -196,7 +194,6 @@ transition: transform 0.3s ease, box-shadow 0.3s ease !important;
         </div>
       </div>
     </div>
-    <!-- КОНЕЦ ЛИПКОГО МЕНЮ НАВИГАЦИИ -->
 
 
     <!-- ================= ALL LORE SECTIONS ================= -->
@@ -250,7 +247,7 @@ transition: transform 0.3s ease, box-shadow 0.3s ease !important;
             </div>
             <div class="char-info">
                 <p><strong>Universe:</strong> Grocery Store Workers</p>
-                <p><strong>The Only Guy:</strong> A 20-year-old janitor who is a Gyoza dumpling. He is the only male worker among the store staff (besides Director Kim). He loves cracking jokes, likes spicy and sour foods, but absolutely despises sweets.</p>
+             <p><strong>The Only Guy:</strong> A 20-year-old janitor who is a Gyoza dumpling. He is the only male worker among the store staff (besides Director Kim). He loves cracking jokes, likes spicy and sour foods, but absolutely despises sweets.</p>
             </div>
         </div>
     </div>
@@ -385,8 +382,18 @@ transition: transform 0.3s ease, box-shadow 0.3s ease !important;
             <p><strong>独特な食生活：</strong> 彼女は自分の仕事が大好きで、ある特権を楽しんでいます。それは、賞味期限切れ間近（あと数時間や数日）の商品や、時にはすでに賞味期限が切れてしまったスナックなどを頻繁に食べていることです！</p>
         </div>
     </div>
-        
-        <!-- УМНЫЙ МУЗЫКАЛЬНЫЙ ПЛЕЕР ДЛЯ САКУРА ЗОНЫ -->
+        <!-- ИСПРАВЛЕНИЕ КАРТИНОК + УМНЫЙ ПЛЕЕР (ВСТАВЛЯТЬ В САМЫЙ КОНЕЦ ФАЙЛА) -->
+
+<style>
+  /* Этот код принудительно усмиряет картинки, чтобы они не были огромными */
+  .char-image-box img {
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: contain !important;
+    border-radius: 5px !important;
+  }
+</style>
+
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; align-items: center; gap: 10px;">
   <audio id="bg-audio" src="bg-music.mp3" loop></audio>
   <img id="dancing-pudding" src="pinkie.gif" alt="Dancing" style="width: 70px; height: 70px; opacity: 0; transform: scale(0); transition: 0.4s ease; filter: drop-shadow(0 0 8px #ff69b4);">
@@ -398,17 +405,13 @@ var audio = document.getElementById("bg-audio");
 var btn = document.getElementById("music-btn");
 var gif = document.getElementById("dancing-pudding");
 
-// Умная проверка при загрузке страницы Сакура Зоны
 window.addEventListener("DOMContentLoaded", function() {
-  // Проверяем, на какой секунде играла музыка на прошлой странице
   if (localStorage.getItem("musicTime")) {
     audio.currentTime = parseFloat(localStorage.getItem("musicTime"));
   }
-  
-  // Если на прошлой странице музыка играла — запускаем её и здесь!
   if (localStorage.getItem("musicPlaying") === "true") {
     audio.play().catch(function() {
-      console.log("Браузер заблокировал автозвук, нужен клик!");
+      console.log("Нужен клик!");
     });
     btn.innerHTML = "⏸️";
     btn.style.boxShadow = "0 0 25px #ffb7c5";
@@ -417,7 +420,6 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-// Каждую секунду запоминаем время, чтобы не потерять его при переходе
 audio.addEventListener("timeupdate", function() {
   localStorage.setItem("musicTime", audio.currentTime);
 });
@@ -441,3 +443,5 @@ function toggleMusic() {
 }
 </script>
 
+</body>
+</html>
