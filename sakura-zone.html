@@ -122,7 +122,7 @@
             box-sizing: border-box;
         }
 
-        /* Усмиряем новые картинки, чтобы они не взрывали верстку */
+        /* Картинки больше не ломают сайт */
         .char-image-box img {
             max-width: 100% !important;
             max-height: 200px !important;
@@ -170,17 +170,21 @@
         <a href="sakura-zone.html" class="nav-button sakura-active">🌸 サクラゾーン (Sakura Zone)</a>
     </div>
 
-    <!-- Твоя липкая навигация по главам -->
-    <div style="position: sticky; top: 0; z-index: 9999; background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(5px); border-bottom: 1px solid #ff69b4; box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2); padding: 12px 10px; text-align: center; font-family: sans-serif; width: 100%; box-sizing: border-box;">
-      <div style="max-width: 900px; margin: 0 auto;">
-        <div style="display: inline-block; margin-right: 15px;">
-          <span style="color: #ffb7c5; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-right: 5px;">✨ Christmas Music:</span>
+    <!-- ВЕРХНЯЯ ЛИПКАЯ ПЛАШКА С ВСТРОЕННЫМ ПЛЕЕРОМ И ТАНЦУЮЩЕЙ ПИНКИ ПАЙ -->
+    <div style="position: sticky; top: 0; z-index: 9999; background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(5px); border-bottom: 1px solid #ff69b4; box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2); padding: 12px 10px; text-align: center; font-family: sans-serif; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+      
+      <!-- Ссылки по мирам -->
+      <div style="max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px;">
+        <div style="display: inline-block;">
+          <span style="color: #ffb7c5; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">✨ Christmas Music:</span>
           <a href="#char-pudya" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Pudya 🍮</a>
           <a href="#char-cherry" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Cherry 🍒</a>
         </div>
-        <span style="color: #333; margin: 0 5px;">|</span>
-        <div style="display: inline-block; margin-left: 15px;">
-          <span style="color: #ffb7c5; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-right: 5px;">🛒 Grocery Store:</span>
+
+        <span style="color: #333;">|</span>
+
+        <div style="display: inline-block;">
+          <span style="color: #ffb7c5; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">🛒 Grocery Store:</span>
           <a href="#char-yutsuko" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Yutsuko 🥟</a>
           <a href="#char-misakura" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Misakura 🍙</a>
           <a href="#char-kim" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Kim 🥓</a>
@@ -189,6 +193,14 @@
           <a href="#char-pudya2" style="color: #ff69b4; text-decoration: none; font-weight: bold; margin: 0 5px;">Pudya 2 🍮</a>
         </div>
       </div>
+
+      <!-- Компактный плеер с Пинки Пай, встроенный прямо в меню -->
+      <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
+        <audio id="bg-audio" src="bg-music.mp3" loop></audio>
+        <button id="music-btn" onclick="toggleMusic()" style="background-color: #ff69b4; color: #fff; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 16px; cursor: pointer; box-shadow: 0 0 10px #ff69b4; display: flex; align-items: center; justify-content: center; transition: 0.3s;">🎵</button>
+        <img id="dancing-pudding" src="pinkie.gif" alt="Dancing" style="width: 45px; height: 45px; opacity: 0; transform: scale(0); transition: 0.4s ease; filter: drop-shadow(0 0 5px #ff69b4);">
+      </div>
+
     </div>
 
     <!-- PUDYA -->
@@ -203,9 +215,9 @@
             </div>
             <div class="char-info">
                 <p><strong>Universe:</strong> Pudding Cooked to New Year's Music</p>
-                <p><strong>The Flawless Doll:</strong> Pudya appears completely lifeless, ignores almost everyone, and acts far too "perfect" in front of adults. She has no virtues; she has no flaws. She is a total blank slate on the outside.</p>
-                <p><strong>Inside Her Mind:</strong> However, if you could peer into her head, you would find that Pudya simply doesn't know how to communicate. No one ever taught her. While Locke's solution granted her massive intellectual brainpower, mental and emotional intelligence require someone to guide her—and she has no one.</p>
-                <p><strong>Her Hidden Dream:</strong> She does have dreams. She secretly wishes to be an ordinary living pudding, freed from her stupid, boring, expressionless face.</p>
+                <p><strong>The Flawless Doll / 完璧な人形:</strong> Pudya appears completely lifeless, ignores almost everyone, and acts far too "perfect" in front of adults. She has no virtues; she has no flaws. She is a total blank slate on the outside. / プジャは完全に生命感がないように見え、ほとんどすべての人を無視し、大人の前ではあまりにも「完璧」に振る舞います。彼女には美徳も欠点もありません。外見は完全に真っ白な状態です。</p>
+                <p><strong>Inside Her Mind / 彼女の心の中:</strong> However, if you could peer into her head, you would find that Pudya simply doesn't know how to communicate. No one ever taught her. While Locke's solution granted her massive intellectual brainpower, mental and emotional intelligence require someone to guide her—and she has no one. / しかし、彼女の頭の中をのぞくことができれば、プジャは単にコミュニケーションの方法を知らないだけであることがわかるでしょう。誰も彼女に教えませんでした。ロックの解決策は彼女に巨大な知的脳力を与えましたが、精神的および感情的な知性には彼女を導く誰かが必要であり、彼女には誰もいません。</p>
+                <p><strong>Her Hidden Dream / 彼女の隠された夢:</strong> She does have dreams. She secretly wishes to be an ordinary living pudding, freed from her stupid, boring, expressionless face. / 彼女には夢があります。彼女は、自分の愚かで退屈な無表情から解放され、普通の生きたプリンになりたいと密かに願っています。</p>
             </div>
         </div>
     </div>
@@ -222,14 +234,12 @@
             </div>
             <div class="char-info">
                 <p><strong>Universe:</strong> Pudding Cooked to New Year's Music</p>
-                <p><strong>The Golden Child:</strong> Cherry is the youngest child in his family, meaning he usually gets the leftovers. His parents send him allowance for food, but he chooses to starve himself just to buy absurdly expensive gifts for Pudya.</p>
-                <p><strong>The Misunderstanding:</strong> He constantly tries to analyze Pudya's cold attitude using anime archetypes like "tsundere" or "kuudere", completely missing the fact that she just lacks communication skills. He takes her bluntness as a challenge.</p>
+                <p><strong>The Golden Child / ゴールデンチャイルド:</strong> Cherry is the youngest child in his family, meaning he usually gets the leftovers. His parents send him allowance for food, but he chooses to starve himself just to buy absurdly expensive gifts for Pudya. / チェリーは家族の中で末っ子なので、普段は残り物をもらっています。両親は彼に食費としてお小遣いを送っていますが、彼はプジャに不条理に高価な贈り物を買うためだけに、自ら進んで飢えを選びます。</p>
+<p><strong>The Misunderstanding / 誤解:</strong> He constantly tries to analyze Pudya's cold attitude using anime archetypes like "tsundere" or "kuudere", completely missing the fact that she just lacks communication skills. He takes her bluntness as a challenge. / 彼は、アニメの「ツンデレ」や「クーデレ」の原型を使ってプジャの冷たい態度を常に分析しようとしていますが、彼女にコミュニケーションスキルが欠けているという事実を完全に見落としています。彼は彼女のぶっきらぼうさを挑戦と受け止めています。</p>
             </div>
         </div>
-    </div> 
-
-    
-              <!-- YUTSUKO -->
+    </div>
+    <!-- YUTSUKO -->
     <div class="char-section" id="char-yutsuko">
         <div class="char-header">
             <h2 class="char-title">🥟 【ユツコ】 YUTSUKO (LORE)</h2>
@@ -241,7 +251,7 @@
             </div>
             <div class="char-info">
                 <p><strong>Universe:</strong> Grocery Store Workers</p>
-                <p><strong>The Only Guy:</strong> A 20-year-old janitor who is a Gyoza dumpling. He is the only male worker among the store staff (besides Director Kim). He loves cracking jokes, likes spicy and sour foods, but absolutely despises sweets.</p>
+                <p><strong>The Only Guy / 唯一の男の子:</strong> A 20-year-old janitor who is a Gyoza dumpling. He is the only male worker among the store staff (besides Director Kim). He loves cracking jokes, likes spicy and sour foods, but absolutely despises sweets. / ギョーザの20歳の清掃員。店のスタッフ（キム店長以外）の中で唯一の男性従業員。冗談を言うのが大好きで、辛いものや酸っぱいものが好物ですが、甘いものは大嫌いです。</p>
             </div>
         </div>
     </div>
@@ -258,7 +268,7 @@
             </div>
             <div class="char-info">
                 <p><strong>Universe:</strong> Grocery Store Workers</p>
-                <p><strong>The Rebel Onigiri:</strong> A 19-year-old junior security guard who happens to be a rice ball. Ironically, she hates seafood and shrimp, even though she is stuffed with them. Instead of dyeing her hair, she pours sweet chili or cheese sauces over herself. She refuses to wear skirts.</p>
+                <p><strong>The Rebel Onigiri / 反逆のおにぎり:</strong> A 19-year-old junior security guard who happens to be a rice ball. Ironically, she hates seafood and shrimp, even though she is stuffed with them. Instead of dyeing her hair, she pours sweet chili or cheese sauces over herself. She refuses to wear skirts. / おにぎりの19歳の新人警備員。皮肉なことに、エビなどのシーフードが詰まっているにもかかわらず、それが大嫌い。髪を染める代わりに、スイートチリやチーズのソースを自分にかけます。スカートを履くのを拒否しています。</p>
             </div>
         </div>
     </div>
@@ -275,7 +285,7 @@
             </div>
             <div class="char-info">
                 <p><strong>Universe:</strong> Grocery Store Workers</p>
-                <p><strong>The Mysterious Boss:</strong> The 32-year-old strict manager of the shop. He is made of soy meat, though everyone constantly mistakes him for bacon. He holds hidden connections with a secret lab that studies abnormal citizens, and rumor has it he mutated due to radiation.</p>
+                <p><strong>The Mysterious Boss / 謎のボス:</strong> The 32-year-old strict manager of the shop. He is made of soy meat, though everyone constantly mistakes him for bacon. He holds hidden connections with a secret lab that studies abnormal citizens, and rumor has it he mutated due to radiation. / 店の32歳の厳格な店長。大豆ミートでできていますが、誰もが常にベーコンと勘違いしています。異常な市民を研究する秘密の研究所と隠されたつながりがあり、放射能によって変異したという噂もあります。</p>
             </div>
         </div>
     </div>
@@ -292,7 +302,7 @@
             </div>
             <div class="char-info">
                 <p><strong>Universe:</strong> Grocery Store Workers</p>
-                <p><strong>Burned Out:</strong> A 27-year-old senior cashier who is a Taiyaki fish pastry. She is completely burned out after 6 years of working here, staying only because of the decent salary. She is highly insecure about her short height, loves skirts, and aggressively envies Pudya 2's income.</p>
+                <p><strong>Burned Out / 燃え尽き症候群:</strong> A 27-year-old senior cashier who is a Taiyaki fish pastry. She is completely burned out after 6 years of working here, staying only because of the decent salary. She is highly insecure about her short height, loves skirts, and aggressively envies Pudya 2's income. / たい焼きの27歳のベテランレジ係。ここで6年間働いた後、完全に燃え尽きていますが、まともな給料のためだけに留まっています。背が低いことに強いコンプレックスがあり、スカートが大好きで、プジャ2の収入を激しく羨んでいます。</p>
             </div>
         </div>
     </div>
@@ -309,7 +319,7 @@
             </div>
             <div class="char-info">
                 <p><strong>Universe:</strong> Grocery Store Workers</p>
-                <p><strong>Here for the Vibe:</strong> A trainee cashier who is a Dango stick. She is very weird: despite getting her salary cut and extra shifts piled on her, she refuses to quit because she "likes the supermarket vibe". She loves dangerously spicy food and sniffing the grocery store air.</p>
+                <p><strong>Here for the Vibe / 雰囲気を楽しむために:</strong> A trainee cashier who is a Dango stick. She is very weird: despite getting her salary cut and extra shifts piled on her, she refuses to quit because she "likes the supermarket vibe". She loves dangerously spicy food and sniffing the grocery store air. / 団子の見習いレジ係。とても変わっていて、給料をカットされたり追加のシフトを課されたりしても、「スーパーの雰囲気が好き」という理由で辞めようとしません。危険なほど辛い食べ物が大好きで、スーパーの空気を嗅ぐのが趣味です。</p>
             </div>
         </div>
     </div>
@@ -317,7 +327,7 @@
     <!-- PUDYA 2 -->
     <div class="char-section" id="char-pudya2">
         <div class="char-header">
-            <h2 class="char-title">🍮 【プジャ】 PUDYA 2 (LORE)</h2>
+            <h2 class="char-title">🍮 【プジャ 2】 PUDYA 2 (LORE)</h2>
         </div>
         <div class="char-content">
             <div class="char-image-box">
@@ -326,11 +336,52 @@
             </div>
             <div class="char-info">
                 <p><strong>Universe:</strong> Grocery Store Workers</p>
-                <p><strong>The Warehouse Queen:</strong> The 25-year-old warehouse supervisor. She earns the highest salary in the shop. She is incredibly strong, easily lifting 5kg crates, giving her a chubby and powerful build. She loves utilizing her job perk: eating food items that are just about to expire.</p>
+                <p><strong>The Warehouse Queen / 倉庫の女王:</strong> The 25-year-old warehouse supervisor. She earns the highest salary in the shop. She is incredibly strong, easily lifting 5kg crates, giving her a chubby and powerful build. She loves utilizing her job perk: eating food items that are just about to expire. / 25歳の倉庫主任。店で最も高い給料を稼いでいます。信じられないほど力強く、5kgのクレートを簡単に持ち上げるため、ぽっちゃりとして力強い体格をしています。職権乱用（賞味期限直前の食品を食べる特権）を楽しむのが大好きです。</p>
             </div>
         </div>
     </div>
 
+    <!-- СКРИПТ БЕСШОВНОЙ СИНХРОНИЗАЦИИ МУЗЫКИ -->
+    <script>
+    var audio = document.getElementById("bg-audio");
+    var btn = document.getElementById("music-btn");
+    var gif = document.getElementById("dancing-pudding");
+
+    window.addEventListener("DOMContentLoaded", function() {
+      if (localStorage.getItem("musicTime")) {
+        audio.currentTime = parseFloat(localStorage.getItem("musicTime"));
+      }
+      if (localStorage.getItem("musicPlaying") === "true") {
+        audio.play().catch(function() { console.log("Нужен клик пользователя!"); });
+        btn.innerHTML = "⏸️";
+        btn.style.boxShadow = "0 0 25px #ffb7c5";
+        gif.style.opacity = "1";
+        gif.style.transform = "scale(1)";
+      }
+    });
+
+    audio.addEventListener("timeupdate", function() {
+      localStorage.setItem("musicTime", audio.currentTime);
+    });
+
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.play();
+        btn.innerHTML = "⏸️";
+        btn.style.boxShadow = "0 0 25px #ffb7c5";
+        gif.style.opacity = "1";
+        gif.style.transform = "scale(1)";
+        localStorage.setItem("musicPlaying", "true");
+      } else {
+        audio.pause();
+        btn.innerHTML = "🎵";
+        btn.style.boxShadow = "0 0 15px #ff69b4";
+        gif.style.opacity = "0";
+        gif.style.transform = "scale(0)";
+        localStorage.setItem("musicPlaying", "false");
+      }
+    }
+    </script>
+
 </body>
 </html>
-   
