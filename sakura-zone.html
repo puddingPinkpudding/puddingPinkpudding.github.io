@@ -384,3 +384,64 @@
 
 </body>
 </html>
+
+<!-- МЕГА-ИНТЕРАКТИВНЫЙ NPC ЧЕРРИ С ТВОИМИ ФРАЗАМИ -->
+<div style="margin: 60px auto 40px auto; max-width: 400px; text-align: center; font-family: sans-serif; position: relative;">
+  
+  <!-- Светящаяся рамочка для твоих фраз -->
+  <div id="cherry-bubble" style="position: absolute; top: -80px; left: 50%; transform: translateX(-50%) scale(0); background: #1a1a1a; border: 2px solid #ff69b4; border-radius: 15px; padding: 12px 20px; color: #fff; font-weight: bold; font-size: 14px; box-shadow: 0 0 15px #ff69b4; text-shadow: 0 0 5px rgba(255,105,180,0.5); min-width: 250px; transition: 0.3s ease; opacity: 0; z-index: 10;">
+    <!-- Сюда вставляется текст -->
+  </div>
+
+  <!-- Картинка Черри, которая меняется при клике -->
+  <img id="cherry-sprite" src="cherry-normal.png" alt="Interactive Cherry" onclick="cherryGoCrazy()" style="max-width: 250px; height: auto; cursor: pointer; transition: 0.2s; filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.4));" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+  
+  <p style="color: #ffb7c5; font-size: 13px; margin-top: 15px; font-style: italic; letter-spacing: 1px;">✨ Жамкни на Черри, чтобы он сошёл с ума! ✨</p>
+</div>
+
+<script>
+// ТВОЙ ЛИЧНЫЙ СПИСОК ФРАЗ ЧЕРРИ
+var cherryPhrases = [
+  "I LOVE PUDYA!!!! 😭💖",
+  "プジャが大好きだ!!!! 😭💖",
+  "SHE LOOKED AT ME!!!!!! 👀✨",
+  "彼女が僕を見たんだ!!!!!! 👀✨",
+  "I bought Pudya 10 cans of soda yesterday! 🥤💸",
+  "昨日プジャに炭酸飲料を10缶も買ったんだ! 🥤💸",
+  "I was teased again, but Pudya sat at the same desk with me!!!! 🥺🏫",
+  "またからかわれたけど、プジャが同じ机に座ってくれたんだ!!!! 🥺🏫"
+];
+
+var cherryTimer;
+
+function cherryGoCrazy() {
+  var bubble = document.getElementById("cherry-bubble");
+  var sprite = document.getElementById("cherry-sprite");
+  
+  // Меняем на экспрессивную картинку с сердечками
+  sprite.src = "cherry-clicked.png";
+  sprite.style.filter = "drop-shadow(0 0 20px #ff69b4)"; 
+  
+  // Выбираем случайную фразу из твоего списка
+  var randomIndex = Math.floor(Math.random() * cherryPhrases.length);
+  bubble.innerText = cherryPhrases[randomIndex];
+  
+  // Показываем рамочку текста
+  bubble.style.opacity = "1";
+  bubble.style.transform = "translateX(-50%) scale(1)";
+  
+  clearTimeout(cherryTimer);
+  
+  // Через 2.5 секунды Черри успокаивается и возвращается в норму
+  cherryTimer = setTimeout(function() {
+    bubble.style.opacity = "0";
+    bubble.style.transform = "translateX(-50%) scale(0)";
+    
+    sprite.src = "cherry-normal.png";
+    sprite.style.filter = "drop-shadow(0 0 10px rgba(255, 105, 180, 0.4))";
+  }, 2500);
+}
+</script>
+
+</body>
+</html>
