@@ -209,35 +209,60 @@
 
   </script>
 </div>
-
-</body>
-<!-- КРАСИВЫЙ НЕОНОВЫЙ МУЗЫКАЛЬНЫЙ ПЛЕЕР -->
-<div style="position: fixed; bottom: 20px; right: 20px; z-index: 10000;">
-  <!-- Аудио-тег, который ищет твой сжатый трек -->
+  <!-- УМНЫЙ МУЗЫКАЛЬНЫЙ ПЛЕЕР ДЛЯ САКУРА ЗОНЫ -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; align-items: center; gap: 10px;">
   <audio id="bg-audio" src="bg-music.mp3" loop></audio>
-  
-  <!-- Светящаяся розовая кнопка -->
-  <button id="music-btn" onclick="toggleMusic()" style="background-color: #ff69b4; color: #fff; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 22px; cursor: pointer; box-shadow: 0 0 15px #ff69b4; display: flex; align-items: center; justify-content: center; transition: 0.3s;">
-    🎵
-  </button>
+  <img id="dancing-pudding" src="pinkie.gif" alt="Dancing" style="width: 70px; height: 70px; opacity: 0; transform: scale(0); transition: 0.4s ease; filter: drop-shadow(0 0 8px #ff69b4);">
+  <button id="music-btn" onclick="toggleMusic()" style="background-color: #ff69b4; color: #fff; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 22px; cursor: pointer; box-shadow: 0 0 15px #ff69b4; display: flex; align-items: center; justify-content: center; transition: 0.3s;">🎵</button>
 </div>
 
-<!-- Скрипт, который управляет музыкой Play/Pause -->
 <script>
-function toggleMusic() {
-  var audio = document.getElementById("bg-audio");
-  var btn = document.getElementById("music-btn");
+var audio = document.getElementById("bg-audio");
+var btn = document.getElementById("music-btn");
+var gif = document.getElementById("dancing-pudding");
+
+// Умная проверка при загрузке страницы Сакура Зоны
+window.addEventListener("DOMContentLoaded", function() {
+  // Проверяем, на какой секунде играла музыка на прошлой странице
+  if (localStorage.getItem("musicTime")) {
+    audio.currentTime = parseFloat(localStorage.getItem("musicTime"));
+  }
   
+  // Если на прошлой странице музыка играла — запускаем её и здесь!
+  if (localStorage.getItem("musicPlaying") === "true") {
+    audio.play().catch(function() {
+      console.log("Браузер заблокировал автозвук, нужен клик!");
+    });
+    btn.innerHTML = "⏸️";
+    btn.style.boxShadow = "0 0 25px #ffb7c5";
+    gif.style.opacity = "1";
+    gif.style.transform = "scale(1)";
+  }
+});
+
+// Каждую секунду запоминаем время, чтобы не потерять его при переходе
+audio.addEventListener("timeupdate", function() {
+  localStorage.setItem("musicTime", audio.currentTime);
+});
+
+function toggleMusic() {
   if (audio.paused) {
     audio.play();
     btn.innerHTML = "⏸️";
-    btn.style.boxShadow = "0 0 25px #ffb7c5"; // При проигрывании светится ещё ярче!
+    btn.style.boxShadow = "0 0 25px #ffb7c5";
+    gif.style.opacity = "1";
+    gif.style.transform = "scale(1)";
+    localStorage.setItem("musicPlaying", "true");
   } else {
     audio.pause();
     btn.innerHTML = "🎵";
     btn.style.boxShadow = "0 0 15px #ff69b4";
+    gif.style.opacity = "0";
+    gif.style.transform = "scale(0)";
+    localStorage.setItem("musicPlaying", "false");
   }
 }
 </script>
-<!-- КОНЕЦ МУЗЫКАЛЬНОГО ПЛЕЕРА -->
 
+
+</body>
