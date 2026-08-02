@@ -179,6 +179,20 @@
 #HCB_comment_box a {
     color: #ff69b4 !important;
     text-decoration: none !important;
+   
+    /* 1. Делаем так, чтобы карточки были готовы к плавной анимации */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* 2. Эффект при наведении мышки: карточка приподнимается и неоновое свечение становится ярче */
+.card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.6) !important;
+    border-color: #ff69b4 !important;
+    cursor: pointer;
+}
+
 }
 </style>
 
