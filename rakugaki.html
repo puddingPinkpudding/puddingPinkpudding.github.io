@@ -17,7 +17,7 @@
             border: 2px solid #ffb6c1;
             border-radius: 12px;
             max-width: 800px;
-            margin: 20px auto 40px auto;
+            margin: 20px auto 15px auto;
             padding: 20px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(255, 182, 193, 0.3);
@@ -26,12 +26,32 @@
             margin: 5px 0;
             line-height: 1.5;
         }
+        .back-btn-top {
+            display: block;
+            text-align: center;
+            margin: 0 auto 30px auto;
+            color: #ff69b4;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            width: fit-content;
+            background: #ffffff;
+            border: 2px solid #ffb6c1;
+            border-radius: 20px;
+            padding: 6px 18px;
+            box-shadow: 0 2px 5px rgba(255, 182, 193, 0.2);
+            transition: all 0.2s ease;
+        }
+        .back-btn-top:hover {
+            background: #ffb6c1;
+            color: #ffffff;
+        }
         .archive-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 30px;
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 0 auto 50px auto;
             padding: 0 10px;
         }
         .archive-item {
@@ -84,18 +104,19 @@
             color: #7a7a7a;
             font-size: 12px !important;
         }
-        .back-btn {
-            display: block;
+        /* Тот самый красивый футер студии */
+        .studio-footer {
+            background-color: #ffffff;
+            border: 2px solid #ffb6c1;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 40px auto 10px auto;
+            padding: 15px;
             text-align: center;
-            margin: 40px auto;
-            color: #ff69b4;
-            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(255, 182, 193, 0.2);
+            font-size: 13px;
+            color: #db7093;
             font-weight: bold;
-            font-size: 14px;
-            width: fit-content;
-        }
-        .back-btn:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -108,10 +129,13 @@
         <p class="jp-text">アーカイブへようこそ！ここには、古いスケッチ、没になった実験作、「賞味期限切れのプリン」になったミームたちが眠っています。閲覧は自己責任でお願いします！ ┐(´∇｀)┌</p>
     </div>
 
+    <!-- Кнопка наверх (теперь красивая капсула под приветствием) -->
+    <a href="index.html#top-logo" class="back-btn-top">← Back to Main / トップに戻る</a>
+
     <!-- Галерея карточек -->
     <div class="archive-gallery">
 
-                <!-- Карточка 1: Скетч Пуди и Чери -->
+        <!-- Карточка 1: Скетч Пуди и Чери -->
         <div class="archive-item">
             <div class="img-container">
                 <img src="image_1.png" alt="Pudya and Cherry Draft">
@@ -132,12 +156,12 @@
             <div class="item-info">
                 <h3>Pudya Animation Test</h3>
                 <p class="tag">Pudya Blinking Test 🍮💦</p>
-                <p>A quick animation test where she blinks and her caramel drips.</p>
+                <p>A animation test where she blinks and her caramel drips.</p>
                 <p class="jp-text">プジャが瞬きをして、カラメルが滴る簡単なアニメーションのテスト。</p>
             </div>
         </div>
 
-        <!-- Карточка 3: Страшная Пудя (Секретный вырезанный контент) -->
+        <!-- Карточка 3: Страшная Пудя -->
         <div class="archive-item">
             <div class="img-container">
                 <img src="scary_pudya.png" alt="Scary Pudya cut content">
@@ -152,8 +176,10 @@
 
     </div>
 
-    <!-- Кнопка назад на главную -->
-    <a href="index.html#top-logo" class="back-btn">← Back to Main / トップに戻る</a>
+    <!-- Красивая финальная плашка студии в самом низу -->
+    <div class="studio-footer">
+        🍮 Pink Pudding Studio / ピンクプリンスタジオ 🍒
+    </div>
 
 </body>
 </html>
