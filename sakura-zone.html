@@ -450,7 +450,7 @@ function cherryGoCrazy() {
 }
 </script>
 
-<span id="hidden-coin-sakura" class="web-quest-coin" onclick="findCoin('sakura')" style="cursor: pointer;">🪙</span>
+<span id="hidden-coin-sakura" class="web-quest-coin" onclick="localStorage.setItem('pudya_coin_sakura', 'true'); this.style.transform='scale(0)'; alert('🪙 You found a hidden coin! / コインを見つけた！'); if(typeof updateWardrobeUI==='function')updateWardrobeUI();" style="cursor: pointer;">🪙</span>
 
 <script src="wardrobe.js"></script>
 
