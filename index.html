@@ -266,7 +266,7 @@ function toggleMusic() {
   }
 }
 </script>
-<!-- ОБНОВЛЕННЫЙ МАСКОТ ЮЦУКО С ПРАВИЛЬНЫМИ РАЗВОРОТАМИ -->
+<!-- СУПЕР-МАСКОТ ЮЦУКО: ФИЗИКА ПЛАТФОРМ И ХОЖДЕНИЕ ПО КАРТИНКАМ -->
 <div id="yutsuko-pet" style="position: absolute; left: 100px; width: 200px; height: 200px; z-index: 99999; cursor: grab; user-select: none; touch-action: none; display: flex; align-items: center; justify-content: center;">
   <img id="yutsuko-img" src="yutsuko-walk1.png" alt="Yutsuko Pet" style="width: 100%; height: 100%; pointer-events: none; object-fit: contain;">
 </div>
@@ -275,7 +275,7 @@ function toggleMusic() {
 var pet = document.getElementById("yutsuko-pet");
 var img = document.getElementById("yutsuko-img");
 
-// Физические переменные
+// Физика
 var posX = 100;
 var posY = 0; 
 var speedX = 2;
@@ -286,21 +286,64 @@ var state = "walk"; // walk, clean, grab, fall, floor
 var animFrame = 1;
 var behaviorTimer = 0;
 
-function getFloorY() {
-  return document.body.scrollHeight - 200; 
+// Умная функция: ищет, обо что Юцуко может споткнуться или на что наступить
+function getCurrentFloorY() {
+  var absoluteFloor = document.body.scrollHeight - 200; // Самый низ сайта
+  var petRect = pet.getBoundingClientRect();
+  var petCenterX = petRect.left + 100; // Центр Юцуко по горизонтали
+  
+  var highestFloor = absoluteFloor;
+  
+  // Ищем все картинки и рамки на странице, на которые можно запрыгнуть
+  var platforms = document.querySelectorAll("img, .gallery-item, .char-card, .char-image-box");
+  
+  platforms.forEach(function(plat) {
+    if (plat === img) return; // Себя не считаем
+    
+    var rect = plat.getBoundingClientRect();
+    var platTopAbsolute = rect.top + window.pageYOffset - 200; // Абсолютная высота верхушки
+    
+    // Проверяем, находится ли центр Юцуко над этой картинкой по ширине
+    if (petCenterX >= rect.left && petCenterX <= rect.right) {
+      // Проверяем, находится ли Юцуко ВЫШЕ этой картинки, но близко к её поверхности
+      if (posY <= platTopAbsolute + 10 && posY >= platTopAbsolute - 200) {
+        if (platTopAbsolute < highestFloor) {
+          highestFloor = platTopAbsolute; // Нашли новую опору!
+        }
+      }
+    }
+  });
+  
+  return highestFloor;
 }
 
-// Старт на полу
-posY = getFloorY();
+// Старт игры
+posY = document.body.scrollHeight - 200;
 pet.style.top = posY + "px";
 pet.style.left = posX + "px";
 
-// Таймер ходьбы и уборки
+// Цикл анимаций и патрулирования
 setInterval(function() {
-  if (isDragging || state === "fall" || state === "floor") return;
+  if (isDragging) return;
+
+  var currentFloor = getCurrentFloorY();
+  
+  // Если Юцуко сошёл с картинки и под ним пустота — включаем падение!
+  if (posY < currentFloor - 5) {
+    state = "fall";
+    return;
+  }
+
+  // Если он на опоре — ходит или моет пол
+  if (state === "fall") {
+    state = "floor";
+    img.src = "yutsuko-floor.png";
+    return;
+  }
+  
+  if (state === "floor") return; // Ждём клика, если он устал и лежит
 
   behaviorTimer++;
-  
   if (behaviorTimer > 50) {
     behaviorTimer = 0;
     state = (state === "walk") ? "clean" : "walk";
@@ -313,14 +356,13 @@ setInterval(function() {
     img.src = "yutsuko-walk" + animFrame + ".png";
     posX += speedX;
     
-    // ИСПРАВЛЕНИЕ: Юцуко теперь разворачивается лицом туда, куда идёт!
+    // Поворот лица по вектору движения
     if (speedX > 0) {
-      img.style.transform = "scaleX(-1)"; // Если идёт вправо — разворачиваем картинку
+      img.style.transform = "scaleX(-1)"; 
     } else {
-      img.style.transform = "scaleX(1)";  // Если идёт влево — оставляем как в оригинале
+      img.style.transform = "scaleX(1)";  
     }
     
-    // Отскок от краёв сайта с мгновенной сменой направления
     if (posX < 0) { posX = 0; speedX = 2; }
     if (posX > window.innerWidth - 200) { posX = window.innerWidth - 200; speedX = -2; }
     
@@ -330,30 +372,30 @@ setInterval(function() {
   }
 }, 100);
 
-// Цикл гравитации падения
+// Цикл гравитации и детекта приземлений
 setInterval(function() {
   if (isDragging) return;
   
-  var floorY = getFloorY();
+  var currentFloor = getCurrentFloorY();
   
-  if (posY < floorY) {
+  if (posY < currentFloor) {
     state = "fall";
     img.src = "yutsuko-fall.png";
     speedY += gravity; 
     posY += speedY;
     
-    if (posY >= floorY) {
-      posY = floorY;
+    if (posY >= currentFloor) {
+      posY = currentFloor;
       speedY = 0;
       state = "floor";
-      img.src = "yutsuko-floor.png"; 
+      img.src = "yutsuko-floor.png"; // Приземлился на картинку/пол и сел!
     }
     
     pet.style.top = posY + "px";
   }
 }, 1000 / 60);
 
-// Перетаскивание
+// Таскание
 pet.addEventListener("mousedown", startDrag);
 pet.addEventListener("touchstart", startDrag, { passive: true });
 
@@ -376,7 +418,7 @@ function startDrag(e) {
     if (posX < 0) posX = 0;
     if (posX > window.innerWidth - 200) posX = window.innerWidth - 200;
     if (posY < 0) posY = 0;
-    if (posY > getFloorY()) posY = getFloorY();
+    if (posY > document.body.scrollHeight - 200) posY = document.body.scrollHeight - 200;
     
     pet.style.left = posX + "px";
     pet.style.top = posY + "px";
@@ -397,8 +439,8 @@ function startDrag(e) {
     document.removeEventListener("mousemove", onMouseMove);
     document.removeEventListener("touchmove", onMouseMove);
     
-    var floorY = getFloorY();
-    if (posY < floorY) {
+    var currentFloor = getCurrentFloorY();
+    if (posY < currentFloor) {
       speedY = 0; 
     } else {
       state = "walk";
@@ -414,9 +456,10 @@ pet.addEventListener("click", function() {
   if (state === "floor") {
     state = "walk";
     behaviorTimer = 0;
-    posY = getFloorY() - 1; 
+    posY -= 5; // Слегка приподнимаем, чтобы обновить проверку пола
   }
 });
 </script>
+
 
 </body>
