@@ -267,5 +267,148 @@ function toggleMusic() {
 }
 </script>
 
+<!-- ИНТЕРАКТИВНЫЙ МАСКОТ ЮЦУКО С ФИЗИКОЙ И ГРАВИТАЦИЕЙ -->
+<div id="yutsuko-pet" style="position: fixed; bottom: 0px; left: 100px; width: 100px; height: 100px; z-index: 99999; cursor: grab; user-select: none; touch-action: none; display: flex; align-items: center; justify-content: center;">
+  <img id="yutsuko-img" src="yutsuko-walk1.png" alt="Yutsuko Pet" style="max-width: 100%; max-height: 100%; pointer-events: none;">
+</div>
+
+<script>
+var pet = document.getElementById("yutsuko-pet");
+var img = document.getElementById("yutsuko-img");
+
+// Физические переменные
+var posX = 100;
+var posY = 0; // 0 означает на полу (в самом низу)
+var speedX = 1;
+var speedY = 0;
+var gravity = 0.6;
+var isDragging = false;
+var state = "walk"; // walk, clean, grab, fall, floor
+var animFrame = 1;
+var behaviorTimer = 0;
+
+// Таймеры для анимаций прогулки и уборки
+setInterval(function() {
+  if (isDragging) return;
+  
+  // Если Юцуко падает или лежит, анимацию ходьбы не крутим
+  if (state === "fall" || state === "floor") return;
+
+  behaviorTimer++;
+  
+  // Каждые 5 секунд меняем поведение: то ходит, то убирается
+  if (behaviorTimer > 50) {
+    behaviorTimer = 0;
+    state = (state === "walk") ? "clean" : "walk";
+    if (state === "walk") speedX = Math.random() > 0.5 ? 1 : -1;
+  }
+
+  // Крутим кадры анимации
+  animFrame = (animFrame === 1) ? 2 : 1;
+  
+  if (state === "walk") {
+    img.src = "yutsuko-walk" + animFrame + ".png";
+    // Двигаем влево-вправо
+    posX += speedX;
+    // Разворачиваем швабру в сторону движения
+    img.style.transform = speedX > 0 ? "scaleX(1)" : "scaleX(-1)";
+    
+    // Отскок от краев экрана
+    if (posX < 10) { posX = 10; speedX = 1; }
+    if (posX > window.innerWidth - 110) { posX = window.innerWidth - 110; speedX = -1; }
+    pet.style.left = posX + "px";
+  } else if (state === "clean") {
+    img.src = "yutsuko-clean" + animFrame + ".png";
+  }
+}, 100);
+
+// Основной цикл физики падения (60 кадров в секунду)
+setInterval(function() {
+  if (isDragging) return;
+  
+  // Если Юцуко в воздухе
+  if (posY > 0) {
+    state = "fall";
+    img.src = "yutsuko-fall.png";
+    speedY -= gravity; // Гравитация тянет вниз
+    posY += speedY;
+    
+    // Если долетел до пола
+    if (posY <= 0) {
+      posY = 0;
+      speedY = 0;
+      state = "floor";
+      img.src = "yutsuko-floor.png";
+    }
+    
+    // Обновляем позицию на экране
+    pet.style.bottom = posY + "px";
+  }
+}, 1000 / 60);
+
+// --- ОБРАБОТКА ТАСКАНИЯ МЫШКОЙ И ПАЛЬЦЕМ ---
+pet.addEventListener("mousedown", startDrag);
+pet.addEventListener("touchstart", startDrag, { passive: true });
+
+function startDrag(e) {
+  isDragging = true;
+  state = "grab";
+  img.src = "yutsuko-grab.png";
+  pet.style.cursor = "grabbing";
+  
+  var clientX = e.clientX || (e.touches ? e.touches[0].clientX : 0);
+  var clientY = e.clientY || (e.touches ? e.touches[0].clientY : 0);
+  
+  var shiftX = clientX - pet.getBoundingClientRect().left;
+  var shiftY = clientY - pet.getBoundingClientRect().top;
+  
+  function moveAt(clientX, clientY) {
+    posX = clientX - shiftX;
+    posY = window.innerHeight - (clientY - shiftY) - 100;
+    
+    if (posX < 0) posX = 0;
+    if (posX > window.innerWidth - 100) posX = window.innerWidth - 100;
+    if (posY < 0) posY = 0;
+    
+    pet.style.left = posX + "px";
+    pet.style.bottom = posY + "px";
+  }
+  
+  function onMouseMove(e) {
+    var cx = e.clientX || (e.touches ? e.touches[0].clientX : 0);
+    var cy = e.clientY || (e.touches ? e.touches[0].clientY : 0);
+    moveAt(cx, cy);
+  }
+  
+  document.addEventListener("mousemove", onMouseMove);
+  document.addEventListener("touchmove", onMouseMove, { passive: false });
+  
+  function endDrag() {
+    isDragging = false;
+    pet.style.cursor = "grab";
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("touchmove", onMouseMove);
+    
+    if (posY > 0) {
+      speedY = 0; // Начинает падать вниз
+    } else {
+      state = "walk";
+      behaviorTimer = 0;
+    }
+  }
+  
+  document.onmouseup = endDrag;
+  document.addEventListener("touchend", endDrag, { once: true });
+}
+
+// Если кликнуть по лежащему Юцуко, он «оживает» и снова идёт убираться
+pet.addEventListener("click", function() {
+  if (state === "floor") {
+    state = "walk";
+    behaviorTimer = 0;
+  }
+});
+</script>
+<!-- КОНЕЦ МАСКОТА -->
 
 </body>
