@@ -293,6 +293,259 @@
 
   </script>
 </div>
+<!-- ================================================================= -->
+<!-- PUDYA WARDROBE MINI-GAME BUNDLE (PLACE BEFORE THE QUIZ)          -->
+<!-- ================================================================= -->
+<div id="pudya-game-container">
+  
+  <!-- English Header -->
+  <div class="en-text">
+    <h3>🎮 Mini-Game: Dress Up Pudya!</h3>
+    <div class="coin-counter">🪙 Coins: <span id="coin-count-en">0</span> / 3</div>
+  </div>
+  
+  <!-- Japanese Header -->
+  <div class="jp-text" style="margin-top: 5px;">
+    <h3>🎮 ミニゲーム：プ디ヤを着せ替えよう！</h3>
+    <div class="coin-counter">🪙 コイン: <span id="coin-count-jp">0</span> / 3</div>
+  </div>
+
+  <!-- Main Game Window -->
+  <div class="game-window">
+    
+    <!-- Character Stage -->
+    <div class="character-stage">
+      <!-- Clickable Coin -->
+      <div id="game-coin" onclick="collectCoin()">🪙</div>
+      
+      <!-- Pudya Avatar (Base + Clothes Layers) -->
+      <div class="pudya-avatar" id="pudya-character" onclick="spawnCoin()">
+        <!-- Clothes layer (Middle) -->
+        <img id="layer-dress" src="" style="display: none;">
+        <!-- Hat layer (Top) -->
+        <img id="layer-hat" src="" style="display: none;">
+        <!-- Base Pudya (Bottom) -> CHANGE TO YOUR ACTUAL IMAGE PATH! -->
+        <img class="base-pudya" src="images/pudya_base.png" alt="Pudya">
+      </div>
+    </div>
+
+    <!-- Wardrobe Zone -->
+    <div id="wardrobe-zone" class="wardrobe-locked">
+      
+      <!-- Locked Message -->
+      <div id="wardrobe-lock-message">
+        <div class="en-text">
+          🔒 Collect 3 coins to unlock the wardrobe!<br>
+          <small>(Click Pudya to spawn coins, then catch them!)</small>
+        </div>
+        <div class="jp-text" style="margin-top: 10px;">
+          🔒 コインを3枚集めてクローゼットをロック解除しよう！<br>
+          <small>(プジャをクリックしてコインを出し、捕まえてね！)</small>
+        </div>
+      </div>
+      
+      <!-- Unlocked Content -->
+      <div id="wardrobe-content" style="display: none;">
+        
+        <!-- Hats Section -->
+        <h4 class="en-text">🍒 Hats & Accessories</h4>
+        <h4 class="jp-text">🍒 帽子＆アクセサリー</h4>
+        <div class="wardrobe-row">
+          <!-- Change 'images/...' to your actual transparent PNG assets! -->
+          <button class="item-btn" onclick="wearItem('hat', 'images/cherry_hat.png')">🍒 Cherry Hat</button>
+          <button class="item-btn" onclick="wearItem('hat', 'images/ribbon.png')">🎀 Ribbon</button>
+          <button class="item-btn remove-btn" onclick="wearItem('hat', '')">❌ Remove</button>
+        </div>
+
+        <!-- Outfits Section -->
+        <h4 class="en-text">🧥 Outfits</h4>
+        <h4 class="jp-text">🧥 コスチューム</h4>
+        <div class="wardrobe-row">
+          <button class="item-btn" onclick="wearItem('dress', 'images/detective_coat.png')">Detect. Coat</button>
+          <button class="item-btn" onclick="wearItem('dress', 'images/kimono.png')">Kimono</button>
+          <button class="item-btn remove-btn" onclick="wearItem('dress', '')">❌ Remove</button>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- GAME STYLES (CSS) -->
+<style>
+#pudya-game-container {
+  background: #fff0f5;
+  border: 3px solid #ffb6c1;
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 650px;
+  margin: 30px auto;
+  font-family: sans-serif;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.coin-counter {
+  font-size: 18px;
+  font-weight: bold;
+  color: #d2691e;
+  margin-bottom: 10px;
+  background: #fff;
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 2px dashed #ffd700;
+}
+.game-window {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 15px;
+}
+.character-stage {
+  width: 250px;
+  height: 320px;
+  background: #fff;
+  border: 2px solid #ffb6c1;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pudya-avatar {
+  width: 180px;
+  height: 250px;
+  position: relative;
+  cursor: pointer;
+}
+.pudya-avatar img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.pudya-avatar img.base-pudya { z-index: 1; }
+#layer-dress { z-index: 2; }
+#layer-hat { z-index: 3; }
+
+#game-coin {
+  position: absolute;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 10;
+  display: none;
+  animation: coinBounce 0.5s infinite alternate;
+}
+@keyframes coinBounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+#wardrobe-zone {
+  width: 280px;
+  min-height: 320px;
+  border-radius: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wardrobe-locked {
+  background: #eef2f3;
+  border: 2px dashed #b0bec5;
+  color: #546e7a;
+}
+.wardrobe-unlocked {
+  background: #fff;
+  border: 2px solid #ffb6c1;
+  color: #333;
+}
+.wardrobe-row {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.item-btn {
+  background: #ffb6c1;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.2s;
+  font-size: 13px;
+}
+.item-btn:hover { background: #ff8da1; }
+.remove-btn { background: #cfd8dc; color: #455a64; }
+.remove-btn:hover { background: #b0bec5; }
+.en-text { font-weight: normal; }
+.jp-text { font-size: 14px; font-weight: normal; opacity: 0.9; }
+</style>
+
+<!-- GAME LOGIC (JAVASCRIPT) -->
+<script>
+let gameCoins = 0;
+const targetCoins = 3;
+
+function spawnCoin() {
+  if (gameCoins >= targetCoins) return;
+
+  const coin = document.getElementById('game-coin');
+  const stage = document.querySelector('.character-stage');
+  
+  const maxX = stage.clientWidth - 40;
+  const maxY = stage.clientHeight - 40;
+  
+  const randomX = Math.floor(Math.random() * maxX);
+  const randomY = Math.floor(Math.random() * maxY);
+  
+  coin.style.left = randomX + 'px';
+  coin.style.top = randomY + 'px';
+  coin.style.display = 'block';
+}
+
+function collectCoin() {
+  gameCoins++;
+  document.getElementById('coin-count-en').innerText = gameCoins;
+  document.getElementById('coin-count-jp').innerText = gameCoins;
+  document.getElementById('game-coin').style.display = 'none';
+
+  if (gameCoins === targetCoins) {
+    unlockWardrobe();
+  }
+}
+
+function unlockWardrobe() {
+  const wardrobe = document.getElementById('wardrobe-zone');
+  wardrobe.classList.remove('wardrobe-locked');
+  wardrobe.classList.add('wardrobe-unlocked');
+  
+  document.getElementById('wardrobe-lock-message').style.display = 'none';
+  document.getElementById('wardrobe-content').style.display = 'block';
+}
+
+function wearItem(layerType, imageSrc) {
+  const layer = document.getElementById('layer-' + layerType);
+  if (imageSrc === '') {
+    layer.style.display = 'none';
+    layer.src = '';
+  } else {
+    layer.src = imageSrc;
+    layer.style.display = 'block';
+  }
+}
+</script>
+<!-- ================================================================= -->
+
 <!-- КНОПКА ТЕСТА С ИСПРАВЛЕННЫМ ЦВЕТОМ ПРИ НАВЕДЕНИИ -->
 <div style="margin: 50px auto 40px 20px; text-align: left; font-family: sans-serif;">
   <a href="quiz.html" id="quiz-btn" style="display: inline-block; padding: 15px 30px; background: #1a1a1a; color: #ffb7c5; border: 2px solid #ff69b4; border-radius: 15px; font-weight: bold; font-size: 15px; text-decoration: none; box-shadow: 0 0 15px rgba(255, 105, 180, 0.4); text-shadow: 0 0 5px #ff69b4; transition: 0.3s; cursor: pointer; line-height: 1.5;" 
