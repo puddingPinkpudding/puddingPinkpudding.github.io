@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pudya's Secret Closet - Pink Pudding Studio</title>
+  <style>
+    body {
+      background-color: #fff5f7; /* Твой фирменный нежно-розовый фон */
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background: #ffb6c1;
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .back-btn:hover {
+      background: #ff8da1;
+    }
+    #pudya-game-container {
+      background: white;
+      border: 3px solid #ffb6c1;
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 650px;
+      margin: 0 auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .coin-counter {
+      font-size: 18px;
+      font-weight: bold;
+      color: #d2691e;
+      margin-bottom: 10px;
+      background: #fff0f5;
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
+      border: 2px dashed #ffd700;
+    }
+    .game-window {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    .character-stage {
+      width: 250px;
+      height: 320px;
+      background: #fff5f7;
+      border: 2px solid #ffb6c1;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pudya-avatar {
+      width: 180px;
+      height: 250px;
+      position: relative;
+    }
+    .pudya-avatar img {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    .pudya-avatar img.base-pudya { z-index: 1; }
+    #layer-dress { z-index: 2; }
+    #layer-hat { z-index: 3; }
+    #wardrobe-zone {
+      width: 280px;
+      min-height: 320px;
+      border-radius: 10px;
+      padding: 15px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .wardrobe-locked { background: #fbe9e7; border: 2px dashed #ff8a65; }
+    .wardrobe-unlocked { background: #fff0f5; border: 2px solid #ffb6c1; }
+    .pudya-bubble {
+      background: white;
+      border: 2px solid #ff8a65;
+      border-radius: 15px;
+      padding: 10px;
+      font-weight: bold;
+      color: #d84315;
+    }
+    .wardrobe-row { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
+    .item-btn { background: #ffb6c1; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; color: #fff; font-weight: bold; transition: 0.2s; font-size: 13px; }
+    .item-btn:hover { background: #ff8da1; }
+    .remove-btn { background: #cfd8dc; color: #455a64; }
+    .remove-btn:hover { background: #b0bec5; }
+    .en-text { font-weight: normal; }
+    .jp-text { font-size: 14px; font-weight: normal; opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+  <!-- Кнопка возврата на главную -->
+  <a href="index.html" class="back-btn">⬅ Back to Main / ホームに戻る</a>
+
+  <div id="pudya-game-container">
+    <div class="en-text">
+      <h3>🎮 Pudya's Secret Closet</h3>
+      <div class="coin-counter">🪙 Coins Found: <span id="quest-coin-count-en">0</span> / 3</div>
+    </div>
+    <div class="jp-text" style="margin-top: 5px;">
+      <h3>🎮 プジャのクローゼット</h3>
+      <div class="coin-counter">🪙 見つけたコイン: <span id="quest-coin-count-jp">0</span> / 3</div>
+    </div>
+
+    <div class="game-window">
+      <div class="character-stage">
+        <div class="pudya-avatar">
+          <img id="layer-dress" src="" style="display: none;">
+          <img id="layer-hat" src="" style="display: none;">
+          <!-- Убедись, что имя файла пудинга правильное! -->
+          <img class="base-pudya" src="pudya.png" alt="Pudya">
+        </div>
+      </div>
+
+      <div id="wardrobe-zone" class="wardrobe-locked">
+        <div id="wardrobe-lock-message">
+          <div class="pudya-bubble">
+            💬 **Pudya:** "Hey! You got no money! 🙄 / おい！金がねぇじゃん！"
+          </div>
+          <p style="font-size: 13px; margin-top: 15px; color: #546e7a;">
+            🇺🇸 Find 3 coins hidden around the website's other pages to unlock!<br>
+            🇯🇵 他のページに隠された3枚のコインを探してロックを解除してね！
+          </p>
+        </div>
+        
+        <div id="wardrobe-content" style="display: none;">
+          <h4 class="en-text">🍒 Hats & Accessories</h4>
+          <h4 class="jp-text">🍒 帽子＆アクセサリー</h4>
+          <div class="wardrobe-row">
+            <button class="item-btn" onclick="wearItem('hat', 'cherry_hat.png')">🍒 Cherry Hat</button>
+            <button class="item-btn" onclick="wearItem('hat', 'ribbon.png')">🎀 Ribbon</button>
+            <button class="item-btn remove-btn" onclick="wearItem('hat', '')">❌ Remove</button>
+          </div>
+          <h4 class="en-text">🧥 Outfits</h4>
+          <h4 class="jp-text">🧥 コスチューム</h4>
+          <div class="wardrobe-row">
+            <button class="item-btn" onclick="wearItem('dress', 'detective_coat.png')">Detect. Coat</button>
+            <button class="item-btn" onclick="wearItem('dress', 'kimono.png')">Kimono</button>
+            <button class="item-btn remove-btn" onclick="wearItem('dress', '')">❌ Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Подключаем твой готовый скрипт -->
+  <script src="wardrobe.js"></script>
+</body>
+</html>
