@@ -76,7 +76,44 @@
     <h2 class="archive-title" id="pudya-section">外伝 Pudya Gallery / プジャ・ギャラリー</h2>
     <div class="gallery">
         <div class="card"><img src="1212.png" alt="Pudya Info Sheet"><p>【プジャ】Profile & Lore 🍮</p></div>
-        <div class="card"><img src="pudya.png" alt="Pudya Mascot"><p>  Pudya🍮 </p></div>
+        <div class="card" id="pudyaBtn">
+            <img src="pudya.png" alt="Pudya Mascot">
+            <p>  Pudya🍮 </p>
+        </div>
+        
+        <div class="card"><img src="Unknown.png" alt="Visual Novel Style Art"><p>ビジュアルノベル风イラスト </p></div>
+    </div>
+
+    <!-- ЭКРАН ГЛЮКА (Картинку назовите scary_pudya.png) -->
+    <div id="glitchOverlay">
+        <img src="scary_pudya.png" alt="ERROR">
+    </div>
+
+    <script>
+        let count = 0;
+        const targetClicks = 10;
+        const pudyaBtn = document.getElementById('pudyaBtn');
+        const glitchOverlay = document.getElementById('glitchOverlay');
+        const body = document.body;
+
+        pudyaBtn.addEventListener('click', () => {
+            count++;
+
+            if (count >= targetClicks) {
+                glitchOverlay.style.display = 'flex';
+                body.classList.add('shaking');
+
+                setTimeout(() => {
+                    glitchOverlay.style.display = 'none';
+                    body.classList.remove('shaking');
+                    count = 0; 
+                }, 400); 
+            }
+        });
+    </script>
+
+</body>
+</html>
         <div class="card"><img src="Unknown.png" alt="Visual Novel Style Art"><p>ビジュアルノベル風イラスト </p></div>
     </div>
 
