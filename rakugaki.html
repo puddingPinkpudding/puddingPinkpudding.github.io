@@ -116,7 +116,26 @@
             font-size: 13px;
             color: #db7093;
             font-weight: bold;
+        }      
+        /* 📱 Мобильная адаптация для квиза */
+        @media (max-width: 600px) {
+            .quiz-container {
+                margin: 10px auto;
+                padding: 20px 15px; /* Убираем лишние пустые поля, давая больше места вопросам */
+                border-radius: 12px;
+            }
+            h1 {
+                font-size: 20px; /* Уменьшаем заголовки */
+            }
+            .question {
+                font-size: 16px;
+            }
+            #options-box button {
+                padding: 12px !important; /* Делаем кнопки ответов толще, чтобы по ним было легко попасть пальцем */
+                font-size: 13px !important;
+            }
         }
+
     </style>
 </head>
 <body>
