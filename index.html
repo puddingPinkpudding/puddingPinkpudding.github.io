@@ -50,7 +50,46 @@
         .profile-container h3 { color: #ff69b4; font-size: 24px; text-align: center; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #ff69b4; padding-bottom: 8px; }
         .profile-container p { font-size: 15px; line-height: 1.6; margin: 0 0 10px 0; color: #ddd; }
         .profile-container strong { color: #ff69b4; }
-        .cherry-big-img { max-width: 350px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin: 30px auto; display: block; }
+      /* 📱 Мобильная адаптация для главной страницы */
+@media (max-width: 768px) {
+    /* Навигационное меню (кнопки) */
+    .nav-container, .menu-buttons, nav {
+        display: flex !important;
+        flex-direction: column !important; /* Кнопки встают в один вертикальный ряд */
+        gap: 12px !important;
+        padding: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .nav-button, .menu-btn {
+        width: 100% !important; /* Кнопки растягиваются на всю ширину экрана смартфона */
+        text-align: center !important;
+        padding: 12px 0 !important; /* Делаем их толще, чтобы удобно нажимать пальцем */
+        font-size: 14px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Главный логотип студии */
+    #top-logo, .studio-logo, .main-title {
+        max-width: 90% !important; /* Картинка логотипа не вылезает за края экрана */
+        height: auto !important;
+        margin: 10px auto !important;
+    }
+
+    /* Блоки с информацией о персонажах (Character Info) */
+    .character-box, .info-card, .character-container {
+        flex-direction: column !important; /* Если картинка и текст были в линию, они встанут друг под друга */
+        padding: 15px !important;
+        margin: 15px 10px !important;
+    }
+
+    .character-img, .char-sprite {
+        max-width: 150px !important; /* Уменьшаем огромные арты на экранах телефонов */
+        margin: 0 auto 15px auto !important;
+    }
+}
+  .cherry-big-img { max-width: 350px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin: 30px auto; display: block; }
     </style>
 </head>
 <body>
@@ -461,8 +500,25 @@ pet.addEventListener("click", function() {
     behaviorTimer = 0;
     posY -= 10; 
   }
-});
-</script>
+});// 
+let yutsukoClicks = 0;
 
+pet.addEventListener("click", function() {
+    yutsukoClicks++;
+
+    // Проверяем: если кликнули 10 раз
+    if (yutsukoClicks >= 10) {
+        alert("Yutsuko is tired of your clicks! 🥟💢");
+        yutsukoClicks = 0; // 
+    }
+
+    if (state === "Floor") {
+        state = "Walk";
+        behaviorTimer = 0;
+        posY = 10;
+    }
+});
+
+</script>
 
 </body>
