@@ -3,227 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUIZ (診断) - Pink Pudding Studio</title>
+    <title>Pink Pudding Studio Character Quiz 🍮</title>
     <style>
         body {
-            background-color: #121212;
-            color: #fff;
-            font-family: sans-serif;
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
             text-align: center;
-            margin: 0;
             padding: 20px;
         }
         .quiz-container {
-            max-width: 650px;
+            max-width: 600px;
             margin: 40px auto;
-            background: #1a1a1a;
-            border: 1px solid #ff69b4;
-            border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+            border: 2px solid #ffb6c1;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.2);
+            background-color: #141414;
         }
         h1 {
-            color: #ffb7c5;
-            text-shadow: 0 0 10px rgba(255, 183, 197, 0.4);
-            font-size: 28px;
+            color: #ffb6c1;
+            font-size: 24px;
             margin-bottom: 5px;
         }
         .jp-title {
-            font-size: 14px;
             color: #ff69b4;
-            margin-bottom: 30px;
+            font-size: 14px;
+            margin-bottom: 25px;
         }
         .question {
             font-size: 18px;
-            color: #ffb7c5;
             margin-bottom: 20px;
-            font-weight: bold;
-        }
-        .options-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .option-btn {
-            background: #222;
-            color: #fff;
-            border: 1px solid #333;
-            padding: 10px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            text-align: left;
-            font-size: 13px;
-            transition: 0.3s;
             line-height: 1.4;
         }
-        .option-btn:hover {
-            background: #1a1a1a;
-            border-color: #ff69b4;
-            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
-        }
-        #result-box {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            border: 2px dashed #ff69b4;
-            border-radius: 10px;
-            background: #1f1f1f;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
-        }
-        .result-title {
-            font-size: 24px;
-            color: #ffb7c5;
-            font-weight: bold;
-            text-shadow: 0 0 8px #ff69b4;
-            margin-bottom: 10px;
-        }
         .nav-link {
-            display: inline-block;
-            margin-top: 30px;
             color: #ff69b4;
             text-decoration: none;
-            font-weight: bold;
+            display: inline-block;
+            margin-top: 30px;
             font-size: 14px;
         }
         .nav-link:hover {
-            text-shadow: 0 0 5px #ff69b4;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-    <script>
-var questions = [
-  {
- q: "Q1: What is your favorite color? / 好きな色は？",
-            options: [
-                { text: "Pastel shades / パステルカラー", score: "pudya" },
-                { text: "Dark colors / ダークカラー", score: "aiko" },
-                { text: "Bright colors / ブライトカラー", score: "cherry" },
-                { text: "Black / 黒", score: "aiko" },
-                { text: "White / 白", score: "yutsuko" },
-                { text: "Pink / ピンク", score: "pudya" },
-                { text: "Beige shades / ベージュ系", score: "kim" },
-                { text: "Brown / 茶色", score: "yumeni" },
-                { text: "Red / 赤", score: "cherry" },
-                { text: "Warm shades / 暖色系", score: "cherry" },
-                { text: "Cold shades / 寒色系", score: "pudya" }
-            ]
-        },
-        {
-            q: "Q2: What are your food preferences? / 食べ物の好みは？",
-            options: [
-                { text: "Sour and spicy / 辛くて酸っぱい", score: "yutsuko" },
-                { text: "Sour and sweet / 甘酸っぱい", score: "pudya" },
-                { text: "Spicy and sweet / 甘辛い", score: "cherry" },
-                { text: "Sweet / 甘いもの", score: "aiko" },
-                { text: "Spicy / 辛いもの", score: "yutsuko" },
-                { text: "Sour / 酸っぱいもの", score: "kim" },
-                { text: "Salty / 塩辛いもの", score: "yumeni" },
-                { text: "Bitter / 苦いもの", score: "aiko" },
-                { text: "BURNING SPICY TONGUE! 💢 / 舌が焼けるほど激辛！", score: "yumeni" }
-            ]
-        },
-        {
-            q: "Q3: What kind of food do you NOT like? / 嫌いな食べ物は？",
-            options: [
-                { text: "Sweet food / 甘いもの", score: "yutsuko" },
-                { text: "Seafood / シーフード・海鮮", score: "misakura" },
-                { text: "Cold food / 冷たいもの", score: "cherry" },
-                { text: "Sour food / 酸っぱいもの", score: "kim" },
-                { text: "Spicy food / 辛いもの", score: "pudya" },
-                { text: "Nothing from the list / この中にはない", score: "pudya" }
-            ]
-        },
-        {
-            q: "Q4: How do you dress? / 普段の服のスタイルは？",
-            options: [
-                { text: "Whatever I find in the closet. / クローゼットで見つけたものは何でも。", score: "yumeni" },
-                { text: "Dirty clothes. / 汚れた服。", score: "yutsuko" },
-                { text: "Skirts / Dresses. / スカート・ワンピース。", score: "aiko" },
-                { text: "Skirts. / スカート。", score: "aiko" },
-                { text: "Dresses. / ワンピース。", score: "cherry" },
-                { text: "Simple minimalistic identical style. / シンプルでミニマルな固定スタイル。", score: "pudya" },
-                { text: "Often different, can't say for sure. / よく変わるので、はっきり言えない。", score: "yumeni" },
-                { text: "Kawaii styles. / カワイイスタイル。", score: "pudya" },
-                { text: "Formal clothes. / フォーマルな服。", score: "kim" },
-                { text: "Uniform (school, work, home, doesn't matter). / 制服・ユニフォーム。", score: "misakura" }
-            ]
-        },
-        {
-            q: "Q5: What will you do if you argue with someone? / 誰かと喧嘩したらどうする？",
-            options: [
-                { text: "Start arguing back! / 口論を始める！ (言い返す！)", score: "cherry" },
-                { text: "Just stay silent and stare into their eyes. / ただ沈黙して相手の目を見つめる。", score: "yumeni" },
-                { text: "Punch them silently. / 無言で殴る。", score: "pudya" },
-                { text: "Listen and agree with their opinion. / 相手の意見を聞いて同意する。", score: "yumeni" },
-                { text: "Walk away / 立ち去る", score: "aiko" },
-                { text: "Try to apologize / 謝ろうとする", score: "pudya" },
-                { text: "Change the subject / 話をそらす", score: "cherry" },
-                { text: "Make a joke / 冗談を言う", score: "yutsuko" },
-                { text: "Try to settle everything peacefully. / すべてを平和的に解決しようとする。", score: "kim" }
-            ]
+    <div class="quiz-container">
+        <h1>🎮 Pink Pudding Studio Character Quiz 🍮</h1>
+        <div class="jp-title">【キャラクター診断】あなたはどのタイプ？</div>
 
-let currentQuestion = 0;
-let scores = { pudya: 0, cherry: 0, aiko: 0, yutsuko: 0 }; // добавьте сюда всех персонажей из вашего теста
+        <!-- Блок самого теста -->
+        <div id="quiz-box">
+            <div id="question-text" class="question">Loading...</div>
+            <div id="options-box"></div>
+        </div>
 
-// Функция, которая убирает "Loading..." и показывает вопрос
-function loadQuestion() {
-  const qBox = document.getElementById("question-text");
-  const oBox = document.getElementById("options-box");
-  
-  if (!qBox || !oBox) return;
+        <!-- Блок результатов (изначально спрятан) -->
+        <div id="result-box" style="display: none;">
+            <div style="font-size: 12px; color: #ff69b4; margin-bottom: 5px;">YOUR RESULT / 診断結果:</div>
+            <h2 id="result-character" style="color: #ffb6c1; margin-bottom: 15px;"></h2>
+            <p id="result-desc" style="color: #ddd; font-size: 14px; line-height: 1.5;">You match this character! / あなたはこのタイプ！</p>
+            <button onclick="restartQuiz()" style="margin-top: 25px; background: #ff69b4; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-family: inherit;">Try Again / もう一度解く</button>
+        </div>
 
-  // Очищаем старые варианты
-  oBox.innerHTML = "";
-  
-  // Берем текущий вопрос
-  let q = questions[currentQuestion];
-  qBox.innerText = q.q;
-  
-  // Создаем кнопки для ответов
-  q.options.forEach(opt => {
-    let btn = document.createElement("button");
-    btn.innerText = opt.text;
-    btn.className = "quiz-option-btn"; // можно стилизовать в CSS
-    btn.onclick = function() {
-      scores[opt.score]++; // прибавляем балл персонажу
-      currentQuestion++;
-      
-      if (currentQuestion < questions.length) {
-        loadQuestion(); // включаем следующий вопрос
-      } else {
-        showResult(); // если вопросы кончились — показываем результат
-      }
-    };
-    oBox.appendChild(btn);
-  });
-}
+        <a href="index.html" class="nav-link">← Back to Main / トップに戻る</a>
+    </div>
 
-function showResult() {
-  // Находим персонажа с максимальным количеством баллов
-  let winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
-  
-  document.getElementById("quiz-box").style.display = "none";
-  document.getElementById("result-box").style.display = "block";
-  document.getElementById("result-character").innerText = winner.toUpperCase();
-  document.getElementById("result-desc").innerText = "You match this character! / あなたはこのタイプ！";
-}
-
-function restartQuiz() {
-  currentQuestion = 0;
-  for (let key in scores) scores[key] = 0;
-  document.getElementById("quiz-box").style.display = "block";
-  document.getElementById("result-box").style.display = "none";
-  loadQuestion();
-}
-
-// САМАЯ ГЛАВНАЯ СТРОЧКА: запускает тест сразу после загрузки страницы
-window.onload = function() {
-  loadQuestion();
-};
-</script>
-
+    <!-- Тот самый полный скрипт: и вопросы, и логика -->
     <script>
     var questions = [
         {
@@ -297,8 +145,8 @@ window.onload = function() {
             ]
         }
     ];
+
     var characters = {
-            var characters = {
         pudya: { name: "PUDYA / プジャ 🍮", img: "pudya.png" },
         cherry: { name: "CHERRY / チェリー 🍒", img: "cherry-normal.png" },
         aiko: { name: "AIKO / アイコ 🐟", img: "aiko.png" },
@@ -308,55 +156,95 @@ window.onload = function() {
         kim: { name: "KIM / キム 🥓", img: "kim.png" }
     };
 
-    var currentQuestion = 0;
-    var scores = { pudya: 0, cherry: 0, aiko: 0, yutsuko: 0, yumeni: 0, misakura: 0, kim: 0 };
+    let currentQuestion = 0;
+    let scores = { pudya: 0, cherry: 0, aiko: 0, yutsuko: 0, kim: 0, yumeni: 0, misakura: 0 };
 
     function loadQuestion() {
-        if (currentQuestion >= questions.length) { showResult(); return; }
-        var qData = questions[currentQuestion];
-        document.getElementById("question-text").innerText = qData.q;
-        var optionsBox = document.getElementById("options-box");
-        optionsBox.innerHTML = "";
-        qData.options.forEach(function(opt) {
-            var btn = document.createElement("button");
-            btn.className = "option-btn";
+        const qBox = document.getElementById("question-text");
+        const oBox = document.getElementById("options-box");
+        
+        if (!qBox || !oBox) return;
+
+        oBox.innerHTML = "";
+        
+        let q = questions[currentQuestion];
+        qBox.innerText = q.q;
+        
+        q.options.forEach(opt => {
+            let btn = document.createElement("button");
             btn.innerText = opt.text;
-            btn.onclick = function() { scores[opt.score]++; currentQuestion++; loadQuestion(); };
-            optionsBox.appendChild(btn);
+            
+            btn.style.display = "block";
+            btn.style.width = "100%";
+            btn.style.margin = "8px 0";
+            btn.style.padding = "10px";
+            btn.style.background = "#222"; 
+            btn.style.color = "#ffb6c1";   
+            btn.style.border = "1px solid #ffb6c1";
+            btn.style.borderRadius = "8px";
+            btn.style.cursor = "pointer";
+            btn.style.fontSize = "14px";
+            btn.style.textAlign = "left";
+
+            btn.onclick = function() {
+                if (scores[opt.score] !== undefined) {
+                    scores[opt.score]++;
+                }
+                
+                currentQuestion++;
+                
+                if (currentQuestion < questions.length) {
+                    loadQuestion();
+                } else {
+                    showResult();
+                }
+            };
+            oBox.appendChild(btn);
         });
     }
 
     function showResult() {
+        let winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+        let characterData = characters[winner];
+
         document.getElementById("quiz-box").style.display = "none";
         document.getElementById("result-box").style.display = "block";
+        document.getElementById("result-character").innerText = characterData.name;
+
+        let resultBox = document.getElementById("result-box");
+        let imgElement = document.getElementById("result-img");
         
-        var maxScore = -1;
-        var finalChar = "pudya";
-        for (var char in scores) {
-            if (scores[char] > maxScore) { maxScore = scores[char]; finalChar = char; }
+        if (!imgElement) {
+            imgElement = document.createElement("img");
+            imgElement.id = "result-img";
+            imgElement.style.display = "block";
+            imgElement.style.maxWidth = "200px";
+            imgElement.style.margin = "15px auto";
+            imgElement.style.borderRadius = "10px";
+            resultBox.insertBefore(imgElement, document.getElementById("result-desc"));
         }
         
-        var charData = characters[finalChar];
-        var resultHtml = "";
-        resultHtml += "<div class='result-title'>" + charData.name + "</div>";
-        resultHtml += "<div style='margin: 15px auto; max-width: 150px; background: #121212; padding: 10px; border-radius: 10px; border: 1px solid #333;'><img src='" + charData.img + "' style='max-width: 100%; height: auto; border-radius: 5px;'></div>";
-        resultHtml += "<p style='color: #ddd; font-size: 14px;'>If you want to know more about this character, visit Sakura Zone! / このキャラについてもっと知りたい方は、サクラゾーンへ！</p>";
-        resultHtml += "<br><a href='sakura-zone.html' style='display: inline-block; padding: 10px 20px; background: #1e1e1e; color: #ff69b4; border: 2px solid #ff69b4; border-radius: 15px; font-weight: bold; text-decoration: none; box-shadow: 0 0 10px rgba(255,105,180,0.3); margin-bottom: 20px;'>🌸 Go to Sakura Zone / サクラゾーンへ</a><br>";
-        resultHtml += "<button onclick='restartQuiz()' style='background: #ff69b4; color: #fff; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px #ff69b4;'>Try Again / もう一度</button>";
-        
-        document.getElementById("result-box").innerHTML = resultHtml;
+        imgElement.src = characterData.img;
+        imgElement.alt = characterData.name;
     }
 
     function restartQuiz() {
         currentQuestion = 0;
-        scores = { pudya: 0, cherry: 0, aiko: 0, yutsuko: 0, yumeni: 0, misakura: 0, kim: 0 };
-        document.getElementById("result-box").innerHTML = '<div style="font-size: 12px; color: #ff69b4; margin-bottom: 5px;">YOUR RESULT / 診断結果:</div><div id="result-character" class="result-title"></div><p id="result-desc" style="color: #ddd; font-size: 14px; line-height: 1.5;"></p>';
+        for (let key in scores) {
+            scores[key] = 0;
+        }
         document.getElementById("quiz-box").style.display = "block";
         document.getElementById("result-box").style.display = "none";
+        
+        let imgElement = document.getElementById("result-img");
+        if (imgElement) imgElement.remove();
+
         loadQuestion();
     }
 
-    loadQuestion();
-    </script>
+    window.onload = function() {
+        loadQuestion();
+    };
+</script>
 </body>
 </html>
