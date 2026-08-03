@@ -90,6 +90,39 @@
     }
 }
   .cherry-big-img { max-width: 350px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin: 30px auto; display: block; }
+    /* ✨ Анимация желе для Пуди */
+@keyframes jelly-bounce {
+  0% { transform: scale(1, 1); }
+  30% { transform: scale(1.25, 0.75); }
+  40% { transform: scale(0.75, 1.25); }
+  50% { transform: scale(1.15, 0.85); }
+  65% { transform: scale(0.95, 1.05); }
+  75% { transform: scale(1.05, 0.95); }
+  100% { transform: scale(1, 1); }
+}
+.jelly-active {
+  animation: jelly-bounce 0.6s ease-in-out;
+}
+
+/* 👁️ Экран паники (изначально скрыт) */
+#panic-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+}
+#panic-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
     </style>
 </head>
 <body>
@@ -123,11 +156,12 @@
     <h2 class="archive-title" id="pudya-section">外伝 Pudya Gallery / プジャ・ギャラリー</h2>
     <div class="gallery">
         <div class="card"><img src="1212.png" alt="Pudya Info Sheet"><p>【プジャ】Profile & Lore 🍮</p></div>
-        <div class="card"><img src="pudya.png" alt="Pudya Mascot"><p>  Pudya🍮 </p></div>
+        <div class="card"><img src="pudya.png" id="pudya-img" alt="Pudya" style="cursor: pointer;"> <p> Pudya 🍮</p></div>
         <div class="card"><img src="Unknown.png" alt="Visual Novel Style Art"><p>ビジュアルノベル風イラスト </p></div>
     </div>
 </body>
 </html>
+
 
     <div class="profile-container">
         <h3>🍮 CHARACTER INFO: PUDYA</h3>
@@ -520,5 +554,8 @@ pet.addEventListener("click", function() {
 });
 
 </script>
+<div id="panic-overlay">
+    <img src="scary_pudya.png"  alt="???">
+</div>
 
 </body>
