@@ -552,6 +552,35 @@ pet.addEventListener("click", function() {
         posY = 10;
     }
 });
+// 1. 🍮 Эффект желе для Пуди
+const pudyaImg = document.getElementById('pudya-img');
+if (pudyaImg) {
+    pudyaImg.addEventListener('click', function() {
+        pudyaImg.classList.add('jelly-active');
+        setTimeout(() => { pudyaImg.classList.remove('jelly-active'); }, 600);
+    });
+}
+
+// 2. 👁️ Режим «Паника» (зажатие логотипа на 3 секунды)
+const topLogo = document.getElementById('top-logo');
+const panicOverlay = document.getElementById('panic-overlay');
+let panicTimer;
+
+if (topLogo && panicOverlay) {
+    function startPanicTimer() {
+        panicTimer = setTimeout(() => {
+            panicOverlay.style.display = 'flex';
+            setTimeout(() => { panicOverlay.style.display = 'none'; }, 400);
+        }, 3000);
+    }
+    function clearPanicTimer() { clearTimeout(panicTimer); }
+
+    topLogo.addEventListener('mousedown', startPanicTimer);
+    topLogo.addEventListener('mouseup', clearPanicTimer);
+    topLogo.addEventListener('mouseleave', clearPanicTimer);
+    topLogo.addEventListener('touchstart', startPanicTimer);
+    topLogo.addEventListener('touchend', clearPanicTimer);
+}
 
 </script>
 <div id="panic-overlay">
