@@ -1,20 +1,132 @@
-<!----(焼けるほど激辛)----->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ (診断) - Pink Pudding Studio</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .quiz-container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: #1a1a1a;
+            border: 1px solid #ff69b4;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+        }
+        h1 {
+            color: #ffb7c5;
+            text-shadow: 0 0 10px rgba(255, 183, 197, 0.4);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .jp-title {
+            font-size: 14px;
+            color: #ff69b4;
+            margin-bottom: 30px;
+        }
+        .question {
+            font-size: 18px;
+            color: #ffb7c5;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-btn {
+            background: #222;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 13px;
+            transition: 0.3s;
+            line-height: 1.4;
+        }
+        .option-btn:hover {
+            background: #1a1a1a;
+            border-color: #ff69b4;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+        }
+        #result-box {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px dashed #ff69b4;
+            border-radius: 10px;
+            background: #1f1f1f;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+        }
+        .result-title {
+            font-size: 24px;
+            color: #ffb7c5;
+            font-weight: bold;
+            text-shadow: 0 0 8px #ff69b4;
+            margin-bottom: 10px;
+        }
+        .nav-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #ff69b4;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .nav-link:hover {
+            text-shadow: 0 0 5px #ff69b4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>🎮 Pink Pudding Studio Character Quiz 🍮</h1>
+        <div class="jp-title">【キャラクター診断】あなたはどのタイプ？</div>
+
+        <div id="quiz-box">
+            <div id="question-text" class="question">Loading...</div>
+            <div id="options-box" class="options-list"></div>
+        </div>
+
+        <div id="result-box">
+            <div style="font-size: 12px; color: #ff69b4; margin-bottom: 5px;">YOUR RESULT / 診断結果:</div>
+            <div id="result-character" class="result-title"></div>
+            <p id="result-desc" style="color: #ddd; font-size: 14px; line-height: 1.5;"></p>
+            <button onclick="restartQuiz()" style="margin-top: 15px; background: #ff69b4; color: #fff; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px #ff69b4;">Try Again / もう一度</button>
+        </div>
+
+        <a href="index.html" class="nav-link">← Back to Main / トップに戻る</a>
+    </div>
+
     <script>
     var questions = [
         {
             q: "Q1: What is your favorite color? / 好きな色は？",
             options: [
                 { text: "Pastel shades / パステルカラー", score: "pudya" },
-                { text: "Dark colors / ダークカラー (Dark)", score: "aiko" },
-                { text: "Bright colors / ブライトカラー (Bright)", score: "cherry" },
-                { text: "Black / 黒 (Black)", score: "aiko" },
-                { text: "White / 白 (White)", score: "yutsuko" },
-                { text: "Pink / ピンク (Pink)", score: "pudya" },
-                { text: "Beige shades / ベージュ系", score: "kim" }, /* Ким любит бежевый! */
-                { text: "Brown / 茶色 (Brown)", score: "yumeni" },
-                { text: "Red / 赤 (Red)", score: "cherry" },
-                { text: "Warm shades / 暖色系 (Warm)", score: "cherry" },
-                { text: "Cold shades / 寒色系 (Cold)", score: "pudya" }
+                { text: "Dark colors / ダークカラー", score: "aiko" },
+                { text: "Bright colors / ブライトカラー", score: "cherry" },
+                { text: "Black / 黒", score: "aiko" },
+                { text: "White / 白", score: "yutsuko" },
+                { text: "Pink / ピンク", score: "pudya" },
+                { text: "Beige shades / ベージュ系", score: "kim" },
+                { text: "Brown / 茶色", score: "yumeni" },
+                { text: "Red / 赤", score: "cherry" },
+                { text: "Warm shades / 暖色系", score: "cherry" },
+                { text: "Cold shades / 寒色系", score: "pudya" }
             ]
         },
         {
@@ -25,7 +137,7 @@
                 { text: "Spicy and sweet / 甘辛い", score: "cherry" },
                 { text: "Sweet / 甘いもの", score: "aiko" },
                 { text: "Spicy / 辛いもの", score: "yutsuko" },
-                { text: "Sour / 酸っぱいもの (I like it!)", score: "kim" }, /* Киму нравится кислое... */
+                { text: "Sour / 酸っぱいもの", score: "kim" },
                 { text: "Salty / 塩辛いもの", score: "yumeni" },
                 { text: "Bitter / 苦いもの", score: "aiko" },
                 { text: "BURNING SPICY TONGUE! 💢 / 舌が焼けるほど激辛！", score: "yumeni" }
@@ -35,9 +147,9 @@
             q: "Q3: What kind of food do you NOT like? / 嫌いな食べ物は？",
             options: [
                 { text: "Sweet food / 甘いもの", score: "yutsuko" },
-                { text: "Seafood / シーフード・海鮮 (I HATE IT!)", score: "misakura" },
+                { text: "Seafood / シーフード・海鮮", score: "misakura" },
                 { text: "Cold food / 冷たいもの", score: "cherry" },
-                { text: "Sour food / 酸っぱいもの (I don't like it!)", score: "kim" }, /* ...и одновременно НЕ нравится! */
+                { text: "Sour food / 酸っぱいもの", score: "kim" },
                 { text: "Spicy food / 辛いもの", score: "pudya" },
                 { text: "Nothing from the list / この中にはない", score: "pudya" }
             ]
@@ -53,30 +165,29 @@
                 { text: "Simple minimalistic identical style. / シンプルでミニマルな固定スタイル。", score: "pudya" },
                 { text: "Often different, can't say for sure. / よく変わるので、はっきり言えない。", score: "yumeni" },
                 { text: "Kawaii styles. / カワイイスタイル。", score: "pudya" },
-                { text: "Formal clothes. / フォーマルな服（公式）。", score: "kim" }, /* Ким носит официальную одежду */
-                { text: "Uniform (school, work, home, doesn't matter). / 制服・ユニフォーム（学校、仕事、自宅など）。", score: "misakura" }
+                { text: "Formal clothes. / フォーマルな服。", score: "kim" },
+                { text: "Uniform (school, work, home, doesn't matter). / 制服・ユニフォーム。", score: "misakura" }
             ]
         },
         {
             q: "Q5: What will you do if you argue with someone? / 誰かと喧嘩したらどうする？",
             options: [
                 { text: "Start arguing back! / 口論を始める！ (言い返す！)", score: "cherry" },
-                { text: "Just stay silent and stare into their eyes. / ただ沈黙して相手の目を見つめる。", score: "yumeni" }, /* Юмэни смотрит в глаза! */
-                { text: "Punch them silently. / 無言で殴る。", score: "pudya" }, /* Пудя молча бьёт! 🥊 */
+                { text: "Just stay silent and stare into their eyes. / ただ沈黙して相手の目を見つめる。", score: "yumeni" },
+                { text: "Punch them silently. / 無言で殴る。", score: "pudya" },
                 { text: "Listen and agree with their opinion. / 相手の意見を聞いて同意する。", score: "yumeni" },
-                { text: "Walk away / 立ち去る (去る)", score: "aiko" },
+                { text: "Walk away / 立ち去る", score: "aiko" },
                 { text: "Try to apologize / 謝ろうとする", score: "pudya" },
-                { text: "Change the subject / 話をそらす (話をすり替える)", score: "cherry" },
+                { text: "Change the subject / 話をそらす", score: "cherry" },
                 { text: "Make a joke / 冗談を言う", score: "yutsuko" },
-                { text: "Try to settle everything peacefully. / すべてを平和的に解決しようとする。", score: "kim" } /* Ким улаживает спор */
+                { text: "Try to settle everything peacefully. / すべてを平和的に解決しようとする。", score: "kim" }
             ]
         }
     ];
-
     var characters = {
         pudya: {
             name: "🍮 PUDYA / プジャ",
-            desc: "The Flawless Doll. You look cute and minimalistic, but if someone starts a fight, you don't talk—you PUNCH THEM SILENTLY! A dangerous cutie. / 完璧な人形。ミニマルで可愛らしく見えますが、喧嘩になると言葉ではなく無言で殴ります！怒らせると怖いタイプ。"
+            desc: "The Flawless Doll. You prefer pastel colors and stay quiet, but if someone starts a fight, you PUNCH THEM SILENTLY! A dangerous cutie. / 完璧な人形。パステルカラーが好み。普段は静かですが、喧嘩になると言葉ではなく無言で殴ります！怒らせると怖いタイプ。"
         },
         cherry: {
             name: "🍒 CHERRY / チェリー",
@@ -84,23 +195,23 @@
         },
         aiko: {
             name: "🐟 AIKO / アイコ",
-            desc: "The New Year Taiyaki. You prefer dark colors, skirts, and sweets. You have zero patience left—you will just walk away from any argument. / 燃え尽き先輩。ダークカラーやスカート、甘いものが好き。我慢の限界を迎えており、喧嘩の時はただ呆れて立ち去ります。"
+            desc: "The New Year Taiyaki. You prefer dark colors and skirts. You have zero patience left—you will just walk away from any argument. / 燃え尽き先輩。ダークカラーやスカート、甘いものが好き。我慢の限界を迎えており、喧嘩の時はただ呆れて立ち去ります。"
         },
         yutsuko: {
             name: "🥟 YUTSUKO / ユツコ",
-            desc: "The Easygoing Janitor. You wear dirty work clothes, hate sweets, and always use jokes to diffuse any tense argument. Everyone loves your fun energy! / 気楽な清掃員。汚れた服を着て、甘いものは大嫌い！どんなに険悪な喧嘩も面白い冗談で和ませてしまう、みんなのムードメーカー。"
+            desc: "The Easygoing Janitor. You wear work clothes, hate sweets, and always use jokes to diffuse any tense argument. Everyone loves your fun energy! / 気楽な清掃員。汚れた服を着て、甘いものは大嫌い！どんなに険悪な喧嘩も面白い冗談で和ませてしまう、みんなのムードメーカー。"
         },
         yumeni: {
             name: "🍡 YUMENI / ユメニ",
-            desc: "The Vibe Trainee. You love brown tones and burning spicy food. When arguing, you stay completely silent and just stare intensely into the person's eyes! / 雰囲気見習い。茶色や激辛が大好き。喧嘩の時は完全に沈黙し、ただ相手の目をじっと見つめて圧倒します！"
+            desc: "The Vibe Trainee. You love brown tones and burning spicy food. When arguing, you stay completely silent and just stare intensely into their eyes! / 雰囲気見習い。茶色や激辛が大好き。喧嘩の時は完全に沈黙し、ただ相手の目をじっと見つめて圧倒します！"
         },
         misakura: {
             name: "🍙 MISAKURA / ミサクラ",
-            desc: "The Rebel Onigiri. You absolutely HATE seafood and skirts! You prefer uniforms or pants and have a strong, independent, cool personality. / 反逆のおにぎり。シーフードとスカートが大嫌い！制服やパンツスタイルを好み、強くて独立心のあるかっこいい人。"
+            desc: "The Rebel Onigiri. You absolutely HATE seafood and skirts! You prefer uniforms and have a strong, independent, cool personality. / 反逆のおにぎり。シーフードとスカートが大嫌い！制服やパンツスタイルを好み、強くて独立心のあるかっこいい人。"
         },
         kim: {
             name: "🥓 KIM / キム",
-            desc: "The Strict Manager. You wear formal clothes and love beige. Your relationship with sour food is complicated, but in a conflict, you are a true leader who settles everything. / 厳格な店長。フォーマルな服を着てベージュを愛する。酸っぱいものへのこだわりは複雑ですが、衝突の時はすべてをスマートに уладить する頼れるリーダー。"
+            desc: "The Strict Manager. You wear formal clothes and love beige. Your relationship with sour food is complicated, but you always settle conflicts peacefully. / 厳格な店長。フォーマルな服を着てベージュを愛する。酸っぱいものへのこだわりは複雑ですが、衝突の時はすべてをスマートに解決する頼れるリーダー。"
         }
     };
 
@@ -108,16 +219,25 @@
     var scores = { pudya: 0, cherry: 0, aiko: 0, yutsuko: 0, yumeni: 0, misakura: 0, kim: 0 };
 
     function loadQuestion() {
-        if (currentQuestion >= questions.length) { showResult(); return; }
+        if (currentQuestion >= questions.length) {
+            showResult();
+            return;
+        }
         var qData = questions[currentQuestion];
         document.getElementById("question-text").innerText = qData.q;
+        
         var optionsBox = document.getElementById("options-box");
         optionsBox.innerHTML = "";
+        
         qData.options.forEach(function(opt) {
             var btn = document.createElement("button");
             btn.className = "option-btn";
             btn.innerText = opt.text;
-            btn.onclick = function() { scores[opt.score]++; currentQuestion++; loadQuestion(); };
+            btn.onclick = function() {
+                scores[opt.score]++;
+                currentQuestion++;
+                loadQuestion();
+            };
             optionsBox.appendChild(btn);
         });
     }
@@ -125,11 +245,17 @@
     function showResult() {
         document.getElementById("quiz-box").style.display = "none";
         document.getElementById("result-box").style.display = "block";
+        
         var maxScore = -1;
         var finalChar = "pudya";
+        
         for (var char in scores) {
-            if (scores[char] > maxScore) { maxScore = scores[char]; finalChar = char; }
+            if (scores[char] > maxScore) {
+                maxScore = scores[char];
+                finalChar = char;
+            }
         }
+        
         document.getElementById("result-character").innerText = characters[finalChar].name;
         document.getElementById("result-desc").innerText = characters[finalChar].desc;
     }
