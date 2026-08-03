@@ -185,59 +185,30 @@
         }
     ];
     var characters = {
-        pudya: {
-            name: "🍮 PUDYA / プジャ",
-            desc: "The Flawless Doll. You prefer pastel colors and stay quiet, but if someone starts a fight, you PUNCH THEM SILENTLY! A dangerous cutie. / 完璧な人形。パステルカラーが好み。普段は静かですが、喧嘩になると言葉ではなく無言で殴ります！怒らせると怖いタイプ。"
-        },
-        cherry: {
-            name: "🍒 CHERRY / チェリー",
-            desc: "The Devoted Fan. You love bright red and formal styles. In a fight, you easily start arguing or try to change the subject, always full of energy! / 一途なファン。派手な赤やフォーマルな服が大好き。喧嘩になるとすぐに言い返したり、話をそらそうとしたり、常にエネルギーに満ち溢れています。"
-        },
-        aiko: {
-            name: "🐟 AIKO / アイコ",
-            desc: "The New Year Taiyaki. You prefer dark colors and skirts. You have zero patience left—you will just walk away from any argument. / 燃え尽き先輩。ダークカラーやスカート、甘いものが好き。我慢の限界を迎えており、喧嘩の時はただ呆れて立ち去ります。"
-        },
-        yutsuko: {
-            name: "🥟 YUTSUKO / ユツコ",
-            desc: "The Easygoing Janitor. You wear work clothes, hate sweets, and always use jokes to diffuse any tense argument. Everyone loves your fun energy! / 気楽な清掃員。汚れた服を着て、甘いものは大嫌い！どんなに険悪な喧嘩も面白い冗談で和ませてしまう、みんなのムードメーカー。"
-        },
-        yumeni: {
-            name: "🍡 YUMENI / ユメニ",
-            desc: "The Vibe Trainee. You love brown tones and burning spicy food. When arguing, you stay completely silent and just stare intensely into their eyes! / 雰囲気見習い。茶色や激辛が大好き。喧嘩の時は完全に沈黙し、ただ相手の目をじっと見つめて圧倒します！"
-        },
-        misakura: {
-            name: "🍙 MISAKURA / ミサクラ",
-            desc: "The Rebel Onigiri. You absolutely HATE seafood and skirts! You prefer uniforms and have a strong, independent, cool personality. / 反逆のおにぎり。シーフードとスカートが大嫌い！制服やパンツスタイルを好み、強くて独立心のあるかっこいい人。"
-        },
-        kim: {
-            name: "🥓 KIM / キム",
-            desc: "The Strict Manager. You wear formal clothes and love beige. Your relationship with sour food is complicated, but you always settle conflicts peacefully. / 厳格な店長。フォーマルな服を着てベージュを愛する。酸っぱいものへのこだわりは複雑ですが、衝突の時はすべてをスマートに解決する頼れるリーダー。"
-        }
+            var characters = {
+        pudya: { name: "PUDYA / プジャ 🍮", img: "pudya.png" },
+        cherry: { name: "CHERRY / チェリー 🍒", img: "cherry-normal.png" },
+        aiko: { name: "AIKO / アイコ 🐟", img: "aiko.png" },
+        yutsuko: { name: "YUTSUKO / ユツコ 🥟", img: "Yutsuko.png" },
+        yumeni: { name: "YUMENI / ユメニ 🍡", img: "yumeni.png" },
+        misakura: { name: "MISAKURA / ミサクラ 🍙", img: "misakura.png" },
+        kim: { name: "KIM / キム 🥓", img: "kim.png" }
     };
 
     var currentQuestion = 0;
     var scores = { pudya: 0, cherry: 0, aiko: 0, yutsuko: 0, yumeni: 0, misakura: 0, kim: 0 };
 
     function loadQuestion() {
-        if (currentQuestion >= questions.length) {
-            showResult();
-            return;
-        }
+        if (currentQuestion >= questions.length) { showResult(); return; }
         var qData = questions[currentQuestion];
         document.getElementById("question-text").innerText = qData.q;
-        
         var optionsBox = document.getElementById("options-box");
         optionsBox.innerHTML = "";
-        
         qData.options.forEach(function(opt) {
             var btn = document.createElement("button");
             btn.className = "option-btn";
             btn.innerText = opt.text;
-            btn.onclick = function() {
-                scores[opt.score]++;
-                currentQuestion++;
-                loadQuestion();
-            };
+            btn.onclick = function() { scores[opt.score]++; currentQuestion++; loadQuestion(); };
             optionsBox.appendChild(btn);
         });
     }
@@ -248,21 +219,25 @@
         
         var maxScore = -1;
         var finalChar = "pudya";
-        
         for (var char in scores) {
-            if (scores[char] > maxScore) {
-                maxScore = scores[char];
-                finalChar = char;
-            }
+            if (scores[char] > maxScore) { maxScore = scores[char]; finalChar = char; }
         }
         
-        document.getElementById("result-character").innerText = characters[finalChar].name;
-        document.getElementById("result-desc").innerText = characters[finalChar].desc;
+        var charData = characters[finalChar];
+        var resultHtml = "";
+        resultHtml += "<div class='result-title'>" + charData.name + "</div>";
+        resultHtml += "<div style='margin: 15px auto; max-width: 150px; background: #121212; padding: 10px; border-radius: 10px; border: 1px solid #333;'><img src='" + charData.img + "' style='max-width: 100%; height: auto; border-radius: 5px;'></div>";
+        resultHtml += "<p style='color: #ddd; font-size: 14px;'>If you want to know more about this character, visit Sakura Zone! / このキャラについてもっと知りたい方は、サクラゾーンへ！</p>";
+        resultHtml += "<br><a href='sakura-zone.html' style='display: inline-block; padding: 10px 20px; background: #1e1e1e; color: #ff69b4; border: 2px solid #ff69b4; border-radius: 15px; font-weight: bold; text-decoration: none; box-shadow: 0 0 10px rgba(255,105,180,0.3); margin-bottom: 20px;'>🌸 Go to Sakura Zone / サクラゾーンへ</a><br>";
+        resultHtml += "<button onclick='restartQuiz()' style='background: #ff69b4; color: #fff; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 0 8px #ff69b4;'>Try Again / もう一度</button>";
+        
+        document.getElementById("result-box").innerHTML = resultHtml;
     }
 
     function restartQuiz() {
         currentQuestion = 0;
         scores = { pudya: 0, cherry: 0, aiko: 0, yutsuko: 0, yumeni: 0, misakura: 0, kim: 0 };
+        document.getElementById("result-box").innerHTML = '<div style="font-size: 12px; color: #ff69b4; margin-bottom: 5px;">YOUR RESULT / 診断結果:</div><div id="result-character" class="result-title"></div><p id="result-desc" style="color: #ddd; font-size: 14px; line-height: 1.5;"></p>';
         document.getElementById("quiz-box").style.display = "block";
         document.getElementById("result-box").style.display = "none";
         loadQuestion();
