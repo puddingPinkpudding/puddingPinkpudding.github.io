@@ -104,7 +104,7 @@
   animation: jelly-bounce 0.6s ease-in-out;
 }
 
-/* 👁️ Экран паники (изначально скрыт) */
+
 #panic-overlay {
   display: none;
   position: fixed;
@@ -135,8 +135,7 @@
         <a href="#others-section" class="nav-button">🎨 Others</a>
         <a href="sakura-zone.html" class="nav-button sakura">🌸 サクラゾーン (Sakura Zone)</a>
        <a href="rakugaki.html" class="nav-button rakugaki-btn" style="color: #ffb6c1 !important; border: 2px dashed #ffb6c1 !important; border-radius: 20px; padding: 5px 15px; text-decoration: none !important; display: inline-block;">🎨 らくがきゾーン (Rakugaki Zone)</a>
-       <a href="wardrobe.html" class="nav-button" style="color: #ffb6c1 !important; border: 2px dashed #ffb6c1 !important;">👗 Closet Zone</a
-  
+    
 </a>
 
 </nav>
@@ -146,8 +145,6 @@
     <!-- Target ID for Main/Top jump -->
     <h1>ピンクプリンスタジオ (Pink Pudding Studio)</h1>
 <img src="logo.gif" id="top-logo" alt="Pink Pudding Studio Logo" class="logo-gif">
-
-<span id="hidden-coin-main" class="web-quest-coin" onclick="localStorage.setItem('pudya_coin_main', 'true'); this.style.transform='scale(0)'; alert('🪙 You found a hidden coin! / コインを見つけた！'); if(typeof updateWardrobeUI==='function')updateWardrobeUI();" style="cursor: pointer;">🪙</span>
 
     
     <p class="description">
@@ -590,6 +587,5 @@ if (topLogo && panicOverlay) {
 <div id="panic-overlay">
     <img src="scary_pudya.png"  alt="???">
 </div>
-<script src="wardrobe.js"></script>
 
 </body>
